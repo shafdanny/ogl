@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>fr.unice.polytech.ogl</groupId>
-  <artifactId>islxx</artifactId> <!-- CHANGE ME -->
+  <artifactId>islac</artifactId> <!-- CHANGE ME -->
   <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ISLXX :: Nom de l'equipe</name> <!-- CHANGE ME -->
+  <name>ISLAC :: Von</name> <!-- CHANGE ME -->
   <url>http://www.i3s.unice.fr/~mosser/teaching/tse</url>
 
   <properties>
