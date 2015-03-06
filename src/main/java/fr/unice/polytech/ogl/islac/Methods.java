@@ -39,6 +39,9 @@ public class Methods {
 		return "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ direction+"\" " +"} }";
 	}
 	
+	// Méthodes explore
+	
+	
 	public String explore(){
 		return "{ \"action\": \"explore\" }";
 	}
@@ -51,6 +54,11 @@ public class Methods {
 	}
 	
 
+	// Méthodes move_to
+	
+	public String move_to(String direction){
+		return "{ \"action\": \"move_to\", \"parameters\": {\"direction\": " +"\""+ direction+"\" " +"} }";
+	}
 	
 	// Test
 	
