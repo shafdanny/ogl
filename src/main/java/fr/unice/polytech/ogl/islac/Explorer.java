@@ -6,14 +6,14 @@ public class Explorer implements IExplorerRaid {
 
     @Override
 	public void initialize(String context) {
+
 		
 	}
 
     @Override
 	public String takeDecision() {
-    	
-    	String decision;
-    	decision ="{ \"action\": \"stop\" }";
+    	Methods m1= new Methods();
+    	String decision = m1.stop();
     	return decision;
 		
 	}
