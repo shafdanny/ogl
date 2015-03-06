@@ -36,7 +36,27 @@ public class Methods {
 	// Méthodes scout
 	
 	public String scout(String direction){
-		return "{ \"action\": \"scout\", \"parameters\": {\"direction\":" + direction +"} }";
+		return "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ direction+"\" " +"} }";
+	}
+	
+	public String explore(){
+		return "{ \"action\": \"explore\" }";
+	}
+	
+	// Méthodes exploit
+	// Attention: ressource en majuscule: WOOD
+	
+	public String exploit(String ressource){
+		return "{ \"action\": \"exploit\", \"parameters\": {\"ressource\": " +"\""+ ressource+"\" " +"} }";
+	}
+	
+
+	
+	// Test
+	
+	public static void main(String[] args){
+		Methods m1 = new Methods();
+		System.out.println(m1.scout("N"));
 	}
 }
 
