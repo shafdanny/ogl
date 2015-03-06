@@ -50,6 +50,15 @@ public class Methods {
 		return "{ \"action\": \"exploit\", \"parameters\": {\"ressource\": " +"\""+ ressource+"\" " +"} }";
 	}
 	
+	/**
+	 * Choisir quel action à faire selon une certaine parametres / calcul.
+	 * Pour l'instant, just faire stop
+	 * 
+	 * @return 
+	 */
+	public String chooseDecision(){
+		return stop();
+	}
 
 	
 	// Test

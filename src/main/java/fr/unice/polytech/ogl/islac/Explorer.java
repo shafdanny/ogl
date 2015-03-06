@@ -15,7 +15,7 @@ public class Explorer implements IExplorerRaid {
     @Override
 	public String takeDecision() {
     	
-    	String decision = m1.stop();
+    	String decision = m1.chooseDecision();
     	return decision;
 		
 	}
