@@ -60,6 +60,22 @@ public class Methods {
 	 * @return 
 	 */
 	public String chooseDecision(){
+		
+	/*	int decision = 1;
+		
+		//switch
+		
+		switch (decision) {
+			case 1:
+				return stop();
+				break;
+			case 2:
+				return null;
+				break;
+				
+			default:
+				return stop()
+		} */
 		return stop();
 	}
 
