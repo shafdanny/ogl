@@ -8,15 +8,17 @@ public class Explorer implements IExplorerRaid {
 	
     @Override
 	public void initialize(String context) {
-
+    	Methods m1=new Methods();
+    	m1.extraireInfo(context);
+    	m1.updateTurn();
 		
 	}
 
     @Override
 	public String takeDecision() {
+    	m1.updateTurn();
+    	return m1.chooseDecision();
     	
-    	String decision = m1.chooseDecision();
-    	return decision;
 		
 	}
 

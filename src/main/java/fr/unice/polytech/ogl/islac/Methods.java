@@ -4,7 +4,24 @@ import java.util.*;
 
 public class Methods {
 	private List<String> positionCreek;
+	private int turn;
 	
+	
+	public Methods()
+	{
+		positionCreek=new <String>ArrayList();
+		turn =0;
+	}
+	
+	public int getTurn()
+	{
+		return turn;
+	}
+	
+	public void updateTurn()
+	{
+		turn++;
+	}
 	
 	public String stop(){
 		return "{ \"action\": \"stop\" }";
@@ -16,7 +33,13 @@ public class Methods {
 
 	public void extraireInfo(String context)
 	{
-		
+		String g1="\"";
+		char g2=g1.charAt(0);
+		int i1=context.indexOf(g2,context.indexOf(g2,context.indexOf(g2,context.indexOf(g2,0))))+1;
+		int i2=context.indexOf(g2,i1+1);
+		String creek=context.substring(i1,i2);
+	
+		positionCreek.add(creek);
 	}
 
 	
@@ -24,8 +47,8 @@ public class Methods {
 		return "{ \"action\": \"land\", \"parameters\": {\"creek\":" + creek_id + ", \"people\":" +	number + "}}";
 	}
 	
-	public String getPositionCreek(){
-		return null;
+	public List getPositionCreek(){
+		return positionCreek;
 	}
 	
 	public void addPositionCreek(String creek_id){
@@ -61,6 +84,19 @@ public class Methods {
 	 */
 	public String chooseDecision(){
 		
+		if (turn-1 ==1)
+		{
+			land(positionCreek.get(0),1);
+		}
+		
+		if(turn-1==2)
+		{
+			scout("N");
+		}
+		if(turn-1==3)
+		{
+			stop();
+		}
 	/*	int decision = 1;
 		
 		//switch
@@ -87,10 +123,14 @@ public class Methods {
 	
 	// Test
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Methods m1 = new Methods();
 		System.out.println(m1.scout("N"));
-	}
+		String test="{\"2\", \"budget\":600 }";
+		m1.extraireInfo(test);
+		
+		
+	}*/
 }
 
 
