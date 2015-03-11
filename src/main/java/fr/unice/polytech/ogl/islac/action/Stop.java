@@ -1,5 +1,5 @@
 package fr.unice.polytech.ogl.islac.action;
 
-public class Stop {
+public class Stop extends Action {
 
 }

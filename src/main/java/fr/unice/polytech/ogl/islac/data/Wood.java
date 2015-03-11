@@ -1,5 +1,6 @@
 package fr.unice.polytech.ogl.islac.data;
 
-public class Wood {
+
+public class Wood extends Ressources {
 
 }
