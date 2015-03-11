@@ -123,14 +123,14 @@ public class Methods {
 	
 	// Test
 	
-	/*public static void main(String[] args){
+	public static void main(String[] args){
 		Methods m1 = new Methods();
 		System.out.println(m1.scout("N"));
-		String test="{\"2\", \"budget\":600 }";
+		String test= "{\"creek\":\"creek_id\",\"budget\": 600,\"men\": 50,\"objective\": [ { \"resource\": \"WOOD\", \"amount\": 600 }]}";
 		m1.extraireInfo(test);
+		System.out.println(m1.getPositionCreek().get(0));
 		
-		
-	}*/
+	}
 }
 
 

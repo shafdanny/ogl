@@ -1,6 +1,7 @@
 package fr.unice.polytech.ogl.islac;
 
 import eu.ace_design.island.bot.*;
+import org.json.*;
 
 public class Explorer implements IExplorerRaid {
 
