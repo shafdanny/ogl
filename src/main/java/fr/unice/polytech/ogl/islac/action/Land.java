@@ -8,13 +8,13 @@ public class Land extends Action {
 	}
 
 	@Override
-	String act() {
+	public String act() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String act(String info) {
+	public String act(String info) {
 		// TODO Auto-generated method stub
 		return null;
 	}

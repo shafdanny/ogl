@@ -5,20 +5,21 @@ import org.json.*;
 
 public class Explorer implements IExplorerRaid {
 
-	Methods m1=new Methods();
+	Simulator sim1=new Simulator();
+	
 	
     @Override
 	public void initialize(String context) {
-    	Methods m1=new Methods();
-    	m1.extraireInfo(context);
-    	m1.updateTurn();
+    	sim1=new Simulator();
+    	sim1.simul();
+    	
 		
 	}
 
     @Override
 	public String takeDecision() {
-    	m1.updateTurn();
-    	return m1.chooseDecision();
+    	return sim1.simul();
+    	
     	
 		
 	}
@@ -26,6 +27,6 @@ public class Explorer implements IExplorerRaid {
     @Override
 	public void acknowledgeResults(String results) {
 		
-    	// test commit
+    	sim1.simul2(results);
 	}
 }

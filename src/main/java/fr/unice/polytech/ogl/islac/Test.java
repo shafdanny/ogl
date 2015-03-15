@@ -8,6 +8,16 @@ import java.lang.*;
 
 public class Test {
 
+	
+	public String a()
+	{
+		return "hhhh";
+	}
+	public String b()
+	{
+		return this.a();
+		
+	}
 
 	public static void main(String[] args) 
 	   {
@@ -22,11 +32,14 @@ public class Test {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-	      
+	  	Test t1=new Test();
+		System.out.println(t1.a());
+		System.out.println(t1.b());
 	      
 	   }
+	
+	
 }
-			
 
 		
 

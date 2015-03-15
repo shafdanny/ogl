@@ -1,10 +1,12 @@
 package fr.unice.polytech.ogl.islac.character;
 
-public class Character {
+public class Character1 {
 	
 	private int pa;
 	private int nbTotal;
 	private int nbLand;
+	private int[] pos;
+	
 	
 
 	public void setPa(int pa) {

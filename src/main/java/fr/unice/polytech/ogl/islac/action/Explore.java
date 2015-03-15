@@ -8,13 +8,13 @@ public class Explore extends Action {
 	}
 
 	@Override
-	String act(String info) {
+	public String act(String info) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	String act(String info, int number) {
+	public String act(String info, int number) {
 		// TODO Auto-generated method stub
 		return null;
 	}
