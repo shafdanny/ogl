@@ -1,5 +1,8 @@
 package fr.unice.polytech.ogl.islac.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -8,9 +11,7 @@ import fr.unice.polytech.ogl.islac.character.*;
 
 public class Action {
 	
-	int x=250;
-	int y=250;
-	
+	private List<String> listCreek;
 	Exploit e1=new Exploit();
 	Explore e= new Explore();
 	Land l=new Land();
@@ -23,7 +24,7 @@ public class Action {
 	
 	public Action()
 	{
-		
+		listCreek=new ArrayList<String>();
 		
 		
 	}
@@ -65,24 +66,6 @@ public class Action {
 	}
 
 
-	public int getX() {
-		return x;
-	}
-
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-
-	public int getY() {
-		return y;
-	}
-
-
-	public void setY(int y) {
-		this.y = y;
-	}
 
 
 	public Exploit getE1() {

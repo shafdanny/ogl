@@ -5,10 +5,31 @@ public class Tuils {
 private boolean isWood;
 private boolean isFish;
 private int attiltude;
-private int cost;
+
 private int [] pos;
+
+// 0 : N , 1 : E , 2: S, 3: O
+private Tuils[] adjacent;
+
 private boolean isScooted;
 private boolean isExplored;
+
+
+public Tuils()
+{
+	isWood=false;
+	isFish=false;
+	attiltude=0;
+	pos=new int[2];
+	
+		
+}
+
+public Tuils(String d)
+{
+	
+}
+
 
 public boolean isScooted() {
 	return isScooted;
@@ -75,13 +96,7 @@ public void setAttiltude(int attiltude) {
 	this.attiltude = attiltude;
 }
 
-public int getCost() {
-	return cost;
-}
 
-public void setCost(int cost) {
-	this.cost = cost;
-}
 
 public int[] getPos() {
 	return pos;

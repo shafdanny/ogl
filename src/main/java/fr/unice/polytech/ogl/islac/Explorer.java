@@ -11,7 +11,7 @@ public class Explorer implements IExplorerRaid {
     @Override
 	public void initialize(String context) {
     	sim1=new Simulator();
-    	sim1.simul();
+    	sim1.init(context);
     	
 		
 	}
