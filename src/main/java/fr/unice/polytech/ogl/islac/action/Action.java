@@ -71,7 +71,7 @@ public class Action {
 	 * @return null
 	 */
 	
-	public void read(String data, Arena map)
+	public void read(String data)
 	{
 		 try {
 	    	  JSONParser parser=new JSONParser();		  
@@ -109,8 +109,8 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExploit(String data, Arena map){
-		exploit.read(data, map);
+	public void readExploit(String data){
+		exploit.read(data);
 	}
 
 	// Méthodes pour explore
@@ -132,7 +132,7 @@ public class Action {
 * @param data
 */
 	public void readExplore(String data, Arena map){
-		explore.read(data, map);
+		explore.read(data);
 	}
 
 	// Méthodes pour land
@@ -155,7 +155,7 @@ public class Action {
 * @param data
 */
 		public void readLand(String data, Arena map){
-			land.read(data, map);
+			land.read(data);
 		}
 		
 		// Méthodes pour move_to
@@ -177,7 +177,7 @@ public class Action {
 * @param data
 */
 	public void readMove_to(String data, Arena map){
-				move.read(data, map);
+				move.read(data);
 			}
 
 	// Méthodes pour scout
@@ -197,7 +197,7 @@ public class Action {
  * @param data
  */
 	public void readScout(String data, Arena map){
-		scout.read(data, map);
+		scout.read(data);
 	}
 
 	// Méthodes pour stop

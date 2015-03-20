@@ -55,7 +55,8 @@ public class Arena{
 		if(map.get(newPos)==null)
 		{
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAltitude(altitude,t);	
+			map.get(newPos).addAltitude(altitude,t);
+			
 		}
 		
 	}

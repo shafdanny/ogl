@@ -6,6 +6,8 @@ public class Tuils {
 	
 private boolean isWood;
 private boolean isFish;
+private boolean isFur;
+private boolean isFlower;
 private boolean isOnlyFish;
 private int attiltude;
 

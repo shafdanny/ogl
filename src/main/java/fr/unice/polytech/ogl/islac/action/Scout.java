@@ -11,7 +11,7 @@ public class Scout extends Action {
 	
 	
 @Override
-	public void read(String data, Arena map){
+	public void read(String data){
 	
 		try {
 	    	  JSONParser parser=new JSONParser();		  

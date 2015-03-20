@@ -16,7 +16,7 @@ public class Simulator {
 	{
 		act=new Action();
 		nbTurn=0;
-		act.read(context,act.getMap());
+		act.read(context);
 	}
 	
 
@@ -28,7 +28,7 @@ public class Simulator {
 	}
 	
 	public void simul2(String context){
-		lastAct.read(context,act.getMap());
+		lastAct.read(context);
 	}
 	
 	
