@@ -19,18 +19,18 @@ public class Scout extends Action {
 	    	  JSONParser parser=new JSONParser();		  
 		      JSONObject obj = (JSONObject)parser.parse(data);
 		      JSONObject obj1= (JSONObject)obj.get("extras");
-		      JSONArray array= (JSONArray)obj1.get("ressources");
+		      JSONArray array= (JSONArray)obj1.get("resources");
 		      
-		      int pa=(int)obj.get("cost");
+		      long pa=(long)obj.get("cost");
 		      ArrayList<String> ressources = new ArrayList<String>();
 		      for (int k=0; k<array.size(); k++)
 		      {
 		    	  ressources.add((String)array.get(k));
 		      }
-		      int altitude=(int)obj1.get("altitude");
+		      long altitude=(long)obj1.get("altitude");
 		      
-		      map.scout(c.getCurrentTuil(),lastDirection,ressources,altitude);
-		      c.addPa(pa);
+		   //   map.scout(c.getCurrentTuil(),lastDirection,ressources,altitude);
+		   //   c.addPa(pa);
 		      
 		      
 		} catch (ParseException e) {

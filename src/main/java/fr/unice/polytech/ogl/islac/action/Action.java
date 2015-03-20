@@ -18,20 +18,27 @@ public class Action {
 	Action lastAction;
 	String lastDirection;
 	private List<String> listCreek;
-	Exploit exploit=new Exploit();
-	Explore explore= new Explore();
-	Land land=new Land();
-	Move_to move=new Move_to();
-	Scout scout=new Scout();
-	Stop stop=new Stop();
-	Arena map=new Arena();
-	Character1 c=new Character1();
+	Exploit exploit;
+	Explore explore;
+	Land land;
+	Move_to move;
+	private Scout scout;
+	Stop stop;
+	Arena map;
+	Character1 c;
 	
 	
 	public Action()
 	{
 		listCreek=new ArrayList<String>();
-		
+		Exploit exploit=new Exploit();
+		Explore explore= new Explore();
+		Land land=new Land();
+		Move_to move=new Move_to();
+		Scout scout=new Scout();
+		Stop stop=new Stop();
+		Arena map=new Arena();
+		Character1 c=new Character1();
 		
 	}
 //Méthodes
@@ -189,7 +196,7 @@ public class Action {
  * @param direction
  */
 	public void scout(String direction) {
-		scout.act(direction);
+		getScout().act(direction);
 	}
 		
 /**
@@ -198,7 +205,7 @@ public class Action {
  * @param data
  */
 	public void readScout(String data){
-		scout.read(data);
+		getScout().read(data);
 	}
 
 	// Méthodes pour stop
@@ -249,6 +256,14 @@ public class Action {
 
 	public void setC(Character1 c) {
 		this.c = c;
+	}
+
+	public Scout getScout() {
+		return scout;
+	}
+
+	public void setScout(Scout scout) {
+		this.scout = scout;
 	}
 	
 }

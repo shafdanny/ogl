@@ -12,7 +12,7 @@ private boolean isFlower;
 
 
 private boolean isOnlyFish;
-private int attiltude;
+private long attiltude;
 
 private int [] pos;
 
@@ -21,7 +21,7 @@ private int [] pos;
 private boolean isScooted;
 private boolean isExplored;
 
-public void addAltitude(int a,Tuils t)
+public void addAltitude(long a,Tuils t)
 {
 	this.setAttiltude(a+t.getAttiltude());
 }
@@ -128,12 +128,12 @@ public void setFish(boolean isOnlyFish) {
 	this.isOnlyFish = isOnlyFish;
 }
 
-public int getAttiltude() {
+public long getAttiltude() {
 	return attiltude;
 }
 
-public void setAttiltude(int attiltude) {
-	this.attiltude = attiltude;
+public void setAttiltude(long l) {
+	this.attiltude = l;
 }
 
 public static String oppose(String d)

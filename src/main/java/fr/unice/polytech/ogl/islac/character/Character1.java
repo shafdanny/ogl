@@ -4,7 +4,7 @@ import fr.unice.polytech.ogl.islac.data.*;
 
 public class Character1 {
 	
-	private int pa;
+	private long pa;
 	private int nbTotal;
 	private int nbLand;
 	private int[] pos;
@@ -15,7 +15,7 @@ public class Character1 {
 	
 	
 
-	public void setPa(int pa) {
+	public void setPa(long pa) {
 		this.pa=pa;
 	}
 	
@@ -35,7 +35,7 @@ public class Character1 {
 		CurrentTuil = currentTuil;
 	}
 
-	public void addPa(int pa){
+	public void addPa(long pa){
 		this.pa=getPa()-pa;
 	}
 	
@@ -47,7 +47,7 @@ public class Character1 {
 		this.nbTotal=nb;
 	}
 	
-	public int getPa(){
+	public long getPa(){
 		return pa;
 	}
 	
