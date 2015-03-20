@@ -3,7 +3,9 @@ import java.util.*;
 
 public class Tuils {
 	
+	
 private boolean isWood;
+private boolean isFish;
 private boolean isOnlyFish;
 private int attiltude;
 
@@ -14,6 +16,10 @@ private int [] pos;
 private boolean isScooted;
 private boolean isExplored;
 
+public void addAltitude(int a,Tuils t)
+{
+	this.setAttiltude(a+)
+}
 
 public Tuils()
 {
@@ -25,6 +31,13 @@ public Tuils()
 		
 }
 
+public Tuils(int[] pos)
+{
+	isWood=false;
+	isOnlyFish=false;
+	attiltude=0;
+	this.pos=pos;
+}
 
 
 public boolean isScooted() {
@@ -42,6 +55,7 @@ public boolean isExplored() {
 public void setExplored(boolean isExplored) {
 	this.isExplored = isExplored;
 }
+
 
 public void setPos(int[] pos) {
 	this.pos = pos;
@@ -113,24 +127,6 @@ public static String oppose(String d)
 	}
 	
 	return null;
-}
-public void defineA(String d)
-{
-	Tuils a=this.adj.get(d);
-	if (a==null)
-	{
-			a=new Tuils();
-			this.adj.put(d,a);
-			a.adj.put(oppose(d),this);
-		
-	}
-	if (a!=null)
-	{
-		if (this.adj.get(d)==null)
-		{
-			this.adj.put(d,a);
-		}
-	}
 }
 
 
