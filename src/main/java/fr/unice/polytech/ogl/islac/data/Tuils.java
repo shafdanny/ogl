@@ -8,6 +8,9 @@ private boolean isWood;
 private boolean isFish;
 private boolean isFur;
 private boolean isFlower;
+
+
+
 private boolean isOnlyFish;
 private int attiltude;
 
@@ -61,6 +64,31 @@ public void setExplored(boolean isExplored) {
 
 public void setPos(int[] pos) {
 	this.pos = pos;
+}
+
+
+public boolean isFur() {
+	return isFur;
+}
+
+public void setFur(boolean isFur) {
+	this.isFur = isFur;
+}
+
+public boolean isFlower() {
+	return isFlower;
+}
+
+public void setFlower(boolean isFlower) {
+	this.isFlower = isFlower;
+}
+
+public boolean isFish() {
+	return isFish;
+}
+
+public void setOnlyFish(boolean isOnlyFish) {
+	this.isOnlyFish = isOnlyFish;
 }
 
 public Tuils(int x,int y)

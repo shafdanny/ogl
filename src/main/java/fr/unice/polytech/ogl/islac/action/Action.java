@@ -15,7 +15,8 @@ import fr.unice.polytech.ogl.islac.data.*;
 import fr.unice.polytech.ogl.islac.character.*;
 
 public class Action {
-	
+	Action lastAction;
+	String lastDirection;
 	private List<String> listCreek;
 	Exploit exploit=new Exploit();
 	Explore explore= new Explore();
@@ -154,7 +155,7 @@ public class Action {
 * Voir la méthode read dans la classe Land
 * @param data
 */
-		public void readLand(String data, Arena map){
+		public void readLand(String data){
 			land.read(data);
 		}
 		
@@ -176,7 +177,7 @@ public class Action {
 * Voir la méthode read dans la classe Move_to
 * @param data
 */
-	public void readMove_to(String data, Arena map){
+	public void readMove_to(String data){
 				move.read(data);
 			}
 
@@ -196,7 +197,7 @@ public class Action {
  * Voir la méthode readScout dans la classe Scout
  * @param data
  */
-	public void readScout(String data, Arena map){
+	public void readScout(String data){
 		scout.read(data);
 	}
 
@@ -224,6 +225,22 @@ public class Action {
 		this.map = map;
 	}
 
+
+	public Action getLastAction() {
+		return lastAction;
+	}
+
+	public void setLastAction(Action lastAction) {
+		this.lastAction = lastAction;
+	}
+
+	public String getLastDirection() {
+		return lastDirection;
+	}
+
+	public void setLastDirection(String lastDirection) {
+		this.lastDirection = lastDirection;
+	}
 
 	public Character1 getC() {
 		return c;

@@ -25,10 +25,13 @@ public class Simulator {
 		nbTurn++;
 		return null;
 		
+		
 	}
 	
 	public void simul2(String context){
 		lastAct.read(context);
+		
+	
 	}
 	
 	
