@@ -14,6 +14,10 @@ public class Character1 {
 		this.pa=pa;
 	}
 	
+	public void addPa(int pa){
+		this.pa=getPa()-pa;
+	}
+	
 	public void setNbLand(int nb){
 		this.nbLand=nb;
 	}

@@ -12,12 +12,12 @@ import fr.unice.polytech.ogl.islac.character.*;
 public class Action {
 	
 	private List<String> listCreek;
-	Exploit e1=new Exploit();
-	Explore e= new Explore();
-	Land l=new Land();
-	Move_to m=new Move_to();
-	Scout s=new Scout();
-	Stop s1=new Stop();
+	Exploit exploit=new Exploit();
+	Explore explore= new Explore();
+	Land land=new Land();
+	Move_to move=new Move_to();
+	Scout scout=new Scout();
+	Stop stop=new Stop();
 	Map map=new Map();
 	Character1 c=new Character1();
 	
@@ -28,20 +28,43 @@ public class Action {
 		
 		
 	}
-
+//Méthodes
+	
+/**
+ * appelle la méthode act() écrit dans les autres classes
+ * @return null
+ */
 	
 	public String act()
 	{
 		return null;
 	}
+	
+	/**
+	 * appelle la méthode act() écrit dans les autres classes
+	 * @return null
+	 */
+	
 	public String act(String info)
 	{
 		return null;
 	}
+	
+	/**
+	 * appelle la méthode act() écrit dans les autres classes
+	 * @return null
+	 */
+	
 	public String act(String info, int number)
 	{
 		return null;
 	}
+	
+	/**
+	 * méthode de lecture des résultats de l'initalize
+	 * on écrit les résultats obtenus dans d'autres classes
+	 * @return null
+	 */
 	
 	public void read(String s)
 	{
@@ -65,69 +88,129 @@ public class Action {
 	
 	}
 
+	// Méthodes pour exploit
 
 
-
-	public Exploit getE1() {
-		return e1;
+/**
+* Permet de faire un exploit en entrant la ressource désirée
+* Voir la méthode act dans la classe Exploit
+* @param ressource
+*/	
+	public void exploit(String ressource) {
+		exploit.act(ressource);
+	}
+	
+/**
+* Permet de récupérer les informations obtenus lors d'un exploit
+* Voir la méthode read dans la classe Exploit
+* @param data
+*/
+	public void readExploit(String data){
+		exploit.read(data);
 	}
 
+	// Méthodes pour explore
 
-	public void setE1(Exploit e1) {
-		this.e1 = e1;
+
+/**
+* Permet de faire un explore de l'endroit où on est
+* Voir la méthode act dans la classe Explore
+* @param /
+*/	
+	
+	public void explore() {
+		explore.act();
+	}
+	
+/**
+* Permet de récupérer les informations obtenus lors d'un exploit
+* Voir la méthode read dans la classe Exploit
+* @param data
+*/
+	public void readExplore(String data){
+		explore.read(data);
 	}
 
+	// Méthodes pour land
 
-	public Explore getE() {
-		return e;
+
+/**
+* Permet de faire un land à partir du creek_id
+* et de choisir le nombre d'hommes à débarquer avec number
+* Voir la méthode act dans la classe Land
+* @param creek_id, number
+*/		
+	
+	public void land(String creek_id, int number) {
+		land.act(creek_id, number);
+	}
+	
+/**
+* Permet de récupérer les informations obtenus lors d'un land
+* Voir la méthode read dans la classe Land
+* @param data
+*/
+		public void readLand(String data){
+			land.read(data);
+		}
+		
+		// Méthodes pour move_to
+
+
+/**
+* Permet de faire un move_to vers la direction désirée
+* Voir la méthode act dans la classe Move_to
+* @param direction
+*/		
+
+	public void move_to(String direction) {
+		move.act(direction);
+	}
+	
+/**
+* Permet de récupérer les informations obtenus lors d'un move_to
+* Voir la méthode read dans la classe Move_to
+* @param data
+*/
+	public void readMove_to(String data){
+				move.read(data);
+			}
+
+	// Méthodes pour scout
+	
+/**
+ * Permet de faire scout en donnant la direction désirée
+ * Voir la méthode act dans la classe Scout
+ * @param direction
+ */
+	public void scout(String direction) {
+		scout.act(direction);
+	}
+		
+/**
+ * Permet de récupérer les informations obtenus lors d'un scout
+ * Voir la méthode readScout dans la classe Scout
+ * @param data
+ */
+	public void readScout(String data){
+		scout.read(data);
 	}
 
-
-	public void setE(Explore e) {
-		this.e = e;
+	// Méthodes pour stop
+	
+/**
+ * Permet de faire stop
+ * Voir la méthode act dans la classe Stop
+ * @param /
+ */	
+	
+	public void stop() {
+		stop.act();
 	}
 
-
-	public Land getL() {
-		return l;
-	}
-
-
-	public void setL(Land l) {
-		this.l = l;
-	}
-
-
-	public Move_to getM() {
-		return m;
-	}
-
-
-	public void setM(Move_to m) {
-		this.m = m;
-	}
-
-
-	public Scout getS() {
-		return s;
-	}
-
-
-	public void setS(Scout s) {
-		this.s = s;
-	}
-
-
-	public Stop getS1() {
-		return s1;
-	}
-
-
-	public void setS1(Stop s1) {
-		this.s1 = s1;
-	}
-
-
+	
+	// A commenter
+	
 	public Map getMap() {
 		return map;
 	}
