@@ -8,7 +8,6 @@ public class Character1 {
 	private int[] pos;
 	
 	
-	
 	//public Character
 
 	public void setPa(int pa) {

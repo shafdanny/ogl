@@ -24,6 +24,7 @@ public class Simulator {
 	{
 		nbTurn++;
 		
+		
 		if (stop)
 		{
 			return act.getS().act();

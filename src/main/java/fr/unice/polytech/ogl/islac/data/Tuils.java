@@ -1,15 +1,15 @@
 package fr.unice.polytech.ogl.islac.data;
+import java.util.*;
 
 public class Tuils {
 	
 private boolean isWood;
-private boolean isFish;
+private boolean isOnlyFish;
 private int attiltude;
 
 private int [] pos;
 
-// 0 : N , 1 : E , 2: S, 3: O
-private Tuils[] adjacent;
+
 
 private boolean isScooted;
 private boolean isExplored;
@@ -18,17 +18,13 @@ private boolean isExplored;
 public Tuils()
 {
 	isWood=false;
-	isFish=false;
+	isOnlyFish=false;
 	attiltude=0;
 	pos=new int[2];
 	
 		
 }
 
-public Tuils(String d)
-{
-	
-}
 
 
 public boolean isScooted() {
@@ -57,7 +53,7 @@ public Tuils(int x,int y)
 	pos[0]=x;
 	pos[1]=y;
 	isWood=false;
-	isFish=true;
+	isOnlyFish=true;
 	
 }
 
@@ -80,12 +76,12 @@ public void setWood(boolean isWood) {
 	this.isWood = isWood;
 }
 
-public boolean isFish() {
-	return isFish;
+public boolean isOnlyFish() {
+	return isOnlyFish;
 }
 
-public void setFish(boolean isFish) {
-	this.isFish = isFish;
+public void setFish(boolean isOnlyFish) {
+	this.isOnlyFish = isOnlyFish;
 }
 
 public int getAttiltude() {
@@ -96,6 +92,46 @@ public void setAttiltude(int attiltude) {
 	this.attiltude = attiltude;
 }
 
+public static String oppose(String d)
+{
+	if (d=="N")
+	{
+		return "S";
+	}
+	
+	if (d=="S")
+	{
+		return "N";
+	}
+	if (d=="W")
+	{
+		return "W";
+	}
+	if (d=="E")
+	{
+		return "W";
+	}
+	
+	return null;
+}
+public void defineA(String d)
+{
+	Tuils a=this.adj.get(d);
+	if (a==null)
+	{
+			a=new Tuils();
+			this.adj.put(d,a);
+			a.adj.put(oppose(d),this);
+		
+	}
+	if (a!=null)
+	{
+		if (this.adj.get(d)==null)
+		{
+			this.adj.put(d,a);
+		}
+	}
+}
 
 
 public int[] getPos() {

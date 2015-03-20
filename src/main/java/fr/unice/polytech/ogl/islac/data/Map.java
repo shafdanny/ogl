@@ -5,39 +5,63 @@ import java.util.*;
 public class Map {
 	
 	private List<String> listCreek;
-	private Tuils[][] map;
+	private HashMap<int[],Tuils> map;
 	
 	public Map()
 	{
 		listCreek=new ArrayList<String>();
-		map =new Tuils[250][250];
+		map =new HashMap<int[], Tuils>();
 		
-		for (int k=0;k<250;k++)
-		{
-			for (int i=0;i<250;i++)
-			{
-				map[k][i]=new Tuils(k,i);
-			}
-		}
+		
 	}
 	
 	
-	
+	public void addTuils(Tuils t)
+	{
+		map.put(t.getPos(),t);
+	}
 
+	public Tuils getD(Tuils t,String d)
+	{
+		int[] pos2=t.getPos();
+		
+		if(d=="N")
+		{
+			pos2[1]+=1;
+		}
+		if(d=="S")
+		{
+			pos2[1]+=-1;
+		}
+		if(d=="W")
+		{
+			pos2[0]+=-1;
+		}
+		if(d=="E")
+		{
+			pos2[0]+=1;
+		}
+		
+		return map.get(pos2);
+	}
+	
+	
 	public List<String> getListCreek() {
 		return listCreek;
 	}
 
+	public void setListCreek(List<String> listCreek) {
+		this.listCreek = listCreek;
+	}
+	
+	
 	
 
-	public Tuils[][] getMap() {
-		return map;
-	}
 
-	public void setMap(Tuils[][] map) {
-		this.map = map;
-	}
+	
 
+
+	
 	
 	
 }
