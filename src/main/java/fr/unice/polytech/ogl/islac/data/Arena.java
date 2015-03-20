@@ -2,12 +2,12 @@ package fr.unice.polytech.ogl.islac.data;
 
 import java.util.*;
 
-public class Map {
+public class Arena{
 	
 	private List<String> listCreek;
 	private HashMap<int[],Tuils> map;
 	
-	public Map()
+	public Arena()
 	{
 		listCreek=new ArrayList<String>();
 		map =new HashMap<int[], Tuils>();
@@ -55,7 +55,7 @@ public class Map {
 		if(map.get(newPos)==null)
 		{
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAttiltude(altitude,t);	
+			map.get(newPos).addAltitude(altitude,t);	
 		}
 		
 	}

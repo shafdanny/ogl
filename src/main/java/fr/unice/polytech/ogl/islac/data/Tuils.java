@@ -18,7 +18,7 @@ private boolean isExplored;
 
 public void addAltitude(int a,Tuils t)
 {
-	this.setAttiltude(a+)
+	this.setAttiltude(a+t.getAttiltude());
 }
 
 public Tuils()

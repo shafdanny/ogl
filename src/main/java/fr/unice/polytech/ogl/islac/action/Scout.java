@@ -5,12 +5,13 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.*;
+import fr.unice.polytech.ogl.islac.data.Arena;
 
 public class Scout extends Action {
 	
 	
 @Override
-	public void read(String data, Map map){
+	public void read(String data, Arena map){
 	
 		try {
 	    	  JSONParser parser=new JSONParser();		  

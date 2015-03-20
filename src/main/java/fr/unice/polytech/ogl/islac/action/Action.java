@@ -1,13 +1,16 @@
 package fr.unice.polytech.ogl.islac.action;
 
 import java.util.ArrayList;
+import java.util.Map;
+
 import fr.unice.*;
 import java.util.List;
-import java.util.Map;
+
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import fr.unice.polytech.ogl.islac.data.*;
 import fr.unice.polytech.ogl.islac.character.*;
 
@@ -20,7 +23,7 @@ public class Action {
 	Move_to move=new Move_to();
 	Scout scout=new Scout();
 	Stop stop=new Stop();
-	Map map=new Map();
+	Arena map=new Arena();
 	Character1 c=new Character1();
 	
 	
@@ -68,7 +71,7 @@ public class Action {
 	 * @return null
 	 */
 	
-	public void read(String data, Map map)
+	public void read(String data, Arena map)
 	{
 		 try {
 	    	  JSONParser parser=new JSONParser();		  
@@ -106,7 +109,7 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExploit(String data, Map map){
+	public void readExploit(String data, Arena map){
 		exploit.read(data, map);
 	}
 
@@ -128,7 +131,7 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExplore(String data, Map map){
+	public void readExplore(String data, Arena map){
 		explore.read(data, map);
 	}
 
@@ -151,7 +154,7 @@ public class Action {
 * Voir la méthode read dans la classe Land
 * @param data
 */
-		public void readLand(String data, Map map){
+		public void readLand(String data, Arena map){
 			land.read(data, map);
 		}
 		
@@ -173,7 +176,7 @@ public class Action {
 * Voir la méthode read dans la classe Move_to
 * @param data
 */
-	public void readMove_to(String data, Map map){
+	public void readMove_to(String data, Arena map){
 				move.read(data, map);
 			}
 
@@ -193,7 +196,7 @@ public class Action {
  * Voir la méthode readScout dans la classe Scout
  * @param data
  */
-	public void readScout(String data, Map map){
+	public void readScout(String data, Arena map){
 		scout.read(data, map);
 	}
 
@@ -212,12 +215,12 @@ public class Action {
 	
 	// A commenter
 	
-	public Map getMap() {
+	public Arena getMap() {
 		return map;
 	}
 
 
-	public void setMap(Map map) {
+	public void setMap(Arena map) {
 		this.map = map;
 	}
 
