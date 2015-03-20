@@ -1,7 +1,9 @@
 package fr.unice.polytech.ogl.islac.action;
 
 import java.util.ArrayList;
+import fr.unice.*;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -66,11 +68,11 @@ public class Action {
 	 * @return null
 	 */
 	
-	public void read(String s)
+	public void read(String data, Map map)
 	{
 		 try {
 	    	  JSONParser parser=new JSONParser();		  
-		      JSONObject obj = (JSONObject)parser.parse(s);
+		      JSONObject obj = (JSONObject)parser.parse(data);
 		      String creek_id=(String)obj.get("creek");
 		      int pa=(int)obj.get("budget");
 		      int men =(int)obj.get("men");
@@ -90,7 +92,6 @@ public class Action {
 
 	// Méthodes pour exploit
 
-
 /**
 * Permet de faire un exploit en entrant la ressource désirée
 * Voir la méthode act dans la classe Exploit
@@ -105,8 +106,8 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExploit(String data){
-		exploit.read(data);
+	public void readExploit(String data, Map map){
+		exploit.read(data, map);
 	}
 
 	// Méthodes pour explore
@@ -127,8 +128,8 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExplore(String data){
-		explore.read(data);
+	public void readExplore(String data, Map map){
+		explore.read(data, map);
 	}
 
 	// Méthodes pour land
@@ -150,8 +151,8 @@ public class Action {
 * Voir la méthode read dans la classe Land
 * @param data
 */
-		public void readLand(String data){
-			land.read(data);
+		public void readLand(String data, Map map){
+			land.read(data, map);
 		}
 		
 		// Méthodes pour move_to
@@ -172,8 +173,8 @@ public class Action {
 * Voir la méthode read dans la classe Move_to
 * @param data
 */
-	public void readMove_to(String data){
-				move.read(data);
+	public void readMove_to(String data, Map map){
+				move.read(data, map);
 			}
 
 	// Méthodes pour scout
@@ -192,8 +193,8 @@ public class Action {
  * Voir la méthode readScout dans la classe Scout
  * @param data
  */
-	public void readScout(String data){
-		scout.read(data);
+	public void readScout(String data, Map map){
+		scout.read(data, map);
 	}
 
 	// Méthodes pour stop
@@ -229,6 +230,5 @@ public class Action {
 	public void setC(Character1 c) {
 		this.c = c;
 	}
-	
 	
 }

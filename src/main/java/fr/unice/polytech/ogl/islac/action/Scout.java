@@ -10,11 +10,11 @@ public class Scout extends Action {
 	
 	
 @Override
-	public void read(String s){
+	public void read(String data, Map map){
 	
 		try {
 	    	  JSONParser parser=new JSONParser();		  
-		      JSONObject obj = (JSONObject)parser.parse(s);
+		      JSONObject obj = (JSONObject)parser.parse(data);
 		      JSONObject obj1= (JSONObject)obj.get("extras");
 		      JSONArray array= (JSONArray)obj1.get("ressources");
 		      
