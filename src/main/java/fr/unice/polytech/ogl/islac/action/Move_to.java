@@ -2,6 +2,11 @@ package fr.unice.polytech.ogl.islac.action;
 
 public class Move_to extends Action {
 
+	
+	public Move_to()
+	{
+		this.name="Move_to";
+	}
 	@Override
 	// Méthodes move_to
 	

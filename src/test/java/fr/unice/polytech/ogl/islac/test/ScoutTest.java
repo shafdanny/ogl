@@ -19,10 +19,10 @@ public class ScoutTest {
 		Tuils t1=new Tuils(0,0);
 		test.getC().setCurrentTuil(t1);	
 		Arena map = test.getMap();
-		test.setLastAction(test.getScout());
+		test.setLastAction(new Scout());
 		test.setLastDirection("N");
 		
-		test.readScout(s);
+		//new Scout().readScout(s);
 		long k= test.getC().getPa();
 		assertEquals(k, -8);
 	/*	assert(map.getD(test.getC().getCurrentTuil(),"N").isWood());

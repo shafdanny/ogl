@@ -6,14 +6,19 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import java.util.*;
 
+import fr.unice.polytech.ogl.islac.character.Character1;
 import fr.unice.polytech.ogl.islac.data.Arena;
 import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class Scout extends Action {
 	
 	
+	public Scout()
+	{
+		
+	}
 @Override
-	public void read(String data){
+	public void read(String data,Action a){
 	
 		try {
 	    	  JSONParser parser=new JSONParser();		  
@@ -29,8 +34,8 @@ public class Scout extends Action {
 		      }
 		      long altitude=(long)obj1.get("altitude");
 		      
-		   //   map.scout(c.getCurrentTuil(),lastDirection,ressources,altitude);
-		   //   c.addPa(pa);
+		     // a.getMap().scout(c.getCurrentTuil(),getLastDirection(),ressources,altitude);
+		      a.getC().addPa(pa);
 		      
 		      
 		} catch (ParseException e) {

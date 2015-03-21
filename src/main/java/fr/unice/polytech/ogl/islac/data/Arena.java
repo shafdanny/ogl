@@ -49,13 +49,13 @@ public class Arena{
 		
 		return map.get(pos2);
 	}
-	public void scout(Tuils t,String d,ArrayList<String> ressources,int altitude)
+	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
 	{
 		int[] newPos=getNewPos(t,d);
 		if(map.get(newPos)==null)
 		{
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAltitude(altitude,t);
+			map.get(newPos).addAltitude((int) altitude,t);
 			
 		}
 		

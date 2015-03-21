@@ -7,8 +7,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import fr.unice.polytech.ogl.islac.character.Character1;
+import fr.unice.polytech.ogl.islac.data.Arena;
+
 public class Explore extends Action {
 
+	
+	public Explore()
+	{
+		this.name="Explore";
+	}
 	@Override
 	public String act(){
 		return "{ \"action\": \"explore\" }";

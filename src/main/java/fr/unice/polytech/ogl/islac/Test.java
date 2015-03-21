@@ -40,21 +40,27 @@ public class Test {
 	
 	String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
 	Action test= new Action();
+	test.initAction();
 	Tuils t1=new Tuils(0,0);
 	test.getC().setCurrentTuil(t1);	
-	Arena map = test.getMap();
-	test.setLastAction(test.getScout());
+	//Arena map = test.getMap();
+	test.setLastAction(new Scout());
 	test.setLastDirection("N");
->>>>>>> a8555e5cd0cdac83ccf001480f548e296d830e71
+//>>>>>>> a8555e5cd0cdac83ccf001480f548e296d830e71
+	System.out.println(test.getC().getPa());
+	new Scout().read(s,test);
 	
-	test.readScout(s);
 	long k= test.getC().getPa();
-	//assertEquals(k, -8);
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isWood());
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isFur());
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isFlower());
-	assert(!map.getD(test.getC().getCurrentTuil(),"N").isFish());
-	assert(!map.getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
+	
+	System.out.println(k);
+	// assertEquals(k, -8);
+	test.getC().getCurrentTuil();
+	
+	//test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood();
+	assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
+	assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
+	assert(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
+	assert(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
 	
 	}
 }

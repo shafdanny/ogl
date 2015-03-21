@@ -2,6 +2,11 @@ package fr.unice.polytech.ogl.islac.action;
 
 public class Land extends Action {
 	
+	
+	public Land()
+	{
+		
+	}
 	@Override
 	public String act(String creek_id, int number){
 		return "{ \"action\": \"land\", \"parameters\": {\"creek\":" + creek_id + ", \"people\":" +	number + "}}";
