@@ -20,9 +20,7 @@ public class Test {
 	}
 
 	public static void main(String[] args) 
-	   {
-		 
-	  
+	   {	  
 	      try {
 	    	  JSONParser parser=new JSONParser();
 		      String s = "{\"creek\":\"creek_id\",\"budget\": 600,\"men\": 50,\"objective\": [ { \"resource\": \"WOOD\", \"amount\": 600 }]}"; 
