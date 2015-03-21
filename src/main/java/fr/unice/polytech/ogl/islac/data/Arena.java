@@ -51,49 +51,59 @@ public class Arena{
 	}
 	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
 	{
+		System.out.println(1);
 		int[] newPos=getNewPos(t,d);
 		if(map.get(newPos)==null)
 		{
+			System.out.println(2);
 			map.put(newPos,new Tuils(newPos));
 			map.get(newPos).addAltitude((int) altitude,t);
 			
 		}
 		
-		if (ressources.contains("Flower"))
-		{
+		if (ressources.contains("FLOWER"))
+		{System.out.println(3);
 			map.get(newPos).setFlower(true);
 		}
 		else{
+			System.out.println(4);
 			map.get(newPos).setFlower(false);
 		}
 		
-		if (ressources.contains("Wood"))
+		if (ressources.contains("WOOD"))
 		{
+			System.out.println(5);
 			map.get(newPos).setWood(true);
 		}
 		else 
 		{
-			map.get(newPos).setWood(true);
+			System.out.println(6);
+			map.get(newPos).setWood(false);
 		}
-		if (ressources.contains("Fur"))
+		if (ressources.contains("FUR"))
 		{
+			System.out.println(7);
 			map.get(newPos).setFur(true);
 		}
 		else 
 		{
+			System.out.println(8);
 			map.get(newPos).setFur(false);
 		}
 		
 		if(ressources.contains("Fish"))
 		{
+			System.out.println(9);
 			map.get(newPos).setFish(true);
 		}
 		if (!map.get(newPos).isFur() && !map.get(newPos).isFlower() && !map.get(newPos).isWood() && map.get(newPos).isFish() )  
 		{
+			System.out.println(10);
 			map.get(newPos).setOnlyFish(true);
 		}
 		else
 		{
+			System.out.println(11);
 			map.get(newPos).setOnlyFish(false);
 		}
 	}

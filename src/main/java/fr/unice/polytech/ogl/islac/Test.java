@@ -56,11 +56,11 @@ public class Test {
 	// assertEquals(k, -8);
 	test.getC().getCurrentTuil();
 	
-	//test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood();
-	assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
-	assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
-	assert(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
-	assert(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood());
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
 	
 	}
 }
