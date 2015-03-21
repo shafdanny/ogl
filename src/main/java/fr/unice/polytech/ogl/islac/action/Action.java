@@ -15,22 +15,30 @@ import fr.unice.polytech.ogl.islac.data.*;
 import fr.unice.polytech.ogl.islac.character.*;
 
 public class Action {
-	
+	Action lastAction;
+	String lastDirection;
 	private List<String> listCreek;
-	Exploit exploit=new Exploit();
-	Explore explore= new Explore();
-	Land land=new Land();
-	Move_to move=new Move_to();
-	Scout scout=new Scout();
-	Stop stop=new Stop();
-	Arena map=new Arena();
-	Character1 c=new Character1();
+	Exploit exploit;
+	Explore explore;
+	Land land;
+	Move_to move;
+	private Scout scout;
+	Stop stop;
+	Arena map;
+	Character1 c;
 	
 	
 	public Action()
 	{
 		listCreek=new ArrayList<String>();
-		
+		Exploit exploit=new Exploit();
+		Explore explore= new Explore();
+		Land land=new Land();
+		Move_to move=new Move_to();
+		Scout scout=new Scout();
+		Stop stop=new Stop();
+		Arena map=new Arena();
+		Character1 c=new Character1();
 		
 	}
 //Méthodes
@@ -71,7 +79,7 @@ public class Action {
 	 * @return null
 	 */
 	
-	public void read(String data, Arena map)
+	public void read(String data)
 	{
 		 try {
 	    	  JSONParser parser=new JSONParser();		  
@@ -109,8 +117,8 @@ public class Action {
 * Voir la méthode read dans la classe Exploit
 * @param data
 */
-	public void readExploit(String data, Arena map){
-		exploit.read(data, map);
+	public void readExploit(String data){
+		exploit.read(data);
 	}
 
 	// Méthodes pour explore
@@ -132,7 +140,7 @@ public class Action {
 * @param data
 */
 	public void readExplore(String data, Arena map){
-		explore.read(data, map);
+		explore.read(data);
 	}
 
 	// Méthodes pour land
@@ -154,8 +162,8 @@ public class Action {
 * Voir la méthode read dans la classe Land
 * @param data
 */
-		public void readLand(String data, Arena map){
-			land.read(data, map);
+		public void readLand(String data){
+			land.read(data);
 		}
 		
 		// Méthodes pour move_to
@@ -176,8 +184,8 @@ public class Action {
 * Voir la méthode read dans la classe Move_to
 * @param data
 */
-	public void readMove_to(String data, Arena map){
-				move.read(data, map);
+	public void readMove_to(String data){
+				move.read(data);
 			}
 
 	// Méthodes pour scout
@@ -188,7 +196,7 @@ public class Action {
  * @param direction
  */
 	public void scout(String direction) {
-		scout.act(direction);
+		getScout().act(direction);
 	}
 		
 /**
@@ -196,8 +204,8 @@ public class Action {
  * Voir la méthode readScout dans la classe Scout
  * @param data
  */
-	public void readScout(String data, Arena map){
-		scout.read(data, map);
+	public void readScout(String data){
+		getScout().read(data);
 	}
 
 	// Méthodes pour stop
@@ -225,6 +233,22 @@ public class Action {
 	}
 
 
+	public Action getLastAction() {
+		return lastAction;
+	}
+
+	public void setLastAction(Action lastAction) {
+		this.lastAction = lastAction;
+	}
+
+	public String getLastDirection() {
+		return lastDirection;
+	}
+
+	public void setLastDirection(String lastDirection) {
+		this.lastDirection = lastDirection;
+	}
+
 	public Character1 getC() {
 		return c;
 	}
@@ -232,6 +256,14 @@ public class Action {
 
 	public void setC(Character1 c) {
 		this.c = c;
+	}
+
+	public Scout getScout() {
+		return scout;
+	}
+
+	public void setScout(Scout scout) {
+		this.scout = scout;
 	}
 	
 }
