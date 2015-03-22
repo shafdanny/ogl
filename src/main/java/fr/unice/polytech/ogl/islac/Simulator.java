@@ -68,6 +68,7 @@ public class Simulator {
 		if (act.getC().getCurrentTuil().getObj1()>0)
 		{
 			act.getC().getCurrentTuil().setObj1(0);
+			act.getC().getCurrentTuil().setObj1(false);
 			Action a=new Exploit(act.getC().getObj().get(0).getName());
 			act.setLastAction(a);
 			return a.act();
@@ -76,6 +77,7 @@ public class Simulator {
 		if (act.getC().getCurrentTuil().getObj2()>0)
 		{
 			act.getC().getCurrentTuil().setObj2(0);
+			act.getC().getCurrentTuil().setObj2(false);
 	
 			Action a=new Exploit(act.getC().getObj().get(1).getName());
 			act.setLastAction(a);
