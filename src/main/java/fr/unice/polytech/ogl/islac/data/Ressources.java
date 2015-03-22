@@ -1,11 +1,11 @@
 package fr.unice.polytech.ogl.islac.data;
 
-public abstract class Ressources {
+public class Ressources {
 	
 
-private int amount;
+private long amount;
 private String name;
-private int quantity;
+private long quantity;
 
 
 public Ressources()
@@ -13,13 +13,16 @@ public Ressources()
 	
 }
 
-public Ressources(String name, int quantity)
+
+
+
+public Ressources(String name, long quantity)
 {
 	setQuantity(quantity);
 	setName(name);
 }
 
-public Ressources (String name, int quantity, int amount)
+public Ressources (String name, long quantity, long amount)
 {
 	setQuantity(quantity);
 	setName(name);
@@ -31,11 +34,11 @@ public void addQuantity(int n)
 	quantity += n;
 }
 
-public int getAmount() {
+public long getAmount() {
 	return amount;
 }
 
-public void setAmount(int amount) {
+public void setAmount(long amount) {
 	this.amount = amount;
 }
 
@@ -47,11 +50,11 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public int getQuantity() {
+public long getQuantity() {
 	return quantity;
 }
 
-public void setQuantity(int quantity) {
+public void setQuantity(long quantity) {
 	this.quantity = quantity;
 }
 

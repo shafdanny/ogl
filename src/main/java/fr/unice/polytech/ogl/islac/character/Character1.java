@@ -1,6 +1,7 @@
 package fr.unice.polytech.ogl.islac.character;
 
 import fr.unice.polytech.ogl.islac.data.*;
+import java.util.*;
 
 public class Character1 {
 	
@@ -9,6 +10,7 @@ public class Character1 {
 	private int nbLand;
 	private int[] pos;
 	private Tuils CurrentTuil;
+	private ArrayList<Ressources> obj;
 	
 	
 	//public Character
@@ -61,6 +63,14 @@ public class Character1 {
 	
 	public int getNbBoat(){
 		return getNbLand()-getNbTotal();
+	}
+
+	public ArrayList<Ressources> getObj() {
+		return obj;
+	}
+
+	public void setObj(ArrayList<Ressources> obj) {
+		this.obj = obj;
 	}
 }
 	

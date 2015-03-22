@@ -19,7 +19,7 @@ public class ScoutTest {
 		Tuils t1=new Tuils(0,0);
 		test.getC().setCurrentTuil(t1);	
 		Arena map = test.getMap();
-		test.setLastAction(new Scout());
+		//test.setLastAction(new Scout());
 		test.setLastDirection("N");
 		
 		//new Scout().readScout(s);

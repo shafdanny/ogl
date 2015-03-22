@@ -15,7 +15,7 @@ public class Scout extends Action {
 	
 	public Scout()
 	{
-		
+		this.name="Scout";
 	}
 @Override
 	public void read(String data,Action a){
@@ -48,7 +48,9 @@ public class Scout extends Action {
 	}
 
 
-	public String act(String dir){
+	public String act(String dir,Action a){
+		
+		a.getMap().getD(a.getC().getCurrentTuil(), dir).setScooted(true);
 		return "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ dir+"\" " +"} }";
 	}
 	

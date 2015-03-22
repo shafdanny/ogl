@@ -36,7 +36,7 @@ public class Test {
 
 	public static void main(String[] args) {
 
-	   
+	  /** 
 	
 	String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
 	Action test= new Action();
@@ -60,7 +60,16 @@ public class Test {
 	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
 	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
 	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
-	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); */
+		
+		Arena map=new Arena();
+		int[] pos=new int[2];
+		
+		Tuils t=new Tuils();
+		t.setPos(pos);
+		
+		long a=10;
+		a=a/3;
 	
 	}
 }
