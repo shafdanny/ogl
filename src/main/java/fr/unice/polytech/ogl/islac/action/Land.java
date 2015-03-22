@@ -14,9 +14,9 @@ public class Land extends Action {
 	{
 		this.name="Land";
 	}
-	@Override
-	public String act(String creek_id, int number){
-		return "{ \"action\": \"land\", \"parameters\": {\"creek\":" + creek_id + ", \"people\":" +	number + "}}";
+	
+	public String act(String creek_id, long l){
+		return "{ \"action\": \"land\", \n \"parameters\": {\"creek\":" + "\""+ creek_id + "\", \"people\":" +	l + "} \n}";
 	}
 
 	@Override

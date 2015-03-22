@@ -180,8 +180,8 @@ public int[] getPos() {
 }
 
 public boolean isObj1() {
-	if(this==null) return false;
-	return isObj1;
+	if(this!=null) return isObj1;
+	else return false;
 }
 
 public void setObj1(boolean isObj1) {

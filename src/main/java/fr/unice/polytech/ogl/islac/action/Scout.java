@@ -21,23 +21,26 @@ public class Scout extends Action {
 	public void read(String data,Action a){
 	
 		try {
-			System.out.println(2);
+			
 	    	  JSONParser parser=new JSONParser();		  
 		      JSONObject obj = (JSONObject)parser.parse(data);
 		      JSONObject obj1= (JSONObject)obj.get("extras");
+		      
 		      JSONArray array= (JSONArray)obj1.get("resources");
-		      System.out.println(22);
+		
 		      long pa=(long)obj.get("cost");
 		      ArrayList<String> ressources = new ArrayList<String>();
+		      
+		      
 		      for (int k=0; k<array.size(); k++)
 		      {
-		    	  System.out.println(33+k);
+		    	
 		    	  ressources.add((String)array.get(k));
 		      }
 		      long altitude=(long)obj1.get("altitude");
-		      System.out.println(44);
+		      
 		      a.getMap().scout(a.getC().getCurrentTuil(),a.getLastDirection(),ressources,altitude);
-		      System.out.println(45);
+	
 		      a.getC().addPa(pa);
 		      
 		      
@@ -50,7 +53,7 @@ public class Scout extends Action {
 
 	public String act(String dir,Action a){
 		
-		a.getMap().getD(a.getC().getCurrentTuil(), dir).setScooted(true);
+		//a.getMap().getD(a.getC().getCurrentTuil(), dir).setScooted(true);
 		return "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ dir+"\" " +"} }";
 	}
 	

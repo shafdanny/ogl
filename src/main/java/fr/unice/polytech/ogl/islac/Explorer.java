@@ -5,8 +5,9 @@ import org.json.*;
 
 public class Explorer implements IExplorerRaid {
 
-	Simulator sim1=new Simulator();
+	Simulator sim1;
 	
+
 	
     @Override
 	public void initialize(String context) {
@@ -16,7 +17,7 @@ public class Explorer implements IExplorerRaid {
 		
 	}
 
-    @Override
+ @Override
 	public String takeDecision() {
     	return sim1.simul();
     	

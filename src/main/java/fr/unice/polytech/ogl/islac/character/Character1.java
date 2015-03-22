@@ -6,11 +6,11 @@ import java.util.*;
 public class Character1 {
 	
 	private long pa;
-	private int nbTotal;
-	private int nbLand;
+	private long nbTotal;
+	private long nbLand;
 	private int[] pos;
 	private Tuils CurrentTuil;
-	private ArrayList<Ressources> obj;
+	private ArrayList<Ressources> obj=new ArrayList<Ressources>();
 	
 	
 	//public Character
@@ -45,23 +45,23 @@ public class Character1 {
 		this.nbLand=nb;
 	}
 	
-	public void setNbTotal(int nb){
-		this.nbTotal=nb;
+	public void setNbTotal(long men){
+		this.nbTotal=men;
 	}
 	
 	public long getPa(){
 		return pa;
 	}
 	
-	public int getNbLand(){
+	public long getNbLand(){
 		return nbLand;
 	}
 	
-	public int getNbTotal(){
+	public long getNbTotal(){
 		return nbTotal;
 	}
 	
-	public int getNbBoat(){
+	public long getNbBoat(){
 		return getNbLand()-getNbTotal();
 	}
 

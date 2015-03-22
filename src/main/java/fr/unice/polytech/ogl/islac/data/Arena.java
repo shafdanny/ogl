@@ -48,16 +48,20 @@ public class Arena{
 	public Tuils getD(Tuils t,String d)
 	{
 		int[] pos2=getNewPos(t,d);
+		if (map.containsKey(pos2))
+		{
+			return map.get(pos2);
+		}
+		return null;
 		
-		return map.get(pos2);
 	}
 	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
 	{
-		System.out.println(1);
+		
 		int[] newPos=getNewPos(t,d);
 		if(map.get(newPos)==null)
 		{
-			System.out.println(2);
+		
 			map.put(newPos,new Tuils(newPos));
 			map.get(newPos).addAltitude((int) altitude,t);
 			
@@ -169,11 +173,14 @@ public class Arena{
 		//// obj1
 		for (int i=0;i<direction.size();i++)
 		{
+			
+			if(getD(t,direction.get(i))!=null){
 			if(getD(t,direction.get(i)).isObj1())
 			{
 				actionFinal[1]=direction.get(i);
 				actionFinal[0]="Move_to";
 				return actionFinal;
+			}
 			}
 		}
 		
@@ -182,6 +189,8 @@ public class Arena{
 		//// obj2
 		for (int i=0;i<direction.size();i++)
 		{
+			if(getD(t,direction.get(i))!=null)
+			{
 			if(getD(t,direction.get(i)).isObj2())
 			{
 				actionFinal[1]=direction.get(i);
@@ -189,13 +198,15 @@ public class Arena{
 				return actionFinal;
 				
 			}
+			}
 		}
 	
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
 		for (int i=0;i<direction.size();i++)
 		{
-			if(! getD(t,direction.get(i)).isScouted())
+			
+			if(getD(t,direction.get(i))==null)
 			{
 				newDir.add(direction.get(i));
 			}
@@ -213,11 +224,14 @@ public class Arena{
 		
 		for (int i=0;i<direction.size();i++)
 		{
+			if(getD(t,direction.get(i))!=null)
+			{
 			if(! getD(t,direction.get(i)).isOnlyFish())
 			{
 				actionFinal[0]="Move_to";
 				actionFinal[1]=direction.get(i);
 				return actionFinal;
+			}
 			}
 		}
 		

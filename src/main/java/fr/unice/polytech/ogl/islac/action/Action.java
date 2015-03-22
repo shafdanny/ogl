@@ -29,7 +29,7 @@ public class Action {
 	
 	public Action()
 	{
-		
+		map=new Arena();
 		
 	}
 	
@@ -67,8 +67,8 @@ public class Action {
 		    	  JSONParser parser=new JSONParser();		  
 			      JSONObject obj = (JSONObject)parser.parse(data);
 			      String creek_id=(String)obj.get("creek");
-			      int pa=(int)obj.get("budget");
-			      int men =(int)obj.get("men");
+			      long pa=(long)obj.get("budget");
+			      long men =(long)obj.get("men");
 			      a.getMap().getListCreek().add(creek_id);
 			      a.getC().setPa(pa);
 			      a.getC().setNbTotal(men);
@@ -77,7 +77,7 @@ public class Action {
 			      ArrayList<Ressources> objective = new ArrayList<Ressources>();
 			      for (int k=0; k<array.size(); k++)
 			      {
-			    	  
+			    	  System.out.println(k);
 			    	  JSONObject objN= (JSONObject) array.get(k);
 			    	  String nom=(String)objN.get("resource");
 			    	  long quantity=(long)objN.get("amount");
