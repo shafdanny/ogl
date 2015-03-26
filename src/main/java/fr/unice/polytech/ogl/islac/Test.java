@@ -45,7 +45,6 @@ public class Test {
 	Arena map = test.getMap();
 	test.setLastAction(test.getScout());
 	test.setLastDirection("N");
->>>>>>> a8555e5cd0cdac83ccf001480f548e296d830e71
 	
 	test.readScout(s);
 	long k= test.getC().getPa();
