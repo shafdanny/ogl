@@ -8,11 +8,14 @@ private boolean isWood;
 private boolean isFish;
 private boolean isFur;
 private boolean isFlower;
-
-
+private boolean isObj1;
+private boolean isObj2;
+private boolean isScouted;
+private int Obj1;
+private int Obj2;
 
 private boolean isOnlyFish;
-private long attiltude;
+private int attiltude;
 
 private int [] pos;
 
@@ -21,7 +24,7 @@ private int [] pos;
 private boolean isScooted;
 private boolean isExplored;
 
-public void addAltitude(long a,Tuils t)
+public void addAltitude(int a,Tuils t)
 {
 	this.setAttiltude(a+t.getAttiltude());
 }
@@ -46,6 +49,7 @@ public Tuils(int[] pos)
 
 
 public boolean isScooted() {
+	if(this==null) return false;
 	return isScooted;
 }
 
@@ -54,6 +58,7 @@ public void setScooted(boolean isScooted) {
 }
 
 public boolean isExplored() {
+	if(this==null) return false;
 	return isExplored;
 }
 
@@ -68,26 +73,32 @@ public void setPos(int[] pos) {
 
 
 public boolean isFur() {
+	if(this==null) return false;
 	return isFur;
 }
 
 public void setFur(boolean isFur) {
+	
 	this.isFur = isFur;
 }
 
 public boolean isFlower() {
+	if(this==null) return false;
 	return isFlower;
 }
 
 public void setFlower(boolean isFlower) {
+	
 	this.isFlower = isFlower;
 }
 
 public boolean isFish() {
+	if(this==null) return false;
 	return isFish;
 }
 
 public void setOnlyFish(boolean isOnlyFish) {
+	
 	this.isOnlyFish = isOnlyFish;
 }
 
@@ -113,6 +124,7 @@ public void setY(int y)
 	pos[1]=y;
 }
 public boolean isWood() {
+	if(this==null) return false;
 	return isWood;
 }
 
@@ -121,6 +133,7 @@ public void setWood(boolean isWood) {
 }
 
 public boolean isOnlyFish() {
+	if(this==null) return false;
 	return isOnlyFish;
 }
 
@@ -128,12 +141,13 @@ public void setFish(boolean isOnlyFish) {
 	this.isOnlyFish = isOnlyFish;
 }
 
-public long getAttiltude() {
+public int getAttiltude() {
+	if(this==null) return 0;
 	return attiltude;
 }
 
-public void setAttiltude(long l) {
-	this.attiltude = l;
+public void setAttiltude(int attiltude) {
+	this.attiltude = attiltude;
 }
 
 public static String oppose(String d)
@@ -161,804 +175,58 @@ public static String oppose(String d)
 
 
 public int[] getPos() {
+	if(this==null) return null;
 	return pos;
 }
 
+public boolean isObj1() {
+	if(this!=null) return isObj1;
+	else return false;
+}
 
+public void setObj1(boolean isObj1) {
+	
+	this.isObj1 = isObj1;
+}
 
+public boolean isObj2() {
+	if(this==null) return false;
+	return isObj2;
+}
+
+public void setObj2(boolean isObj2) {
+	this.isObj2 = isObj2;
+}
+
+public boolean isScouted() {
+	if(this==null) return false;
+	return isScouted;
+}
+
+public void setScouted(boolean isScouted) {
+	this.isScouted = isScouted;
+}
+
+public int getObj1() {
+	if(this==null) return 0;
+	return Obj1;
+}
+
+public void setObj1(int obj1) {
+	
+	Obj1 = obj1;
+}
+
+public int getObj2() {
+	if(this==null) return 0;
+	return Obj2;
+}
+
+public void setObj2(int obj2) {
+	Obj2 = obj2;
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

@@ -74,16 +74,16 @@ public class PracticeArena {
 		PracticeArena p = new PracticeArena();
 		
 		String decision = "{ \"action\": \"land\", \"parameters\": {\"creek\":" + 10 + ", \"people\":" +	20 + "}}";
-		p.handleDecision(decision);
-		IExplorerRaid r = new Explorer();
-		r.initialize(p.getInit());
+		//p.handleDecision(decision);
+	IExplorerRaid r = new Explorer();
+		//r.initialize(p.getInit());
 		
-		while (!p.endOfGame) {
-			//String decision = r.takeDecision();
+		/*while (!p.endOfGame) {
+			decision = r.takeDecision();
 			// handle decision
 			p.handleDecision(decision);
 			r.acknowledgeResults(p.getResult());
-		}
+		}*/
 	}
 
 	

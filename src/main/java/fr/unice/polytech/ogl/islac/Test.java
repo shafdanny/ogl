@@ -36,24 +36,40 @@ public class Test {
 
 	public static void main(String[] args) {
 
-	   
+	  /** 
 	
 	String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
 	Action test= new Action();
+	test.initAction();
 	Tuils t1=new Tuils(0,0);
 	test.getC().setCurrentTuil(t1);	
-	Arena map = test.getMap();
-	test.setLastAction(test.getScout());
+	//Arena map = test.getMap();
+	test.setLastAction(new Scout());
 	test.setLastDirection("N");
+
+	System.out.println(test.getC().getPa());
+	new Scout().read(s,test);
 	
-	test.readScout(s);
 	long k= test.getC().getPa();
-	//assertEquals(k, -8);
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isWood());
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isFur());
-	assert(map.getD(test.getC().getCurrentTuil(),"N").isFlower());
-	assert(!map.getD(test.getC().getCurrentTuil(),"N").isFish());
-	assert(!map.getD(test.getC().getCurrentTuil(),"N").isOnlyFish());
+	
+	System.out.println(k);
+	// assertEquals(k, -8);
+	test.getC().getCurrentTuil();
+	
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood());
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
+	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); */
+		
+		Arena map=new Arena();
+		int[] pos=new int[2];
+		
+		Tuils t=new Tuils();
+		t.setPos(pos);
+		
+		long a=10;
+		a=a/3;
 	
 	}
 }
