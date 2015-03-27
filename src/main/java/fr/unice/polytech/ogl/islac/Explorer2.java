@@ -1,6 +1,11 @@
 package fr.unice.polytech.ogl.islac;
 
+import java.util.HashMap;
+
 import eu.ace_design.island.bot.*;
+import fr.unice.polytech.ogl.islac.data.Arena;
+import fr.unice.polytech.ogl.islac.data.Tuils;
+
 import org.json.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -35,6 +40,8 @@ public class Explorer2  {
 
 	
 	public static void main(String[] args) {
+		
+	
 		// TODO Auto-generated method stub
 		JSONObject obj;
 		JSONParser jsonparser;
@@ -44,7 +51,7 @@ public class Explorer2  {
 		JSONObject objective = new JSONObject();
 		JSONArray list = new JSONArray();
 		
-		objective.put("resource", "WOOD");
+		objective.put("resource", "FISH");
 		objective.put("amount", new Integer(600));
 	
 		list.add(objective);
@@ -60,15 +67,77 @@ public class Explorer2  {
 		
 		a.initialize(init);
 		
+		
+		
 		System.out.println(a.takeDecision());
 		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
-		System.out.println(a.sim1.act.getC().getPa());
 		
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FUR\",\"FLOWER\"],\"altitude\":-23}}");
-		System.out.println(a.sim1.act.getC().getPa());
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
+		
+		System.out.println(a.sim1.act.getC().getCurrentTuil().getPos().getX());
+		System.out.println(a.sim1.act.getC().getCurrentTuil().getPos().getY());
+		System.out.println(a.takeDecision());	
+		//a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		
+		System.out.println(a.takeDecision());	
+		//a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());	
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		
+		
+		
+		System.out.println(a.takeDecision());	
+		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
+		
+	
+		
+		
+		
+		//a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		
+		
+		/*System.out.println(a.takeDecision());
+		a.sim1.act.getC().getCurrentTuil().getPos().getX();
+		a.sim1.act.getC().getCurrentTuil().getPos().getY();*/
+		/*a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"WOOD\",\"FLOWER\"],\"altitude\":-23}}");
+		
 		
 		System.out.println(a.takeDecision());
+		System.out.println(+a.sim1.act.getC().getCurrentTuil().getPos().getX());
+		System.out.println(+a.sim1.act.getC().getCurrentTuil().getPos().getY());
+		System.out.println(a.takeDecision());
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FUR\",\"FLOWER\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());
+		System.out.println(a.takeDecision());
+
+		
+		System.out.println(a.takeDecision());
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FUR\",\"FLOWER\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FUR\",\"FLOWER\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());
+		System.out.println(a.takeDecision());
+		a.sim1.act.getC().getCurrentTuil().getPos().getX();
+		a.sim1.act.getC().getCurrentTuil().getPos().getY();
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FLOWER\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());
+		/*System.out.println(a.takeDecision());
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"WOOD\",\"FLOWER\"],\"altitude\":-23}}");
+		System.out.println(a.takeDecision());
+		System.out.println(a.takeDecision());
+		*/
+		
+		
+		
+		/*
+		
+		Arena are=new Arena();
+		are.addTuils(new Tuils(0,0));
+		are.addTuils(new Tuils(0,1));
+		System.out.println(are.getD(new Tuils(0,0), "N").getPos().getY());
+		
+		*/
 		
 	}
 

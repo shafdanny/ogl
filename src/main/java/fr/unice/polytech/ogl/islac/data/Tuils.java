@@ -13,11 +13,12 @@ private boolean isObj2;
 private boolean isScouted;
 private int Obj1;
 private int Obj2;
+private Pos pos;
 
 private boolean isOnlyFish;
 private int attiltude;
 
-private int [] pos;
+
 
 
 
@@ -34,18 +35,12 @@ public Tuils()
 	isWood=false;
 	isOnlyFish=false;
 	attiltude=0;
-	pos=new int[2];
+
+	pos=new Pos(0,0);
 	
 		
 }
 
-public Tuils(int[] pos)
-{
-	isWood=false;
-	isOnlyFish=false;
-	attiltude=0;
-	this.pos=pos;
-}
 
 
 public boolean isScooted() {
@@ -67,9 +62,6 @@ public void setExplored(boolean isExplored) {
 }
 
 
-public void setPos(int[] pos) {
-	this.pos = pos;
-}
 
 
 public boolean isFur() {
@@ -104,25 +96,32 @@ public void setOnlyFish(boolean isOnlyFish) {
 
 public Tuils(int x,int y)
 {
-	pos=new int [2];
-	pos[0]=x;
-	pos[1]=y;
+	
+	
+	isWood=false;
+	isOnlyFish=false;
+	pos=new Pos(x,y);
+	
+	
+}
+
+public Tuils(Pos pos)
+{
+	
+	
+	pos=new Pos(pos.getX(),pos.getY());
+	
 	isWood=false;
 	isOnlyFish=true;
 	
 }
 
+	
+	
+	
 
 
-public void setX(int x)
-{
-	pos[0]=x;
-}
 
-public void setY(int y)
-{
-	pos[1]=y;
-}
 public boolean isWood() {
 	if(this==null) return false;
 	return isWood;
@@ -174,10 +173,7 @@ public static String oppose(String d)
 }
 
 
-public int[] getPos() {
-	if(this==null) return null;
-	return pos;
-}
+
 
 public boolean isObj1() {
 	if(this!=null) return isObj1;
@@ -224,6 +220,14 @@ public int getObj2() {
 
 public void setObj2(int obj2) {
 	Obj2 = obj2;
+}
+
+public Pos getPos() {
+	return pos;
+}
+
+public void setPos(Pos pos2) {
+	this.pos = pos2;
 }
 
 

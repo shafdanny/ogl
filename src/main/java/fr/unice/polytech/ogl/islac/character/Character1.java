@@ -8,24 +8,27 @@ public class Character1 {
 	private long pa;
 	private long nbTotal;
 	private long nbLand;
-	private int[] pos;
+	private Pos pos;
 	private Tuils CurrentTuil;
 	private ArrayList<Ressources> obj=new ArrayList<Ressources>();
 	
 	
 	//public Character
 	
-	
+	public Character1()
+	{
+		pos=new Pos(0,0);
+	}
 
 	public void setPa(long pa) {
 		this.pa=pa;
 	}
 	
-	public int[] getPos() {
+	public Pos getPos() {
 		return pos;
 	}
 
-	public void setPos(int[] pos) {
+	public void setPos(Pos pos) {
 		this.pos = pos;
 	}
 
