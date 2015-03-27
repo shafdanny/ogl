@@ -24,6 +24,8 @@ public class Action {
 	Character1 c;
 	private List<String> listCreek;
 	private String lastDirection;
+	
+	
 
 	
 	
@@ -81,7 +83,7 @@ public class Action {
 			    	  JSONObject objN= (JSONObject) array.get(k);
 			    	  String nom=(String)objN.get("resource");
 			    	  long quantity=(long)objN.get("amount");
-			    	  objective.add(new Ressources(nom,quantity));
+			    	  a.getC().getObj().add(new Ressources(nom,quantity));
 			    	  	  
 			      }
 			      

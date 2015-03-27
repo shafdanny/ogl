@@ -1,11 +1,13 @@
 package fr.unice.polytech.ogl.islac;
 
 import static org.junit.Assert.assertEquals;
+import java.util.*;
 
 import fr.unice.polytech.ogl.islac.action.Action;
 import fr.unice.polytech.ogl.islac.action.Scout;
 import fr.unice.polytech.ogl.islac.character.*;
 import fr.unice.polytech.ogl.islac.data.Arena;
+import fr.unice.polytech.ogl.islac.data.Pos;
 import fr.unice.polytech.ogl.islac.data.Tuils;
 
 import org.json.simple.JSONObject;
@@ -36,6 +38,17 @@ public class Test {
 
 	public static void main(String[] args) {
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	  /** 
 	
 	String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
@@ -62,14 +75,19 @@ public class Test {
 	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
 	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); */
 		
-		Arena map=new Arena();
-		int[] pos=new int[2];
+		Tuils t1=new Tuils(1,1);
+		Arena a=new Arena();
+		Pos t =a.getNewPos(t1,"N");
+		System.out.println(t.getX());
+		System.out.println(t.getY());
 		
-		Tuils t=new Tuils();
-		t.setPos(pos);
+	/*
+		HashMap<Pos,String> h=new HashMap<Pos,String>();
+		Pos p1=new Pos(1,1);
+		Pos p2=new Pos(1,1);
+		*/
 		
-		long a=10;
-		a=a/3;
+		
 	
 	}
 }
