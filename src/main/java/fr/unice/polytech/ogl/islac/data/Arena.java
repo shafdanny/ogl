@@ -5,14 +5,14 @@ import java.util.*;
 public class Arena{
 	
 	private List<String> listCreek;
-	private HashMap<int[],Tuils> map;
+	private HashMap<Pos,Tuils> map;
 	private String obj1;
 	private String obj2;
 	
 	public Arena()
 	{
 		listCreek=new ArrayList<String>();
-		map =new HashMap<int[], Tuils>();
+		map =new HashMap<Pos, Tuils>();
 		
 		
 	}
@@ -23,42 +23,52 @@ public class Arena{
 		map.put(t.getPos(),t);
 	}
 
-	public int[] getNewPos(Tuils t,String d)
+	public Pos getNewPos(Tuils t,String d)
 	{
-		int[] pos2=t.getPos();
+		//int[] pos2=new int[2];
+		//pos2[0]=t.getPos2()[0];
+		//pos2[1]=t.getPos2()[0];
+	
+				Pos pos2=new Pos(t.getPos());
+						
 				
 				if(d=="N")
 				{
-					pos2[1]+=1;
+					pos2.y+=1;
 				}
 				if(d=="S")
 				{
-					pos2[1]+=-1;
+					pos2.y+=-1;
 				}
 				if(d=="W")
 				{
-					pos2[0]+=-1;
+					pos2.x+=-1;
 				}
 				if(d=="E")
 				{
-					pos2[0]+=1;
+					pos2.x+=1;
 				}
 				return pos2;
 	}
 	public Tuils getD(Tuils t,String d)
 	{
-		int[] pos2=getNewPos(t,d);
+		Pos pos2=new Pos(getNewPos(t,d));
+	//	int[] pos2=getNewPos(t,d);
 		if (map.containsKey(pos2))
 		{
 			return map.get(pos2);
 		}
-		return null;
+		else return null;
 		
 	}
 	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
 	{
 		
-		int[] newPos=getNewPos(t,d);
+		
+		Pos newPos=getNewPos(t,d);
+		
+		
+				
 		if(map.get(newPos)==null)
 		{
 		
@@ -110,7 +120,7 @@ public class Arena{
 			map.get(newPos).setFur(false);
 		}
 		
-		if(ressources.contains("Fish"))
+		if(ressources.contains("FISH"))
 		{
 			
 			map.get(newPos).setFish(true);
@@ -175,8 +185,9 @@ public class Arena{
 		{
 			
 			if(getD(t,direction.get(i))!=null){
-			if(getD(t,direction.get(i)).isObj1())
+			if(getD(t,direction.get(i)).isObj1() && !(getD(t,direction.get(i)).isOnlyFish()))
 			{
+				
 				actionFinal[1]=direction.get(i);
 				actionFinal[0]="Move_to";
 				return actionFinal;
@@ -191,8 +202,9 @@ public class Arena{
 		{
 			if(getD(t,direction.get(i))!=null)
 			{
-			if(getD(t,direction.get(i)).isObj2())
+			if(getD(t,direction.get(i)).isObj2() && !(getD(t,direction.get(i)).isOnlyFish()))
 			{
+				
 				actionFinal[1]=direction.get(i);
 				actionFinal[0]="Move_to";
 				return actionFinal;
@@ -203,22 +215,31 @@ public class Arena{
 	
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
+		
+		Tuils a=getD(t,direction.get(0));
+	
+		
+		
 		for (int i=0;i<direction.size();i++)
 		{
 			
 			if(getD(t,direction.get(i))==null)
 			{
+				
+				
 				newDir.add(direction.get(i));
 			}
+		}
 			
 			if(newDir.size()>0)
 			{
+				
 				actionFinal[0]="Scout";
 				actionFinal[1]=newDir.get(0);
 				return actionFinal;
 			}
 				
-		}
+		
 		
 		/// isOnlyFish
 		
@@ -228,6 +249,7 @@ public class Arena{
 			{
 			if(! getD(t,direction.get(i)).isOnlyFish())
 			{
+				
 				actionFinal[0]="Move_to";
 				actionFinal[1]=direction.get(i);
 				return actionFinal;
@@ -238,6 +260,16 @@ public class Arena{
 		actionFinal[0]="Stop";
 		actionFinal[1]="Stop";
 		return actionFinal;
+	}
+
+
+	public HashMap<Pos, Tuils> getMap() {
+		return map;
+	}
+
+
+	public void setMap(HashMap<Pos, Tuils> map) {
+		this.map = map;
 	}
 	
 	                                                                                

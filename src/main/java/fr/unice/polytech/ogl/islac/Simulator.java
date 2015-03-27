@@ -8,6 +8,7 @@ import fr.unice.polytech.ogl.islac.action.Move_to;
 import fr.unice.polytech.ogl.islac.action.Scout;
 import fr.unice.polytech.ogl.islac.action.Stop;
 import fr.unice.polytech.ogl.islac.character.Character1;
+import fr.unice.polytech.ogl.islac.data.Pos;
 import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class Simulator {
@@ -22,11 +23,9 @@ public class Simulator {
 	public void init(String context)
 	{
 		act=new Action();
-		int[] pos=new int[2];
-		pos[0]=0;
-		pos[1]=0;	
+		
 		act.setC(new Character1());
-		act.getC().setCurrentTuil(new Tuils(pos));  // à déplacer dans caractère
+		act.getC().setCurrentTuil(new Tuils(0,0));  // à déplacer dans caractère
 		nbTurn=0;
 		act.read(context,act);
 		act.getC().getObj().size();
