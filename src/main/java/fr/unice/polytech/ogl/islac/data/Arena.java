@@ -137,6 +137,7 @@ public class Arena{
 		}
 	}
 	
+	
 	public List<String> getListCreek() {
 		return listCreek;
 	}
@@ -272,5 +273,8 @@ public class Arena{
 		this.map = map;
 	}
 	
-	                                                                                
+	public void match(){
+		
+	}
+	                                                                              
 }

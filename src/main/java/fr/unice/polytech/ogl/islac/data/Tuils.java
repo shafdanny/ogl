@@ -41,7 +41,27 @@ public Tuils()
 		
 }
 
+public Tuils(int x,int y)
+{
+	
+	
+	isWood=false;
+	isOnlyFish=false;
+	pos=new Pos(x,y);
+	
+	
+}
 
+public Tuils(Pos pos)
+{
+	
+	
+	pos=new Pos(pos.getX(),pos.getY());
+	
+	isWood=false;
+	isOnlyFish=true;
+	
+}
 
 public boolean isScooted() {
 	if(this==null) return false;
@@ -93,34 +113,6 @@ public void setOnlyFish(boolean isOnlyFish) {
 	
 	this.isOnlyFish = isOnlyFish;
 }
-
-public Tuils(int x,int y)
-{
-	
-	
-	isWood=false;
-	isOnlyFish=false;
-	pos=new Pos(x,y);
-	
-	
-}
-
-public Tuils(Pos pos)
-{
-	
-	
-	pos=new Pos(pos.getX(),pos.getY());
-	
-	isWood=false;
-	isOnlyFish=true;
-	
-}
-
-	
-	
-	
-
-
 
 public boolean isWood() {
 	if(this==null) return false;
