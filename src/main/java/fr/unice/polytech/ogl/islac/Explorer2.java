@@ -46,7 +46,7 @@ public class Explorer2  {
 		JSONObject obj;
 		JSONParser jsonparser;
 		obj = new JSONObject();
-		
+		 
 		
 		JSONObject objective = new JSONObject();
 		JSONArray list = new JSONArray();
@@ -68,27 +68,31 @@ public class Explorer2  {
 		a.initialize(init);
 		
 		
-		
+		//land
 		System.out.println(a.takeDecision());
+		
 		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
 		
+		//scout nord
 		System.out.println(a.takeDecision());	
 		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
 		
-		System.out.println(a.sim1.act.getC().getCurrentTuil().getPos().getX());
-		System.out.println(a.sim1.act.getC().getCurrentTuil().getPos().getY());
+		//scout sud
 		System.out.println(a.takeDecision());	
-		//a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FIS\"],\"altitude\":-23}}");
 		
+		//scout est
 		System.out.println(a.takeDecision());	
-		//a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
+		
+		//scout ouest
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
 		
-		
-		
+		//moove n
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
+		
+		
 		
 	
 		

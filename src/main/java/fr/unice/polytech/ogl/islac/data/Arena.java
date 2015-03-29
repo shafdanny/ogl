@@ -120,17 +120,24 @@ public class Arena{
 			map.get(newPos).setFur(false);
 		}
 		
+		System.out.println(ressources.get(0));
 		if(ressources.contains("FISH"))
 		{
 			
 			map.get(newPos).setFish(true);
 		}
-		if (!map.get(newPos).isFur() && !map.get(newPos).isFlower() && !map.get(newPos).isWood() && map.get(newPos).isFish() )  
+		if (ressources.size()==1)  
 		{
-			
-			map.get(newPos).setOnlyFish(true);
+			{
+				if (ressources.get(0).equals("FISH"))
+				{
+					map.get(newPos).setOnlyFish(true);
+				}
+				
+			}
+	
 		}
-		else
+		if (ressources.size()>0  && !(ressources.get(0).equals("FISH")))
 		{
 			
 			map.get(newPos).setOnlyFish(false);
@@ -179,8 +186,8 @@ public class Arena{
 		direction.add("N");
 		direction.add("S");
 		direction.add("E");
-		direction.add("W");
-		//// obj1
+		direction.add("W"); 
+		//// obj1 
 		for (int i=0;i<direction.size();i++)
 		{
 			
