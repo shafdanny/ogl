@@ -2,6 +2,7 @@ package fr.unice.polytech.ogl.islac.test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.action.Action;
@@ -14,7 +15,7 @@ import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class ExploreTest {
 
-	@Test public void readExplore(){
+	@Ignore public void readExplore(){
 
 			String s = "{\"status\":\"OK\", \"cost\": 39,\"extras\": {\"resources\":[{\"resource\": \"WOOD\",\"amount\": \"HIGH\",\"cond\": \"EASY\"},{\"resource\": \"FUR\", \"amount\": \"LOW\",\"cond\": \"FAIR\"},{\"resource\": \"FLOWER\", \"amount\": \"MEDIUM\", \"cond\": \"HARSH\" }],\"pois\": [{\"kind\": \"CREEK\", \"id\": \"creek_identifier_2\" }]}}";
 			
@@ -29,7 +30,7 @@ public class ExploreTest {
 			
 			long k= test.getC().getPa();
 			
-			System.out.println(k);
+			//System.out.println(k);
 			// assertEquals(k, -8);
 			test.getC().getCurrentTuil();
 			
