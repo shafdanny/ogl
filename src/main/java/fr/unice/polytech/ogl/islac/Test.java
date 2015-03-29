@@ -59,7 +59,7 @@ public class Test {
 	//Arena map = test.getMap();
 	test.setLastAction(new Scout());
 	test.setLastDirection("N");
-//>>>>>>> a8555e5cd0cdac83ccf001480f548e296d830e71
+
 	System.out.println(test.getC().getPa());
 	new Scout().read(s,test);
 	

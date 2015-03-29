@@ -39,6 +39,8 @@ public class Scout extends Action {
 		      }
 		      long altitude=(long)obj1.get("altitude");
 		      
+		      //scout sert à stocker
+		      
 		      a.getMap().scout(a.getC().getCurrentTuil(),a.getLastDirection(),ressources,altitude);
 	
 		      a.getC().addPa(pa);
