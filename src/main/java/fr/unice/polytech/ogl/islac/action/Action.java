@@ -41,7 +41,7 @@ public class Action {
 		setMap(new Arena());
 		setC(new Character1());
 	}
-//Méthodes
+//Méthodes_
 	
 
 	
