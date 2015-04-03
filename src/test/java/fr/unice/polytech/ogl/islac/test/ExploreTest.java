@@ -26,15 +26,15 @@ public class ExploreTest {
 			test.setLastAction(new Explore());
 
 			//System.out.println(test.getC().getPa());
-			new Scout().read(s,test);
+			new Explore().read(s,test);
 			
-			long k= test.getC().getPa();
+			//long k= test.getC().getPa();
 			
 			//System.out.println(k);
 			// assertEquals(k, -8);
 			test.getC().getCurrentTuil();
 			
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood());
+			assert(test.getC().getCurrentTuil().isWood());
 			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
 			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
 			assert(!test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
