@@ -250,19 +250,33 @@ public class Arena{
 		
 		
 		/// isOnlyFish
-		
+		ArrayList<String> newDir2=new ArrayList();
+			
 		for (int i=0;i<direction.size();i++)
 		{
 			if(getD(t,direction.get(i))!=null)
 			{
-			if(! getD(t,direction.get(i)).isOnlyFish())
-			{
 				
-				actionFinal[0]="Move_to";
-				actionFinal[1]=direction.get(i);
-				return actionFinal;
+				
+				if(! getD(t,direction.get(i)).isOnlyFish())
+				{
+					System.out.println("ss");
+					newDir2.add(direction.get(i));
+					actionFinal[0]="Move_to";
+					
+					
+				}
 			}
-			}
+		}
+		
+		int s=newDir2.size();
+		if (newDir2.size()>0)
+		{
+			System.out.println("aa");
+			Random rd=new Random();
+			System.out.println(newDir2.get(rd.nextInt(s)));
+			actionFinal[1]=newDir2.get(rd.nextInt(s));
+			return actionFinal;
 		}
 		
 		actionFinal[0]="Stop";
