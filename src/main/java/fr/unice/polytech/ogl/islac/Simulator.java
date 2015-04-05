@@ -59,7 +59,11 @@ public class Simulator {
 		{
 			Land l=new Land();
 			act.setLastAction(l);
-			return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/2);		
+			if(act.getC().getNbTotal()/4>3)
+			{
+				return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/4);		
+			}
+			else return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal());
 		}
 		
 		if(act.getC().getPa()<paMax/5){

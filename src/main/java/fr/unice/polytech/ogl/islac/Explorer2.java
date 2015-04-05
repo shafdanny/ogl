@@ -79,15 +79,15 @@ public class Explorer2  {
 		
 		//scout sud
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"other\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FIH\"],\"altitude\":-23}}");
 		
 		//scout est
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"other\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
 		
 		//scout ouest
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"other\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FSH\"],\"altitude\":-23}}");
 		
 		//moove n
 		System.out.println(a.takeDecision());	
