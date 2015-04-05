@@ -51,8 +51,8 @@ public class Explore extends Action {
 		    	  
 		    	  for (int k=0; k<array.size();k++){
 		    		  JSONObject obj3= (JSONObject)array.get(k);
-		    		  if (obj3.get("resource")==a.getMap().getObj1()){
-		    			  if (obj3.get("amount")=="LOW"){
+		    		  if (obj3.get("resource").equals(a.getMap().getObj1())){
+		    			  if (obj3.get("amount").equals("LOW")){
 		    				  a.getC().getCurrentTuil().setObj1(0);
 		    			  }
 		    			  else a.getC().getCurrentTuil().setObj1(1);

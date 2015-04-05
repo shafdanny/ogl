@@ -10,6 +10,7 @@ public class Character1 {
 	private long nbLand;
 	private Pos pos;
 	private Tuils CurrentTuil;
+	
 	private ArrayList<Ressources> obj=new ArrayList<Ressources>();
 	
 	
@@ -75,5 +76,17 @@ public class Character1 {
 	public void setObj(ArrayList<Ressources> obj) {
 		this.obj = obj;
 	}
+	
+	public Ressources getRessource(String ressourceName) {
+		for(int i=0; i<obj.size(); i++) {
+			if(obj.get(i).getName().equals(ressourceName)) {
+				return obj.get(i);
+			}
+		}
+		return null;	
+	}
+	
+	
+	
 }
 	
