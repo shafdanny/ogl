@@ -7,6 +7,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -24,6 +25,22 @@ public class GlobalTest {
 	// A sample of initialisation message
 	String context = getContext(); //TODO an example of init
 	String creekId = "THIS34IS12A85CREEK87ID";
+	IExplorerRaid r;
+	String decision;
+	
+	@Before public void initRobot(){
+		r = new Explorer();
+		r.initialize(context);
+		System.out.println("initialisation");
+	}
+	
+	@Test public void land(){
+		decision = r.takeDecision();
+		System.out.println(decision);
+		assertEquals("land",getStringValue(decision,"action"));
+		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
+		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+	}
 	
 	/**
 	 * Generate the initialisation string. 
@@ -37,7 +54,7 @@ public class GlobalTest {
 		JSONObject objective = new JSONObject();
 		JSONArray list = new JSONArray();
 		
-		objective.put("resource", "FISH");
+		objective.put("resource", "WOOD");
 		objective.put("amount", new Integer(600));
 	
 		list.add(objective);
@@ -96,15 +113,8 @@ public class GlobalTest {
 	 * and that it receive the information given at the start of the game. 
 	 */
 	@Test public void initExplorer(){
-		IExplorerRaid r = new Explorer();
-		assertNotNull(r);
-		r.initialize(context);
-		// The robot should land in the given creek
-		String decision = r.takeDecision();
-		assertEquals("land",getStringValue(decision,"action"));
-		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
-		//System.out.println(getStringValue(decision,"parameters","creek"));
-		//System.out.println(getStringValue(decision,"action"));
+		//IExplorerRaid r = new Explorer();
+		assertNotNull(r);		
 	}
 	
 	/**
@@ -126,12 +136,37 @@ public class GlobalTest {
 	}
 	
 	/**
+	 *
+	 */
+	@Test public void afterLand(){
+		land();
+		
+		decision = r.takeDecision();
+		assertEquals("scout",getStringValue(decision,"action"));
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		
+		
+	}
+	
+	/**
 	 * Scenario #XX
 	 * The scouted tile is full of resources that is needed in the objective.
 	 * The robot should move to this tile. 
 	 */
-	@Ignore public void scoutedHighResourceTile(){
-		
+	@Test public void scoutedHighResourceTile(){
+		land();
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		System.out.println(decision);
 	}
 	
 	/**
@@ -142,6 +177,21 @@ public class GlobalTest {
 	@Ignore public void lowPA(){
 		
 	}
+	
+	/**
+	 * Problem detected in week13
+	 * If no resource is detected after scouting, go to any tile randomly.
+	 *  
+	 */
+	@Ignore public void noResourceScouted(){
+		
+	}
+	
+	public static void main(String[] args){
+		System.out.println("STARTING TEST");
+		IExplorerRaid r = new Explorer();
+	}
+	
 	
 	
 	
