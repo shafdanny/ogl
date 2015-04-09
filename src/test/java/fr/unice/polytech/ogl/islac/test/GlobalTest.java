@@ -153,7 +153,7 @@ public class GlobalTest {
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
 		//System.out.println(decision);
-		
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");		
 		
 	}
 	
@@ -163,10 +163,11 @@ public class GlobalTest {
 	 * The robot should move to this tile. 
 	 */
 	@Test public void scoutedHighResourceTile(){
-		land();
-		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
+		afterLand();
+		
 		decision = r.takeDecision();
-		System.out.println(decision);
+		assertEquals("move_to",getStringValue(decision,"action"));
+		//System.out.println("scoutedHRT : " + decision);
 	}
 	
 	/**
