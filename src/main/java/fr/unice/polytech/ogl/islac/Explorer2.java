@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 
 public class Explorer2  {
 
-	Simulator sim1;
+	public Simulator sim1;
 	
 
 	
@@ -75,7 +75,7 @@ public class Explorer2  {
 		
 		//scout nord
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[],\"altitude\":-23}}");
 		
 		//scout sud
 		System.out.println(a.takeDecision());	

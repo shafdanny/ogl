@@ -30,7 +30,7 @@ public class ScoutTest {
 			
 			long k= test.getC().getPa();
 			
-			System.out.println(k);
+		//	System.out.println(k);
 			// assertEquals(k, -8);
 			test.getC().getCurrentTuil();
 			

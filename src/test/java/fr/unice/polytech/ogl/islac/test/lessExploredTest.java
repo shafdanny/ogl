@@ -1,15 +1,18 @@
 package fr.unice.polytech.ogl.islac.test;
 
+import static org.junit.Assert.*;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.Explorer2;
 
-public class RandomMoveTest {
+public class lessExploredTest {
 
 	
-	public void randomMoove()
+	@Test public void randomMoove()
 	{
 		JSONObject obj;
 		JSONParser jsonparser;
@@ -38,7 +41,6 @@ public class RandomMoveTest {
 		
 		//land
 		System.out.println(a.takeDecision());
-		
 		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
 		
 		//scout nord
@@ -58,6 +60,10 @@ public class RandomMoveTest {
 		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"other\"],\"altitude\":-23}}");
 		
 		//moove n
-		System.out.println(a.takeDecision());	
+		String deplacement1=a.takeDecision();	
+		String correctDeplacement1="{ \"action\": \"move_to\", \"parameters\": {\"direction\": \"W\" } }";
+		assertEquals(deplacement1,correctDeplacement1);
+		
+	
 	}
 }

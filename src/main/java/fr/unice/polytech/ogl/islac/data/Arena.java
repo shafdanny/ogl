@@ -120,7 +120,7 @@ public class Arena{
 			map.get(newPos).setFur(false);
 		}
 		
-		System.out.println(ressources.get(0));
+		
 		if(ressources.contains("FISH"))
 		{
 			
@@ -219,7 +219,8 @@ public class Arena{
 				
 			}
 			}
-		}
+		}	
+		
 	
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
@@ -248,8 +249,20 @@ public class Arena{
 			}
 				
 		
+		/// lessExplored
+			
+			String dir2=lessExplored(t);
+			if (! dir2.equals(""))
+			{
+				actionFinal[0]="Move_to";
+				actionFinal[1]=dir2;
+				return actionFinal;
+			}
 		
-		/// isOnlyFish
+		/// isOnlyFish  en théorie tout ce qui suit ne sert plus mais je le laisse par sécurité au cas ou on couvre pas 
+			// tout les cas restant avec le lessExplored. Attention par contre on revient à des déplacements déterministes !
+			// il n'y a plus aucune part d'aléatoire.
+			
 		ArrayList<String> newDir2=new ArrayList();
 			
 		for (int i=0;i<direction.size();i++)
@@ -260,7 +273,7 @@ public class Arena{
 				
 				if(! getD(t,direction.get(i)).isOnlyFish())
 				{
-					System.out.println("ss");
+					
 					newDir2.add(direction.get(i));
 					actionFinal[0]="Move_to";
 					
@@ -272,9 +285,9 @@ public class Arena{
 		int s=newDir2.size();
 		if (newDir2.size()>0)
 		{
-			System.out.println("aa");
+			
 			Random rd=new Random();
-			System.out.println(newDir2.get(rd.nextInt(s)));
+		
 			actionFinal[1]=newDir2.get(rd.nextInt(s));
 			return actionFinal;
 		}
@@ -296,6 +309,50 @@ public class Arena{
 	
 	public void match(){
 		
+	}
+	
+	public String lessExplored(Tuils current)
+	{
+		String newDir="";
+		
+		ArrayList<String> direction=new ArrayList<String>();
+		direction.add("N");
+		direction.add("S");
+		direction.add("E");
+		direction.add("W");
+		
+		double comptmax=0;
+		
+		for (int k=0;k<4;k++)
+		{
+			if (! getD(current,direction.get(k)).isOnlyFish())
+			{
+				Tuils tuiltest=getD(current,direction.get(k));
+				double compt=0;
+			
+				for (int i=0;i<4;i++)
+				{
+					if(getD(current,direction.get(k))==null)
+					{
+						compt=compt+1;
+					}
+					if(getD(current,direction.get(k)).isOnlyFish())
+					{
+						compt=compt-0.5;
+					}
+				}
+				
+				if (compt>=comptmax)
+				{
+				
+					comptmax=compt;
+					newDir=direction.get(k);
+				}
+			}
+		}
+		
+		
+		return newDir;
 	}
 	                                                                              
 }

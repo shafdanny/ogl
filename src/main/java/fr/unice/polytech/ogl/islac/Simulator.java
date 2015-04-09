@@ -13,7 +13,7 @@ import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class Simulator {
 
-	Action act;
+	public Action act;
 	private int nbTurn;
 	private boolean stop=false;
 	private long paMax;
