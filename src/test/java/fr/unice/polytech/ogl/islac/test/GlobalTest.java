@@ -175,8 +175,15 @@ public class GlobalTest {
 	 * Low action point.
 	 * Stop the game.
 	 */
-	@Ignore public void lowPA(){
-		
+	@Test public void lowPA(){
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		assertEquals("land",getStringValue(decision,"action"));
+		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
+		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 550 }");
+		decision = r.takeDecision();
+		//System.out.println("LOWPA : " + decision);
+		assertEquals("stop",getStringValue(decision,"action"));
 	}
 	
 	/**
