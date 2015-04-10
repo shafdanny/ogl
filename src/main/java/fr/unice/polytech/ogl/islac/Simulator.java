@@ -75,6 +75,7 @@ public class Simulator {
 		
 		if (act.getC().getCurrentTuil().getObj1()>0)
 		{
+			System.out.println("salut");
 			act.getC().getCurrentTuil().setObj1(0);
 			act.getC().getCurrentTuil().setObj1(false);
 			Action a=new Exploit(act.getC().getObj().get(0).getName());

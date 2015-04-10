@@ -31,7 +31,7 @@ public Ressources (String name, long quantity, long amount)
 
 public void addQuantity(int n)
 {
-	quantity += n;
+	quantity -= n;
 }
 
 public long getAmount() {

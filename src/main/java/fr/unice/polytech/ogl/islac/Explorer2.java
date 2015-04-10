@@ -51,7 +51,7 @@ public class Explorer2  {
 		JSONObject objective = new JSONObject();
 		JSONArray list = new JSONArray();
 		
-		objective.put("resource", "FISH");
+		objective.put("resource", "WOOD");
 		objective.put("amount", new Integer(600));
 	
 		list.add(objective);
@@ -75,13 +75,20 @@ public class Explorer2  {
 		
 		//scout nord
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"WOOD\"],\"altitude\":-23}}");
 		
-		//scout sud
+		//move N
+		
+		
+		System.out.println(a.takeDecision());
+		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
+		//expoit
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FIH\"],\"altitude\":-23}}");
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"amount\": 800 }}");
+	
+		System.out.println(a.sim1.act.getC().getObj().get(0).getQuantity());
 		
-		//scout est
+	/*	//scout est
 		System.out.println(a.takeDecision());	
 		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
 		
