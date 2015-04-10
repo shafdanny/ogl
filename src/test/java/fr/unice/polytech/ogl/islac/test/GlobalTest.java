@@ -31,12 +31,12 @@ public class GlobalTest {
 	@Before public void initRobot(){
 		r = new Explorer();
 		r.initialize(context);
-		System.out.println("initialisation");
+		//System.out.println("initialisation");
 	}
 	
 	@Test public void land(){
 		decision = r.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		assertEquals("land",getStringValue(decision,"action"));
 		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
 		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
@@ -159,14 +159,31 @@ public class GlobalTest {
 	
 	/**
 	 * Scenario #XX
-	 * The scouted tile is full of resources that is needed in the objective.
+	 * The scouted tile have resources that is needed in the objective.
 	 * The robot should move to this tile. 
 	 */
-	@Test public void scoutedHighResourceTile(){
-		afterLand();
+	@Test public void scoutedResourceTile(){
+		land();
 		
 		decision = r.takeDecision();
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
+		
+		decision = r.takeDecision();
+		System.out.println("after scout with resource : " + decision);
+		String dir = "";
+		
+		try {
+	    	  JSONParser parser=new JSONParser();		  
+		      JSONObject obj = (JSONObject)parser.parse(decision);
+		      JSONObject obj1= (JSONObject)obj.get("parameters");
+		      dir = obj1.get("direction").toString();
+		      
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		assertEquals("move_to",getStringValue(decision,"action"));
+		assertEquals("N",dir);
 		//System.out.println("scoutedHRT : " + decision);
 	}
 	
@@ -192,6 +209,13 @@ public class GlobalTest {
 	 *  
 	 */
 	@Ignore public void noResourceScouted(){
+		
+	}
+	
+	/**
+	 * After moving to a tile with the resource needed, Explore the tile
+	 */
+	@Ignore public void afterMove(){
 		
 	}
 	
