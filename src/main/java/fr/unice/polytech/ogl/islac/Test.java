@@ -49,7 +49,7 @@ public class Test {
 		
 		
 		
-	  /** 
+	  
 	
 	String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
 	Action test= new Action();
@@ -73,13 +73,13 @@ public class Test {
 	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
 	System.out.println(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
 	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
-	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); */
-		
+	System.out.println(! test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); 
+		/*
 		Tuils t1=new Tuils(1,1);
 		Arena a=new Arena();
 		Pos t =a.getNewPos(t1,"N");
 		System.out.println(t.getX());
-		System.out.println(t.getY());
+		System.out.println(t.getY());*/
 		
 	/*
 		HashMap<Pos,String> h=new HashMap<Pos,String>();
