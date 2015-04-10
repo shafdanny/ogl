@@ -44,23 +44,41 @@ public class Action {
 //Méthodes_
 	
 
+	/**
+	 * méthode qui est héritée dans le package action
+	 * @return null
+	 */
 	
 	public String act()
 	{
 		return null;
 	}
+	/**
+	 * méthode qui est héritée dans le package action
+	 * @return null
+	 */
 	
 	public String act(String info)
 	{
 		return null;
 	}
-	
+	/**
+	 * méthode qui est héritée dans le package action
+	 * @return null
+	 */
 
 	public String act(String info, int number)
 	{
 		return null;
 	}
 	
+	/**
+	 * Méthode read utilisée pour l'initialisation (on récupère le budget, les objectifs,
+	 * la creek_id et le nombre de personnes).
+	 * 
+	 * @param data
+	 * @param a
+	 */
 	
 	public void read(String data,Action a)
 	{

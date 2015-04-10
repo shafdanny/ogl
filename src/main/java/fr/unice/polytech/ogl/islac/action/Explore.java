@@ -17,6 +17,13 @@ public class Explore extends Action {
 	{
 		this.name="Explore";
 	}
+	
+	/**
+	 * Méthode act, permet de réaliser un Explore
+	 * @param /
+	 * @return String
+	 */
+	
 	@Override
 	public String act(){
 		return "{ \"action\": \"explore\" }";
@@ -33,6 +40,16 @@ public class Explore extends Action {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	/**
+	 * Méthode read de la classe explore, récupère la quantité de ressource
+	 * collectée et la difficulté d'accès et le coût en pa.
+	 * On récupère aussi le coût en pa.
+	 * Permet également de savoir si on récupère la ressource ou non,
+	 * via le setObj().
+	 * @param data, act
+	 */
 	
 	@Override
 	public void read(String data,Action a){
@@ -51,16 +68,21 @@ public class Explore extends Action {
 		    	  
 		    	  for (int k=0; k<array.size();k++){
 		    		  JSONObject obj3= (JSONObject)array.get(k);
+		    		  
+		    		  // on vérifie que la ressource est dans les objectifs
 		    		  if (obj3.get("resource").equals(a.getMap().getObj1())){
+		    			  
+		    			  // si amount est "low" on ne récupère rien (setObj1 est à 0)
 		    			  if (obj3.get("amount").equals("LOW")){
 		    				  a.getC().getCurrentTuil().setObj1(0);
 		    			  }
+		    			  	 // si amount n'est pas "low" on peut récupérer la ressource (setObj1 est à 1)
 		    			  else a.getC().getCurrentTuil().setObj1(1);
 		    				  
 		    		  }
 		    	  }
 		      }
-
+		      //idem avec le deuxième objectif
 		      if (a.getC().getCurrentTuil().isObj2()){
 		    	  
 		    	  for (int k=0; k<array.size();k++){
@@ -74,10 +96,6 @@ public class Explore extends Action {
 		    		  }
 		    	  }
 		      }
-		      
-		      
-		      long altitude=(long)obj1.get("altitude");
-		      
 		      
 		     a.getC().addPa(pa);
 		      
