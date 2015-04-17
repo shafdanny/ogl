@@ -282,7 +282,7 @@ public class Arena{
 				return actionFinal;
 			}*/
 		
-		/// isOnlyFish 
+		/// isOnlyFish et pas exploré
 			
 		ArrayList<String> newDir2=new ArrayList();
 			
@@ -294,9 +294,11 @@ public class Arena{
 				
 				if(! getD(t,direction.get(i)).isOnlyFish())
 				{
-					
+					if(! getD(t,direction.get(i)).isExplored())
+					{
 					newDir2.add(direction.get(i));
 					actionFinal[0]="Move_to";
+					}
 					
 					
 				}
@@ -313,6 +315,36 @@ public class Arena{
 			return actionFinal;
 		}
 		
+		// isOnlyFish
+		ArrayList<String> newDir3=new ArrayList();
+		for (int i=0;i<direction.size();i++)
+		{
+			if(getD(t,direction.get(i))!=null)
+			{
+				
+				
+				if(! getD(t,direction.get(i)).isOnlyFish())
+				{
+					if(! getD(t,direction.get(i)).isExplored())
+					{
+					newDir3.add(direction.get(i));
+					actionFinal[0]="Move_to";
+					}
+					
+					
+				}
+			}
+		}
+		
+		s=newDir3.size();
+		if (newDir3.size()>0)
+		{
+			
+			Random rd=new Random();
+		
+			actionFinal[1]=newDir3.get(rd.nextInt(s));
+			return actionFinal;
+		}
 		actionFinal[0]="Stop";
 		actionFinal[1]="Stop";
 		return actionFinal;
