@@ -51,7 +51,7 @@ public class Explorer2  {
 		JSONObject objective = new JSONObject();
 		JSONArray list = new JSONArray();
 		
-		objective.put("resource", "WOD");
+		objective.put("resource", "WOOD");
 		objective.put("amount", new Integer(600));
 	
 		list.add(objective);
@@ -114,10 +114,10 @@ public class Explorer2  {
 	//	a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"Fish\"],\"altitude\":-23}}");
 		
 		
-		/*System.out.println(a.takeDecision());
+		System.out.println(a.takeDecision());
 		a.sim1.act.getC().getCurrentTuil().getPos().getX();
-		a.sim1.act.getC().getCurrentTuil().getPos().getY();*/
-		/*a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"WOOD\",\"FLOWER\"],\"altitude\":-23}}");
+		a.sim1.act.getC().getCurrentTuil().getPos().getY();
+		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"WOOD\",\"FLOWER\"],\"altitude\":-23}}");
 		
 		
 		System.out.println(a.takeDecision());

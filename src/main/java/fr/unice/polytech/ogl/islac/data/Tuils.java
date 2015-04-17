@@ -12,6 +12,7 @@ private boolean isObj1;
 private boolean isObj2;
 private boolean isObj3;
 private boolean isScouted;
+
 private int Obj1;
 private int Obj2;
 private int Obj3;
@@ -20,11 +21,6 @@ private Pos pos;
 private boolean isOnlyFish;
 private int attiltude;
 
-
-
-
-
-private boolean isScooted;
 private boolean isExplored;
 
 public void addAltitude(int a,Tuils t)
@@ -65,14 +61,8 @@ public Tuils(Pos pos)
 	
 }
 
-public boolean isScooted() {
-	if(this==null) return false;
-	return isScooted;
-}
 
-public void setScooted(boolean isScooted) {
-	this.isScooted = isScooted;
-}
+
 
 public boolean isExplored() {
 	if(this==null) return false;
