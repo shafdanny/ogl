@@ -8,6 +8,7 @@ public class Arena{
 	private HashMap<Pos,Tuils> map;
 	private String obj1;
 	private String obj2;
+	private String obj3;
 	
 	public Arena()
 	{
@@ -88,6 +89,13 @@ public class Arena{
 		{
 			map.get(newPos).setObj2(true);
 			map.get(newPos).setObj2(1);
+		}
+		
+		if (ressources.contains(obj3))
+		{
+			map.get(newPos).setObj3(true);
+			map.get(newPos).setObj3(1);
+			
 		}
 		
 		if (ressources.contains("FLOWER"))
@@ -220,6 +228,21 @@ public class Arena{
 			}
 			}
 		}	
+		// obj3
+		for (int i=0;i<direction.size();i++)
+		{
+			if(getD(t,direction.get(i))!=null)
+			{
+			if(getD(t,direction.get(i)).isObj2() && !(getD(t,direction.get(i)).isOnlyFish()))
+			{
+				
+				actionFinal[1]=direction.get(i);
+				actionFinal[0]="Move_to";
+				return actionFinal;
+				
+			}
+			}
+		}	
 		
 	
 		//// isScouted
@@ -251,17 +274,15 @@ public class Arena{
 		
 		/// lessExplored
 			
-			String dir2=lessExplored(t);
+			/*String dir2=lessExplored(t);
 			if (! dir2.equals(""))
 			{
 				actionFinal[0]="Move_to";
 				actionFinal[1]=dir2;
 				return actionFinal;
-			}
+			}*/
 		
-		/// isOnlyFish  en théorie tout ce qui suit ne sert plus mais je le laisse par sécurité au cas ou on couvre pas 
-			// tout les cas restant avec le lessExplored. Attention par contre on revient à des déplacements déterministes !
-			// il n'y a plus aucune part d'aléatoire.
+		/// isOnlyFish 
 			
 		ArrayList<String> newDir2=new ArrayList();
 			
@@ -310,8 +331,18 @@ public class Arena{
 	public void match(){
 		
 	}
+
+
+	public String getObj3() {
+		return obj3;
+	}
+
+
+	public void setObj3(String obj3) {
+		this.obj3 = obj3;
+	}
 	
-	public String lessExplored(Tuils current)
+	/*public String lessExplored(Tuils current)
 	{
 		String newDir="";
 		
@@ -353,6 +384,6 @@ public class Arena{
 		
 		
 		return newDir;
-	}
+	}*/
 	                                                                              
 }

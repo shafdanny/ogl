@@ -10,9 +10,11 @@ private boolean isFur;
 private boolean isFlower;
 private boolean isObj1;
 private boolean isObj2;
+private boolean isObj3;
 private boolean isScouted;
 private int Obj1;
 private int Obj2;
+private int Obj3;
 private Pos pos;
 
 private boolean isOnlyFish;
@@ -220,6 +222,22 @@ public Pos getPos() {
 
 public void setPos(Pos pos2) {
 	this.pos = pos2;
+}
+
+public boolean isObj3() {
+	return isObj3;
+}
+
+public void setObj3(boolean isObj3) {
+	this.isObj3 = isObj3;
+}
+
+public int getObj3() {
+	return Obj3;
+}
+
+public void setObj3(int obj3) {
+	Obj3 = obj3;
 }
 
 

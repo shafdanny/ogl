@@ -62,7 +62,10 @@ public void setY(int y){
 		this.x = x;
 	}
 	
-	
+	public String toString()
+	{
+		return x+" "+y;
+	}
 	
 	
 }
