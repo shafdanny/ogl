@@ -169,7 +169,7 @@ public class GlobalTest {
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 		
 		decision = r.takeDecision();
-		System.out.println("after scout with resource : " + decision);
+		//System.out.println("after scout with resource : " + decision);
 		String dir = "";
 		
 		try {
@@ -185,6 +185,8 @@ public class GlobalTest {
 		assertEquals("move_to",getStringValue(decision,"action"));
 		assertEquals("N",dir);
 		//System.out.println("scoutedHRT : " + decision);
+		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
+		
 	}
 	
 	/**
@@ -210,6 +212,19 @@ public class GlobalTest {
 	 */
 	@Ignore public void noResourceScouted(){
 		
+	}
+	
+	/**
+	 * If we just moved to a tile with resource (we know this because the tile is scouted),
+	 * we should Explore before Exploit?
+	 * For now exploit it !
+	 */
+	@Test public void inTileWithResource(){
+		scoutedResourceTile();
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		assertEquals("exploit",getStringValue(decision,"action"));
+		assertEquals("WOOD",getStringValue(decision,"parameters","resource"));
 	}
 	
 	/**
