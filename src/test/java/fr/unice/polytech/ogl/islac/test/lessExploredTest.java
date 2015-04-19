@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.Explorer2;
@@ -12,7 +13,7 @@ import fr.unice.polytech.ogl.islac.Explorer2;
 public class lessExploredTest {
 
 	
-	@Test public void randomMoove()
+	@Ignore public void randomMoove()
 	{
 		JSONObject obj;
 		JSONParser jsonparser;

@@ -22,7 +22,7 @@ public class Move_to extends Action {
 		a.getC().setCurrentTuil(a.getMap().getD(a.getC().getCurrentTuil(), direction));
 		a.getC().getCurrentTuil().setPos(newPos);
 		a.getC().setPos(newPos);
-		
+		a.getC().getCurrentTuil().setExplored(true);
 		a.setLastAction(this);
 		return "{ \"action\": \"move_to\", \"parameters\": {\"direction\": " +"\""+ direction+"\" " +"} }";
 	}

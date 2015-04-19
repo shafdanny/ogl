@@ -325,11 +325,10 @@ public class Arena{
 				
 				if(! getD(t,direction.get(i)).isOnlyFish())
 				{
-					if(! getD(t,direction.get(i)).isExplored())
-					{
+					
 					newDir3.add(direction.get(i));
 					actionFinal[0]="Move_to";
-					}
+					
 					
 					
 				}
