@@ -217,7 +217,7 @@ public class GlobalTest {
 	/**
 	 * If we just moved to a tile with resource (we know this because the tile is scouted),
 	 * we should Explore before Exploit?
-	 * For now exploit it !
+	 * For now exploit it immediately!
 	 */
 	@Test public void inTileWithResource(){
 		scoutedResourceTile();

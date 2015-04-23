@@ -15,30 +15,13 @@ import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class ExploreTest {
 
-	@Ignore public void readExplore(){
+	@Test public void readExplore(){
 
-			String s = "{\"status\":\"OK\", \"cost\": 39,\"extras\": {\"resources\":[{\"resource\": \"WOOD\",\"amount\": \"HIGH\",\"cond\": \"EASY\"},{\"resource\": \"FUR\", \"amount\": \"LOW\",\"cond\": \"FAIR\"},{\"resource\": \"FLOWER\", \"amount\": \"MEDIUM\", \"cond\": \"HARSH\" }],\"pois\": [{\"kind\": \"CREEK\", \"id\": \"creek_identifier_2\" }]}}";
-			
-			Action test= new Action();
-			test.initAction();
-			Tuils t1=new Tuils(0,0);
-			test.getC().setCurrentTuil(t1);	
-			test.setLastAction(new Explore());
-
-			//System.out.println(test.getC().getPa());
-			new Explore().read(s,test);
-			
-			//long k= test.getC().getPa();
-			
-			//System.out.println(k);
-			// assertEquals(k, -8);
-			test.getC().getCurrentTuil();
-			
-			assert(test.getC().getCurrentTuil().isWood());
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
-			assert(!test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
-			assert(!test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); 
-				
+		Action act = new Action();
+		act.initAction();
+		assertNotNull(act);
+		
+		act = new Explore();
+		assertEquals( "{ \"action\": \"explore\" }" ,act.act());
 	}
 }

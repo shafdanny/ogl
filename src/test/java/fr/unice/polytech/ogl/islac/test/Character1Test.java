@@ -8,7 +8,7 @@ import fr.unice.polytech.ogl.islac.character.Character1;
 
 public class Character1Test {
 	
-	public void addPa(){
+	@Test public void addPa(){
 	Character1 c = new Character1();
 	Character1 expected = new Character1();
 	Character1 result = new Character1();
