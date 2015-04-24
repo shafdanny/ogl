@@ -288,6 +288,22 @@ public class GlobalTest {
 	 * Possible solution : Do a glimpse to make sure that the tile scouted contains land.
 	 */
 	@Test public void nearbyTilesContainsWater(){
+		land();
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		decision = r.takeDecision();
+		//System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");		
+		decision = r.takeDecision();
+		System.out.println(decision);
 		
 	}
 	
