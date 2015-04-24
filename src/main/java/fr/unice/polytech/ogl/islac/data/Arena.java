@@ -2,6 +2,8 @@ package fr.unice.polytech.ogl.islac.data;
 
 import java.util.*;
 
+import fr.unice.polytech.ogl.islac.character.Character1;
+
 public class Arena{
 	
 	private List<String> listCreek;
@@ -11,11 +13,36 @@ public class Arena{
 	private String obj3;
 	
 	public Arena()
+	
 	{
 		listCreek=new ArrayList<String>();
 		map =new HashMap<Pos, Tuils>();
 		
 		
+		
+	}
+	public Arena(Character1 c)
+	
+	{
+		listCreek=new ArrayList<String>();
+		map =new HashMap<Pos, Tuils>();
+			
+	}
+	
+	public void update(Character1 c)
+	{
+		if(c.getObj().size()>0)
+		{
+			this.obj1=c.getObj().get(0).getName();
+		}
+		if(c.getObj().size()>1)
+		{
+			this.obj2=c.getObj().get(1).getName();
+		}
+		if(c.getObj().size()>2)
+		{
+			this.obj2=c.getObj().get(2).getName();
+		}
 	}
 	
 	

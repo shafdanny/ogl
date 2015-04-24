@@ -57,6 +57,7 @@ public class Simulator {
 		
 		if (nbTurn==1)
 		{
+			act.getMap().update(act.getC());
 			Land l=new Land();
 			act.setLastAction(l);
 			if(act.getC().getNbTotal()/4>3)
