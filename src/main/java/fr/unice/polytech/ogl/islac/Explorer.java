@@ -5,8 +5,7 @@ import org.json.*;
 
 public class Explorer implements IExplorerRaid {
 
-	Simulator sim1;
-	
+	public Simulator sim1;
 
 	
     @Override
@@ -30,4 +29,8 @@ public class Explorer implements IExplorerRaid {
 		
     	sim1.simul2(results);
 	}
+    
+    public Simulator getSim(){
+    	return sim1;
+    }
 }

@@ -1,6 +1,7 @@
 package fr.unice.polytech.ogl.islac.test;
 import static org.junit.Assert.*;
 
+
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -13,6 +14,8 @@ import org.junit.Test;
 
 import eu.ace_design.island.bot.IExplorerRaid;
 import fr.unice.polytech.ogl.islac.Explorer;
+
+import fr.unice.polytech.ogl.islac.Simulator;
 /**
  * 
  * Global test to see the interaction between explorer and the game engine.
@@ -55,7 +58,8 @@ public class GlobalTest {
 		JSONArray list = new JSONArray();
 		
 		objective.put("resource", "WOOD");
-		objective.put("amount", new Integer(600));
+		objective.put("amount", new Integer(600));		
+		
 	
 		list.add(objective);
 				
@@ -228,18 +232,70 @@ public class GlobalTest {
 	}
 	
 	/**
+	 * The tile contains multiple ressources needed in the objective.
+	 * We expect the robot to exploit all the ressources needed.
+	 * 
+	 *  
+	 */	
+	@Test public void inTileWithMultipleResources(){
+		Explorer expl = new Explorer();
+		String objective = "{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"QUARTZ\"},{\"amount\": 500,\"resource\": \"FUR\"}]}";
+		expl.initialize(objective);
+		System.out.println(objective);
+		
+		System.out.println(expl.sim1.act.getC().getObj().get(0).getName());
+		
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		assertEquals("land",getStringValue(decision,"action"));
+		//assertEquals(creekId,getStringValue(decision,"parameters","creek"));
+		expl.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+		
+		decision = expl.takeDecision();
+		assertEquals("scout",getStringValue(decision,"action"));
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
+				
+		
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+		
+		System.out.println(expl.sim1.act.getC().getCurrentTuil().getObj1());
+		
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 1 } }");
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		//expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 123 } }");
+		//decision = expl.takeDecision();
+		//System.out.println(decision);
+	}
+	
+	
+	/**
 	 * After moving to a tile with the resource needed, Explore the tile
 	 */
 	@Ignore public void afterMove(){
 		
 	}
 	
-	public static void main(String[] args){
-		System.out.println("STARTING TEST");
-		IExplorerRaid r = new Explorer();
+	/**
+	 * Problem detected in week16.
+	 * When the robot scouted the surrounding NSEW tiles, all the tiles have FISH.
+	 * 
+	 * Possible solution : Do a glimpse to make sure that the tile scouted contains land.
+	 */
+	@Test public void nearbyTilesContainsWater(){
+		
 	}
 	
 	
 	
+	public static void main(String[] args){
+		System.out.println("STARTING TEST");
+		IExplorerRaid r = new Explorer();
+	}
 	
 }
