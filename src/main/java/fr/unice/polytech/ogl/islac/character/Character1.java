@@ -66,7 +66,7 @@ public class Character1 {
 	}
 	
 	public long getNbBoat(){
-		return getNbLand()-getNbTotal();
+		return getNbTotal()-getNbLand();
 	}
 
 	public ArrayList<Ressources> getObj() {
