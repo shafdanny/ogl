@@ -303,8 +303,8 @@ public class GlobalTest {
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");		
 		decision = r.takeDecision();
-		System.out.println(decision);
-		
+		//System.out.println(decision);
+		assertEquals("glimpse", getStringValue(decision, "action"));
 	}
 	
 	
