@@ -20,17 +20,11 @@ public class Character1Test {
 	}
 	
 	@Test public void addPa(){
-	
-		Character1 expected = new Character1();
-		Character1 result = new Character1();
 		c.setPa(5);
-		expected.setPa(15);
-		result.setPa(c.getPa()+10);
-		assertEquals(expected.getPa(), result.getPa());
-		
 		c.addPa(5);
-		assertEquals(0,c.getPa());
+		assertEquals(c.getPa(),0);
 	}
+	
 	
 	@Test public void testPosition(){
 		Pos pos = new Pos(0, 0);
@@ -52,21 +46,58 @@ public class Character1Test {
 		assertEquals(40,c.getNbBoat());	
 	}
 	
-	@Test public void testTuils(){
-		Tuils tuil = new Tuils();
-		c.setCurrentTuil(tuil);
-		assertEquals(tuil,c.getCurrentTuil());
+	@Test public void getNbBoat(){
+		Character1 c = new Character1();
+		c.setNbLand(50);
+		c.setNbTotal(70);
+		assertEquals(c.getNbBoat(), 20);
+	}
+	
+	
+	
+	@Test public void setCurrentTuil() {
+		Character1 c = new Character1();
+		Tuils t = new Tuils(4,7);
+		Tuils t2 = new Tuils(9,16);
+		c.setCurrentTuil(t);
+		
+		assertEquals(c.getCurrentTuil().getPos().getX(), t.getPos().getX());
+		assertEquals(c.getCurrentTuil().getPos().getY(), t.getPos().getY());
+
+		c.setCurrentTuil(t2);
+		
+		assertEquals(c.getCurrentTuil().getPos().getX(), t2.getPos().getX());
+		assertEquals(c.getCurrentTuil().getPos().getY(), t2.getPos().getY());
+
+	}
+
+	@Test public void setObj() {
+		Character1 c = new Character1();
+		ArrayList<Ressources> obj = new ArrayList<Ressources>();
+		Ressources r = new Ressources("WOOD", 50);
+		obj.add(r);
+		c.setObj(obj);
+		assertEquals(c.getObj().get(0).getName(), "WOOD");
+		assertEquals(c.getObj().get(0).getQuantity(), 50);
+
 	}
 	
 	@Test public void testRessources(){
 		assertNotNull(c.getObj());
 		ArrayList<Ressources> resources = new ArrayList<Ressources>();
 		resources.add(new Ressources("WOOD", 10));
-		resources.add(new Ressources("FUR", 10));
+		resources.add(new Ressources("FUR", 50));
+		resources.add(new Ressources("FLOWER", 150));
+
 		c.setObj(resources);
+		
 		assertNotNull(c.getRessource("FUR"));
 		assertNotNull(c.getRessource("WOOD"));
 		assertNull(c.getRessource("FISH"));
+		
+		assertEquals(c.getRessource("FLOWER").getName(), "FLOWER");
+		assertEquals(c.getRessource("FLOWER").getQuantity(), 150);
+		
 	}
 	
 }
