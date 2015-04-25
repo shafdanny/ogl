@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Character1 {
 	
-	private long pa;
-	private long nbTotal;
+	private long pa;	
+	private long nbTotal; 
 	private long nbLand;
 	private Pos pos;
 	private Tuils CurrentTuil;

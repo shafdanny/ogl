@@ -19,14 +19,22 @@ public class Simulator {
 	private long paMax;
 
 	
-	
+	/**
+	 * Initialisation methode. 
+	 * @param context
+	 */
 	public void init(String context)
 	{
+		
 		act=new Action();
 		
+		// Créer notre caractère 
 		act.setC(new Character1());
+		// Initialiser leurs coordonnées à (0,0)
 		act.getC().setCurrentTuil(new Tuils(0,0));  // à déplacer dans caractère
+		
 		nbTurn=0;
+		// Sauvegarde de toutes les parametres des objectives
 		act.read(context,act);
 		act.getC().getObj().size();
 		

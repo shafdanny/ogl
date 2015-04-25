@@ -15,6 +15,7 @@ public class ScoutTest {
 
 	@Test public void readScout(){
 
+			// Example of feeedback from the game engine
 			String s = "{\"status\":\"OK\", \"cost\": 8,\"extras\": {\"resources\": [\"WOOD\", \"FUR\", \"FLOWER\"], \"altitude\" : -23}}";
 			
 			Action test= new Action();
@@ -30,15 +31,15 @@ public class ScoutTest {
 			
 			long k= test.getC().getPa();
 			
-		//	System.out.println(k);
+			//	System.out.println(k);
 			// assertEquals(k, -8);
 			test.getC().getCurrentTuil();
 			
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood());
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
-			assert(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
-			assert(!test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
-			assert(!test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); 
+			assertTrue(test.getMap().getD(test.getC().getCurrentTuil(),"N").isWood());
+			assertTrue(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFur());
+			assertTrue(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFlower());
+			assertFalse(test.getMap().getD(test.getC().getCurrentTuil(),"N").isFish());
+			assertFalse(test.getMap().getD(test.getC().getCurrentTuil(),"N").isOnlyFish()); 
 				
 	}
 }
