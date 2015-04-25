@@ -18,7 +18,8 @@ public class Character1 {
 	
 	public Character1()
 	{
-		pos=new Pos(0,0);
+		pos = new Pos(0,0);
+		CurrentTuil = new Tuils();
 	}
 
 	public void setPa(long pa) {
@@ -38,7 +39,7 @@ public class Character1 {
 	}
 
 	public void setCurrentTuil(Tuils currentTuil) {
-		CurrentTuil = currentTuil;
+		this.CurrentTuil = currentTuil;
 	}
 
 	public void addPa(long pa){

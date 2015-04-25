@@ -29,7 +29,7 @@ public class ScoutTest {
 			//System.out.println(test.getC().getPa());
 			new Scout().read(s,test);
 			
-			long k= test.getC().getPa();
+			//long k= test.getC().getPa();
 			
 			//	System.out.println(k);
 			// assertEquals(k, -8);

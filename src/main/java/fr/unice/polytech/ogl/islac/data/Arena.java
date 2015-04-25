@@ -16,11 +16,9 @@ public class Arena{
 	
 	{
 		listCreek=new ArrayList<String>();
-		map =new HashMap<Pos, Tuils>();
-		
-		
-		
+		map =new HashMap<Pos, Tuils>();	
 	}
+	
 	public Arena(Character1 c)
 	
 	{

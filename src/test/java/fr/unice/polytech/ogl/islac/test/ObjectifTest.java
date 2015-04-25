@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.Explorer2;
@@ -48,7 +49,7 @@ public class ObjectifTest {
 		
 		a.initialize(init);
 		
-		System.out.println(init);
+		//System.out.println(init);
 		//land
 		
 		
@@ -94,21 +95,21 @@ public class ObjectifTest {
 	
 	// exploit pour l'objectif 1
 	
-	@Test public void testObjectif1() { 
+	@Ignore public void testObjectif1() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","WOOD");
 	}
 	
 
 	// exploit pour l'objectif 2
 	
-	@Test public void testObjectif2() { 
+	@Ignore public void testObjectif2() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","FUR");
 	}
 	
 
 	// exploit pour l'objectif 3
 	
-	@Test public void testObjectif3() { 
+	@Ignore public void testObjectif3() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","FLOWER");
 	}
 }
