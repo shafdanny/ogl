@@ -3,6 +3,7 @@ package fr.unice.polytech.ogl.islac;
 import fr.unice.polytech.ogl.islac.*;
 import fr.unice.polytech.ogl.islac.action.Action;
 import fr.unice.polytech.ogl.islac.action.Exploit;
+import fr.unice.polytech.ogl.islac.action.Glimpse;
 import fr.unice.polytech.ogl.islac.action.Land;
 import fr.unice.polytech.ogl.islac.action.Move_to;
 import fr.unice.polytech.ogl.islac.action.Scout;
@@ -138,6 +139,13 @@ public class Simulator {
 			return move.act(actionFinal[1],act);
 		}
 		
+		if(actionFinal[0].equals("Glimpse"))
+		{
+			Action glimpse = new Glimpse();
+			act.setLastAction(glimpse);
+			act.setLastDirection(actionFinal[1]);
+			return glimpse.act(actionFinal[1],act);
+		}
 		
 		Action stop=new Stop();
 		act.setLastAction(stop);

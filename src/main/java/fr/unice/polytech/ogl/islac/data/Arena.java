@@ -4,6 +4,14 @@ import java.util.*;
 
 import fr.unice.polytech.ogl.islac.character.Character1;
 
+/**
+ * Arena est la classe qui represente la carte de l'ile.
+ * Le map est composé de plusieurs Tuils.
+ * Cette classe nous aide à déterminer quel action à faire pour le robot.
+ *  
+ * @author user
+ * 
+ */
 public class Arena{
 	
 	private List<String> listCreek;
@@ -27,6 +35,9 @@ public class Arena{
 			
 	}
 	
+	/**
+	 * Sauvegarder les ressources objectives. 
+	 */
 	public void update(Character1 c)
 	{
 		if(c.getObj().size()>0)
@@ -43,12 +54,22 @@ public class Arena{
 		}
 	}
 	
-	
+	/**
+	 * Ajouter un Tuils dans notre carte
+	 * @param t
+	 */
 	public void addTuils(Tuils t)
 	{
 		map.put(t.getPos(),t);
 	}
-
+	
+	/**
+	 * Connaitre la position d'un Tuils par d'un Tuils et la direction.
+	 *  
+	 * @param t
+	 * @param d
+	 * @return
+	 */
 	public Pos getNewPos(Tuils t,String d)
 	{
 		//int[] pos2=new int[2];
@@ -76,6 +97,15 @@ public class Arena{
 				}
 				return pos2;
 	}
+	
+	/**
+	 * Retourne un Tuils voisinage d'un Tuils connu
+	 * s'il existe déjà dans la carte.
+	 * 
+	 * @param t
+	 * @param d
+	 * @return
+	 */
 	public Tuils getD(Tuils t,String d)
 	{
 		Pos pos2=new Pos(getNewPos(t,d));
@@ -87,27 +117,28 @@ public class Arena{
 		else return null;
 		
 	}
+	
+	/**
+	 * Sauvegarde les parametres d'un Tuils après un scout.
+	 * @param t
+	 * @param d
+	 * @param ressources
+	 * @param altitude
+	 */
 	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
-	{
-		
-		
+	{		
 		Pos newPos=getNewPos(t,d);
-		
-		
-				
+						
 		if(map.get(newPos)==null)
-		{
-		
+		{		
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAltitude((int) altitude,t);
-			
+			map.get(newPos).addAltitude((int) altitude,t);			
 		}
 		
 		if (ressources.contains(obj1))
 		{
 			map.get(newPos).setObj1(true);
-			map.get(newPos).setObj1(1);
-			
+			map.get(newPos).setObj1(1);			
 		}
 		
 		if (ressources.contains(obj2))
@@ -208,11 +239,12 @@ public class Arena{
 	
 	
 	/**
+	 * Methode pour determiner le meilleur action à faire 
+	 * selon ce que l'on sait déjà sur la carte.
 	 * 
 	 * @param t
 	 * @return
-	 */
-	
+	 */	
 	public String[] bestD(Tuils t)
 	{
 		String[] actionFinal=new String[2];
@@ -221,6 +253,9 @@ public class Arena{
 		direction.add("S");
 		direction.add("E");
 		direction.add("W"); 
+		
+		// on regarde dans les tuils voisinages s'ils contient un objective.
+		// si oui, on deplace sur cette case.
 		//// obj1 
 		for (int i=0;i<direction.size();i++)
 		{
@@ -269,21 +304,17 @@ public class Arena{
 			}
 		}	
 		
-	
+		/**
+		 * S'il n'y a pas des cases scouté avec des objectives, on essaie de
+		 * faire un scout sur les cases voisinage qui ne sont pas encore scouté.
+		 */
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
 		
-		Tuils a=getD(t,direction.get(0));
-	
-		
-		
 		for (int i=0;i<direction.size();i++)
-		{
-			
+		{			
 			if(getD(t,direction.get(i))==null)
-			{
-				
-				
+			{				
 				newDir.add(direction.get(i));
 			}
 		}
@@ -307,25 +338,26 @@ public class Arena{
 				return actionFinal;
 			}*/
 		
+			
+		/**
+		 * Si toutes les cases sont déjà scouté, on essaie d'aller dans une case
+		 * qui ne contient pas que de FISH. Hypothèse : s'il n'ya que FISH = mer	
+		 */
 		/// isOnlyFish et pas exploré
 			
-		ArrayList<String> newDir2=new ArrayList();
+		ArrayList<String> newDir2=new ArrayList<String>();
 			
 		for (int i=0;i<direction.size();i++)
 		{
 			if(getD(t,direction.get(i))!=null)
-			{
-				
-				
+			{				
 				if(! getD(t,direction.get(i)).isOnlyFish())
 				{
 					if(! getD(t,direction.get(i)).isExplored())
 					{
-					newDir2.add(direction.get(i));
-					actionFinal[0]="Move_to";
-					}
-					
-					
+						newDir2.add(direction.get(i));
+						actionFinal[0]="Move_to";
+					}					
 				}
 			}
 		}
@@ -341,21 +373,15 @@ public class Arena{
 		}
 		
 		// isOnlyFish
-		ArrayList<String> newDir3=new ArrayList();
+		ArrayList<String> newDir3=new ArrayList<String>();
 		for (int i=0;i<direction.size();i++)
 		{
 			if(getD(t,direction.get(i))!=null)
-			{
-				
-				
+			{				
 				if(! getD(t,direction.get(i)).isOnlyFish())
-				{
-					
+				{					
 					newDir3.add(direction.get(i));
 					actionFinal[0]="Move_to";
-					
-					
-					
 				}
 			}
 		}
@@ -369,6 +395,33 @@ public class Arena{
 			actionFinal[1]=newDir3.get(rd.nextInt(s));
 			return actionFinal;
 		}
+		
+		/**
+		 * Si on est dans le cas où toutes les cases sont scoutées et
+		 * toutes les cases contient que de FISH, on fait un Glimpse pour
+		 * verifier si c'est bien OCEAN. Sinon, on met isOnlyFish = false;
+		 */
+		ArrayList<String> newDir4 =new ArrayList<String>();
+		for (int i=0;i<direction.size();i++)
+		{
+			if(getD(t,direction.get(i))!=null)
+			{				
+				if(getD(t,direction.get(i)).isOnlyFish())
+				{					
+					newDir4.add(direction.get(i));					
+				}
+			}
+		}
+		
+		s=newDir4.size();
+		if(newDir4.size()>0)
+		{
+			
+			actionFinal[0]="Glimpse";
+			actionFinal[1]=newDir4.get(0);
+			return actionFinal;
+		}
+		
 		actionFinal[0]="Stop";
 		actionFinal[1]="Stop";
 		return actionFinal;
