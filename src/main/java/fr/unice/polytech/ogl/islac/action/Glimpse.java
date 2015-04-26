@@ -7,6 +7,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import fr.unice.polytech.ogl.islac.data.Pos;
+import fr.unice.polytech.ogl.islac.data.Tuils;
+
 public class Glimpse extends Action {
 
 	String direction;
@@ -47,7 +50,15 @@ public class Glimpse extends Action {
 		      //System.out.println(case2array.toString());   
 		      
 		      int terrainNb = case2array.size();
-		      
+		      Pos newPos=a.getMap().getNewPos(a.getC().getCurrentTuil(),direction);
+		      if (a.getMap().getD(a.getC().getCurrentTuil(), a.getLastDirection())==null)
+		      {
+		    		
+		    	 a.getMap().getMap().put(newPos,new Tuils(newPos));
+		    	 a.getMap().getD(a.getC().getCurrentTuil(), a.getLastDirection()).setOnlyFish(true);
+				
+		     
+		      }
 		      for (int i=0;i<terrainNb;i++){
 		    	  JSONArray terrain = (JSONArray)case2array.get(i);
 		    	  String typeOfTerrain = (String) terrain.get(0);

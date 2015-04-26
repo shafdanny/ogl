@@ -56,10 +56,10 @@ public class GlimpseTest {
 		assertTrue(e.sim1.act.getMap().getD(e.sim1.act.getC().getCurrentTuil(), e.sim1.act.getLastDirection()).isOnlyFish());
 		
 		decision = e.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		String glimpseResponse = "{ \"status\": \"OK\", \"cost\": 12,\"extras\": {\"asked_range\": 2,\"report\": [[[\"MANGROVE\", 80.0], [\"BEACH\", 20.0]],[[\"MANGROVE\", 40.0], [\"TROPICAL_RAIN_FOREST\", 40.0], [\"TROPICAL_SEASONAL_FOREST\", 20.0]],[\"TROPICAL_RAIN_FOREST\", \"TROPICAL_SEASONAL_FOREST\"],[\"TROPICAL_RAIN_FOREST\"]]}}";
 		e.acknowledgeResults(glimpseResponse);
-		//System.out.println(e.sim1.act.getMap().getD(e.sim1.act.getC().getCurrentTuil(), e.sim1.act.getLastDirection()).isOnlyFish());
+		System.out.println(e.sim1.act.getMap().getD(e.sim1.act.getC().getCurrentTuil(), e.sim1.act.getLastDirection()).isOnlyFish());
 		assertFalse(e.sim1.act.getMap().getD(e.sim1.act.getC().getCurrentTuil(), e.sim1.act.getLastDirection()).isOnlyFish());
 
 		decision = e.takeDecision();
