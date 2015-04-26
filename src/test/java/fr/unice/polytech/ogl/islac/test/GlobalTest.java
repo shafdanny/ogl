@@ -16,6 +16,9 @@ import eu.ace_design.island.bot.IExplorerRaid;
 import fr.unice.polytech.ogl.islac.Explorer;
 
 import fr.unice.polytech.ogl.islac.Simulator;
+
+
+
 /**
  * 
  * Global test to see the interaction between explorer and the game engine.
@@ -31,12 +34,18 @@ public class GlobalTest {
 	IExplorerRaid r;
 	String decision;
 	
+	/**
+	 * This correspond to the step INIT (saving the data needed in the robot)
+	 */
 	@Before public void initRobot(){
 		r = new Explorer();
 		r.initialize(context);
 		//System.out.println("initialisation");
 	}
 	
+	/**
+	 * This correspond to the step LAND (landing the robot on a creek given)
+	 */
 	@Test public void land(){
 		decision = r.takeDecision();
 		//System.out.println(decision);
@@ -140,9 +149,12 @@ public class GlobalTest {
 	}
 	
 	/**
-	 *
+	 * Test the behavior of the robot after a landing.
+	 * We expect that the robot to scout at all direction until it found a tile
+	 * with the objective resource.
+	 * In this case, it scout all NSEW tile.
 	 */
-	@Test public void afterLand(){
+	@Test public void afterLandNoRessourceSurround(){
 		land();
 		
 		decision = r.takeDecision();
@@ -150,14 +162,17 @@ public class GlobalTest {
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
+		assertEquals("scout",getStringValue(decision,"action"));
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
+		assertEquals("scout",getStringValue(decision,"action"));
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
+		assertEquals("scout",getStringValue(decision,"action"));
 		//System.out.println(decision);
-		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");		
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");	
 		
 	}
 	
@@ -214,8 +229,13 @@ public class GlobalTest {
 	 * If no resource is detected after scouting, go to any tile randomly.
 	 *  
 	 */
-	@Ignore public void noResourceScouted(){
+	@Test public void noResourceScouted(){
+		afterLandNoRessourceSurround();
 		
+		decision = r.takeDecision();
+		assertEquals("move_to",getStringValue(decision,"action"));
+		//System.out.println(decision);
+		//assertEquals("scout",getStringValue(decision,"action"));
 	}
 	
 	/**
@@ -234,42 +254,45 @@ public class GlobalTest {
 	/**
 	 * The tile contains multiple ressources needed in the objective.
 	 * We expect the robot to exploit all the ressources needed.
-	 * 
+	 * When the amount exploited is little, do a scout. 
 	 *  
 	 */	
 	@Test public void inTileWithMultipleResources(){
 		Explorer expl = new Explorer();
 		String objective = "{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"QUARTZ\"},{\"amount\": 500,\"resource\": \"FUR\"}]}";
 		expl.initialize(objective);
-		System.out.println(objective);
+		//System.out.println(objective);
 		
-		System.out.println(expl.sim1.act.getC().getObj().get(0).getName());
+		//System.out.println(expl.sim1.act.getC().getObj().get(0).getName());
 		
 		decision = expl.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		assertEquals("land",getStringValue(decision,"action"));
 		//assertEquals(creekId,getStringValue(decision,"parameters","creek"));
 		expl.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
 		
 		decision = expl.takeDecision();
 		assertEquals("scout",getStringValue(decision,"action"));
-		System.out.println(decision);
-		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
+		//System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"QUARTZ\"]},\"status\": \"OK\"}");
 				
 		
 		decision = expl.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		expl.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
 		
-		System.out.println(expl.sim1.act.getC().getCurrentTuil().getObj1());
+		//System.out.println(expl.sim1.act.getC().getCurrentTuil().getObj1());
 		
 		decision = expl.takeDecision();
-		System.out.println(decision);
+		assertEquals(getStringValue(decision, "action"),"exploit");
+		//System.out.println(decision);
 		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 1 } }");
 		decision = expl.takeDecision();
-		System.out.println(decision);
-		//expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 123 } }");
-		//decision = expl.takeDecision();
+		assertEquals(getStringValue(decision, "action"),"exploit");
+		//System.out.println(decision);
+		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 5 } }");
+		decision = expl.takeDecision();
+		assertEquals(getStringValue(decision, "action"),"scout");
 		//System.out.println(decision);
 	}
 	
@@ -285,7 +308,9 @@ public class GlobalTest {
 	 * Problem detected in week16.
 	 * When the robot scouted the surrounding NSEW tiles, all the tiles have FISH.
 	 * 
-	 * Possible solution : Do a glimpse to make sure that the tile scouted contains land.
+	 * Solution : Do a glimpse to make sure that the tile scouted contains land.
+	 * 
+	 * 
 	 */
 	@Test public void nearbyTilesContainsWater(){
 		land();
