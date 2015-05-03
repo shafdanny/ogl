@@ -280,16 +280,18 @@ public class GlobalTest {
 		decision = expl.takeDecision();
 		//System.out.println(decision);
 		expl.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
-		
+		//System.out.println(decision);
 		//System.out.println(expl.sim1.act.getC().getCurrentTuil().getObj1());
 		
 		decision = expl.takeDecision();
 		assertEquals(getStringValue(decision, "action"),"exploit");
 		//System.out.println(decision);
+		System.out.println(decision);
 		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 1 } }");
 		decision = expl.takeDecision();
-		assertEquals(getStringValue(decision, "action"),"exploit");
 		//System.out.println(decision);
+		assertEquals(getStringValue(decision, "action"),"exploit");
+		System.out.println(decision);
 		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 5 } }");
 		decision = expl.takeDecision();
 		assertEquals(getStringValue(decision, "action"),"scout");

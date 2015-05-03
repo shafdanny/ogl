@@ -93,7 +93,7 @@ public class Simulator {
 			return a.act();
 		}
 		
-		if (act.getC().getCurrentTuil().getObj2()>0)
+		if (act.getC().getCurrentTuil().getObj2()>0 )
 		{
 		//	act.getC().getCurrentTuil().setObj2(0);
 			//act.getC().getCurrentTuil().setObj2(false);
@@ -104,7 +104,7 @@ public class Simulator {
 		}
 		
 		
-		if (act.getC().getCurrentTuil().getObj3()>0)
+		if (act.getC().getCurrentTuil().getObj3()>0 )
 		{
 		//	act.getC().getCurrentTuil().setObj2(0);
 			//act.getC().getCurrentTuil().setObj2(false);
