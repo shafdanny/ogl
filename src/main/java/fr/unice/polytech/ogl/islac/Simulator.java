@@ -72,10 +72,10 @@ public class Simulator {
 			if(act.getC().getNbTotal()>2)
 			{
 				//return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/4);	
-				return l.act("2");
+				return l.act(act.getMap().getListCreek().get(0),(long) 2);
 				
 			}
-			else return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()-1);
+			else return l.act(act.getMap().getListCreek().get(0),(long) 1);
 				
 		}
 	/*		if (act.getC().getNbTotal() == 2){
