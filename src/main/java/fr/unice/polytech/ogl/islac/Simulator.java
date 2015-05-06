@@ -69,20 +69,20 @@ public class Simulator {
 			act.getMap().update(act.getC());
 			Land l=new Land();
 			act.setLastAction(l);
-			/*if(act.getC().getNbTotal()/4>0)
+			if(act.getC().getNbTotal()/4>0)
 			{
-				//return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/4);	
-				return "2";
+				return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/4);	
+				
 			}
 			else return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()-1);
-				return "
-		}*/
-			if (act.getC().getNbTotal() == 2){
+				
+		}
+	/*		if (act.getC().getNbTotal() == 2){
 				return "1";
 			}
 			
 			else return "2";
-		}
+		} */
 		
 		if(act.getC().getPa()<paMax/5){
 			Action stop=new Stop();
