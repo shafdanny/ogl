@@ -53,7 +53,7 @@ public class ObjectifTest {
 		//land
 		
 		
-		String s = "{ \"action\": \"land\", \n \"parameters\": {\"creek\":" + "\""+ "THIS34IS12A85CREEK87ID" + "\", \"people\":" +	12 + "} \n}";
+		String s = "{ \"action\": \"land\", \n \"parameters\": {\"creek\":" + "\""+ "THIS34IS12A85CREEK87ID" + "\", \"people\":" +	2 + "} \n}";
 		assertEquals(a.takeDecision(), s); 
 				
 		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
@@ -95,21 +95,21 @@ public class ObjectifTest {
 	
 	// exploit pour l'objectif 1
 	
-	@Ignore public void testObjectif1() { 
+	@Test public void testObjectif1() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","WOOD");
 	}
 	
 
 	// exploit pour l'objectif 2
 	
-	@Ignore public void testObjectif2() { 
+	@Test public void testObjectif2() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","FUR");
 	}
 	
 
 	// exploit pour l'objectif 3
 	
-	@Ignore public void testObjectif3() { 
+	@Test public void testObjectif3() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","FLOWER");
 	}
 }

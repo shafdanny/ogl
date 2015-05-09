@@ -172,7 +172,7 @@ public class Arena{
 			}
 	
 		}
-		if (ressources.size()>0  && !(ressources.get(0).equals("FISH")))
+		if ((ressources.size()>0  && !(ressources.get(0).equals("FISH"))) || ressources.size()==0)
 		{
 			
 			map.get(newPos).setOnlyFish(false);
