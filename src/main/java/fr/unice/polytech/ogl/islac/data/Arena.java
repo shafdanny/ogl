@@ -41,7 +41,7 @@ public class Arena{
 		}
 		if(c.getObj().size()>2)
 		{
-			this.obj2=c.getObj().get(2).getName();
+			this.obj3=c.getObj().get(2).getName();
 		}
 	}
 	

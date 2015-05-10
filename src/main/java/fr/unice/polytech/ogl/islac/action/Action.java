@@ -97,7 +97,7 @@ public class Action {
 			      ArrayList<Ressources> objective = new ArrayList<Ressources>();
 			      for (int k=0; k<array.size(); k++)
 			      {
-			    	  System.out.println(k);
+			    	 // System.out.println(k);
 			    	  JSONObject objN= (JSONObject) array.get(k);
 			    	  String nom=(String)objN.get("resource");
 			    	  long quantity=(long)objN.get("amount");

@@ -40,7 +40,7 @@ public class Simulator {
 		act.getC().getObj().size();
 		
 		
-		if(act.getC().getObj().size()>0)
+		/*if(act.getC().getObj().size()>0)
 		{
 			act.getMap().setObj1(act.getC().getObj().get(0).getName());
 		}
@@ -48,7 +48,7 @@ public class Simulator {
 		if(act.getC().getObj().size()>1)
 		{
 			act.getMap().setObj1(act.getC().getObj().get(1).getName());
-		}
+		}*/
 		
 		paMax=act.getC().getPa();
 	
@@ -85,7 +85,7 @@ public class Simulator {
 			else return "2";
 		} */
 		
-		if(act.getC().getPa()<paMax/5){
+		if(act.getC().getPa()<paMax/10 || act.getC().getPa()<150){
 			Action stop=new Stop();
 			act.setLastAction(stop);
 			return stop.act();
@@ -94,7 +94,7 @@ public class Simulator {
 		
 		if (act.getC().getCurrentTuil().getObj1()>0)
 		{
-			System.out.println("salut");
+			//System.out.println("salut");
 			//act.getC().getCurrentTuil().setObj1(0);
 			//act.getC().getCurrentTuil().setObj1(false);
 			Action a=new Exploit(act.getC().getObj().get(0).getName());

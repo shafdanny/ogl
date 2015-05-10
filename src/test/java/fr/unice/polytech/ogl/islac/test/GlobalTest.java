@@ -67,7 +67,8 @@ public class GlobalTest {
 		JSONArray list = new JSONArray();
 		
 		objective.put("resource", "WOOD");
-		objective.put("amount", new Integer(600));		
+		objective.put("amount", new Integer(600));
+		
 		
 	
 		list.add(objective);
