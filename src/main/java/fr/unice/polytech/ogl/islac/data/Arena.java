@@ -45,6 +45,11 @@ public class Arena{
 		}
 	}
 	
+	/**
+	 * Méthode addTuils, permet d'ajouter un ensemble (coordonée de ma tuille, tuille) à une hashmap 
+	 * @param t
+	 *
+	 */
 	
 	public void addTuils(Tuils t)
 	{
@@ -78,6 +83,7 @@ public class Arena{
 				}
 				return pos2;
 	}
+	
 	public Tuils getD(Tuils t,String d)
 	{
 		Pos pos2=new Pos(getNewPos(t,d));
