@@ -19,20 +19,20 @@ private int Obj3;
 private Pos pos;
 
 private boolean isOnlyFish;
-private int attiltude;
+private int altitude;
 
 private boolean isExplored;
 
 public void addAltitude(int a,Tuils t)
 {
-	this.setAttiltude(a+t.getAttiltude());
+	this.setAltitude(a+t.getAltitude());
 }
 
 public Tuils()
 {
 	isWood=false;
 	isOnlyFish=false;
-	attiltude=0;
+	altitude=0;
 
 	pos=new Pos(0,0);
 	
@@ -120,17 +120,17 @@ public boolean isOnlyFish() {
 	return isOnlyFish;
 }
 
-public void setFish(boolean isOnlyFish) {
-	this.isOnlyFish = isOnlyFish;
+public void setFish(boolean isFish) {
+	this.isFish = isFish;
 }
 
-public int getAttiltude() {
+public int getAltitude() {
 	if(this==null) return 0;
-	return attiltude;
+	return altitude;
 }
 
-public void setAttiltude(int attiltude) {
-	this.attiltude = attiltude;
+public void setAltitude(int altitude) {
+	this.altitude = altitude;
 }
 
 public static String oppose(String d)

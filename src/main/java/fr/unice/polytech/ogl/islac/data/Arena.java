@@ -46,7 +46,8 @@ public class Arena{
 	}
 	
 	/**
-	 * Méthode addTuils, permet d'ajouter un ensemble (coordonée de ma tuille, tuille) à une hashmap 
+	 * Méthode addTuils, permet d'ajouter un ensemble 
+	 * (coordonée de ma tuille, tuille) à une hashmap 
 	 * @param t
 	 *
 	 */
@@ -55,7 +56,14 @@ public class Arena{
 	{
 		map.put(t.getPos(),t);
 	}
-
+	
+	/**
+	 * Méthode getNewPos, permet d'obtenir la nouvelle position 
+	 * après avoir choisi une tuille et une direction
+	 * @param t, d 
+	 *
+	 */
+	
 	public Pos getNewPos(Tuils t,String d)
 	{
 		//int[] pos2=new int[2];
@@ -84,6 +92,14 @@ public class Arena{
 				return pos2;
 	}
 	
+	/**
+	 * Méthode getD, renvoie la tuille qui correspond à la destination  
+	 * en partant d'une tuille de réference à condition que celle ci soit
+	 * ajouter dans la hashmap à partir de addTuils ou de scout
+	 * @param t, d 
+	 *
+	 */
+	
 	public Tuils getD(Tuils t,String d)
 	{
 		Pos pos2=new Pos(getNewPos(t,d));
@@ -95,13 +111,18 @@ public class Arena{
 		else return null;
 		
 	}
+	
+	/**
+	 * Méthode scout, permet d'ajouter les tuils dans la hashmap 
+	 * ainsi que de mettre à jour les objectifs liées a ces tuils
+	 * @param t, d, ressource, altitude
+	 *
+	 */
+	
 	public void scout(Tuils t,String d,ArrayList<String> ressources,long altitude)
 	{
 		
-		
-		Pos newPos=getNewPos(t,d);
-		
-		
+		Pos newPos=getNewPos(t,d);	
 				
 		if(map.get(newPos)==null)
 		{

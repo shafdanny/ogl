@@ -24,20 +24,23 @@ public class ArenaTest {
 	HashMap<Pos,Tuils> map;
 	Tuils t;
 
-	
 	@Before public void init(){
+		
 		c = new Character1();
 		a = new Arena(c);
 	}
 	
 	@Test public void update() {
+
 		assertNotNull(c.getObj());
 		ArrayList<Ressources> resources = new ArrayList<Ressources>();
 		resources.add(new Ressources("WOOD", 10));
 		resources.add(new Ressources("FUR", 50));
 		resources.add(new Ressources("FLOWER", 150));
-		c.setObj(resources);
+		resources.add(new Ressources("FISH", 350));
 
+		c.setObj(resources);
+		
 		a.update(c);
 		
 		assertEquals(c.getObj().get(0).getName(), "WOOD");
@@ -82,11 +85,39 @@ public class ArenaTest {
 		Tuils t1 = new Tuils(0,1);
 		a.addTuils(t1);
 		assertEquals(a.getD(t,"N"),t1);
+		
 	}
 	
 	@Test public void scout()
 	{
+		update();
 		
+		ArrayList<String> resources = new ArrayList<String>();
+		resources.add("WOOD");
+		resources.add("FUR");
+		resources.add("FLOWER");
+		resources.add("FISH");
+		resources.add("ORE"); // non défini dans scout() 
+		resources.add("QUARTZ"); // non défini dans scout()
+
+		a.update(c);
+		
+		t = new Tuils(0,0);
+		Pos p = new Pos(0,1);
+		a.scout(t, "N", resources, 40);
+		
+		assertTrue(a.getMap().containsKey(p));
+		assertEquals(a.getMap().get(p).getAltitude(), 40);
+		
+		assertEquals(a.getMap().get(p).getObj1(), 1);
+		assertEquals(a.getMap().get(p).getObj2(), 1);
+		assertEquals(a.getMap().get(p).getObj3(), 1);
+
+		assertTrue(a.getMap().get(p).isWood());
+		assertTrue(a.getMap().get(p).isFlower());
+		assertTrue(a.getMap().get(p).isFur());
+		assertTrue(a.getMap().get(p).isFish());
+
 	}
 	
 	@Test public void getListCreek() 
