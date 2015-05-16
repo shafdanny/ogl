@@ -8,7 +8,7 @@ import org.json.simple.parser.JSONParser;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import fr.unice.polytech.ogl.islac.Explorer2;
+import fr.unice.polytech.ogl.islac.Explorer;
 
 public class ObjectifTest {
 
@@ -51,7 +51,7 @@ public class ObjectifTest {
 		obj.put("objective", list);
 		System.out.println(obj);
 		String init = obj.toJSONString();
-		Explorer2 a=new Explorer2();
+		Explorer a=new Explorer();
 		
 		
 		a.initialize(init);

@@ -8,7 +8,6 @@ import org.json.simple.parser.JSONParser;
 import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.Explorer;
-import fr.unice.polytech.ogl.islac.Explorer2;
 
 public class testObjFish {
 	
@@ -33,7 +32,7 @@ public class testObjFish {
 		obj.put("objective", list);
 		System.out.println(obj);
 		String init = obj.toJSONString();
-		Explorer2 a=new Explorer2();
+		Explorer a=new Explorer();
 		
 		
 		a.initialize(init);

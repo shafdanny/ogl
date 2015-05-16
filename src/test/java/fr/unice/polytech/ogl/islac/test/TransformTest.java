@@ -22,17 +22,20 @@ public class TransformTest {
 		resourceList = new HashMap<>();
 	}
 	
+	@Test(expected=ClassCastException.class) public void actTransformExceptionTest(){
+		getDataFromJson("{", "parameters", "SUGAR_CANE");
+	}
+	
 	@Test public void actTransformTest() {				
 		
 		assertEquals("transform", getDataFromJson(transform.act(resourceList),"action"));
-		
 		resourceList.put("SUGAR_CANE", 100);
 		assertEquals((long)100, getDataFromJson(transform.act(resourceList), "parameters", "SUGAR_CANE"));
 	}
 	
 	@Test public void readTransformTest(){
-		String response = "{\"status\": \"OK\",cost: 12,\"extras\": {\"kind\": \"RUM\", \"production\": 9}}";
-			
+		String response = "{\"status\": \"OK\",cost: 12,\"extras\": {\"kind\": \"RUM\", \"production\": 9}}";	
+		
 	}
 	
 	public Object getDataFromJson(String jsonString, String key){
