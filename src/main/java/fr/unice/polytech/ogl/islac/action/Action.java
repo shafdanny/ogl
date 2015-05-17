@@ -101,7 +101,11 @@ public class Action {
 			    	  JSONObject objN= (JSONObject) array.get(k);
 			    	  String nom=(String)objN.get("resource");
 			    	  long quantity=(long)objN.get("amount");
-			    	  a.getC().getObj().add(new Ressources(nom,quantity));
+			    	  if(!(nom.equals("GLASS")) && !(nom.equals("PLANK")) && !nom .equals("INGOT") 
+			    			  && !nom.equals("LEATHER") && !nom.equals("RUM"))
+			    	  {
+			    		  a.getC().getObj().add(new Ressources(nom,quantity));
+			    	  }
 			    	  	  
 			      }
 			      

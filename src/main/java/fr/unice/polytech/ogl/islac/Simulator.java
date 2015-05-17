@@ -85,7 +85,7 @@ public class Simulator {
 			else return "2";
 		} */
 		
-		if(act.getC().getPa()<paMax/10 || act.getC().getPa()<150){
+		if(act.getC().getPa()<paMax/20 || act.getC().getPa()<250){
 			Action stop=new Stop();
 			act.setLastAction(stop);
 			return stop.act();
