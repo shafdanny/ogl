@@ -120,71 +120,9 @@ public class ArenaTest {
 
 	}
 	
-	@Test public void getListCreek() 
-	{
-		
-	}
-
-	@Test public void setListCreek() 
-	{
-		
-	}
-
-
-	public void getObj1() 
-	{
-		
-	}
-
-
-	public void setObj1() 
-	{
-		
-	}
-
-
-	public void getObj2() 
-	{
-		
-	}
-
-
-	public void setObj2() 
-	{
-		
-	}
-	
-	
-	/**
-	 * 
-	 * @param t
-	 * @return
-	 */
-	
 	public void bestD()
 	{
 	
-	}
-
-
-	public void getMap() {
-	}
-
-
-	public void setMap() {
-		
-	}
-	
-	public void match(){
-		
-	}
-
-
-	public void getObj3() {
-	}
-
-
-	public void setObj3(String obj3) {
 	}
 	                                                            
 }

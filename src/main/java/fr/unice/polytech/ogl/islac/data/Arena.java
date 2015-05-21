@@ -251,7 +251,10 @@ public class Arena{
 		direction.add("E");
 		direction.add("W"); 
 		//// obj1 
-		for (int i=0;i<direction.size();i++)
+		
+		objectiveChoice(t, direction, 1);
+		
+		/*for (int i=0;i<direction.size();i++)
 		{
 			
 			if(getD(t,direction.get(i))!=null){
@@ -263,12 +266,15 @@ public class Arena{
 				return actionFinal;
 			}
 			}
-		}
+		}*/
 		
 	
 		
 		//// obj2
-		for (int i=0;i<direction.size();i++)
+		
+		objectiveChoice(t, direction, 2);
+
+		/*for (int i=0;i<direction.size();i++)
 		{
 			if(getD(t,direction.get(i))!=null)
 			{
@@ -281,9 +287,12 @@ public class Arena{
 				
 			}
 			}
-		}	
+		}	*/
 		// obj3
-		for (int i=0;i<direction.size();i++)
+		
+		objectiveChoice(t, direction, 3);
+
+		/*for (int i=0;i<direction.size();i++)
 		{
 			if(getD(t,direction.get(i))!=null)
 			{
@@ -296,7 +305,7 @@ public class Arena{
 				
 			}
 			}
-		}	
+		}	*/
 		
 	
 		//// isScouted
@@ -304,22 +313,16 @@ public class Arena{
 		
 		Tuils a=getD(t,direction.get(0));
 	
-		
-		
 		for (int i=0;i<direction.size();i++)
 		{
-			
 			if(getD(t,direction.get(i))==null)
-			{
-				
-				
+			{			
 				newDir.add(direction.get(i));
 			}
 		}
 			
 			if(newDir.size()>0)
-			{
-				
+			{				
 				actionFinal[0]="Scout";
 				actionFinal[1]=newDir.get(0);
 				return actionFinal;
@@ -336,7 +339,7 @@ public class Arena{
 				return actionFinal;
 			}*/
 		
-		/// isOnlyFish et pas exploré
+		/// Choix de la destination ( évitement des cases d'eau / favorisation des cases non explorées 
 			
 		ArrayList<String> newDir2=new ArrayList();
 			
@@ -416,7 +419,25 @@ public class Arena{
 		return actionFinal;
 	}
 
-
+	public String[] objectiveChoice(Tuils t, ArrayList<String> direction, int k) {
+		String[] actionFinal=new String[2];
+		
+		for (int i=0;i<direction.size();i++)
+		{
+			
+			if(getD(t,direction.get(i))!=null){
+			if(getD(t,direction.get(i)).isObj(k) && !(getD(t,direction.get(i)).isOnlyFish()))
+			{
+				
+				actionFinal[1]=direction.get(i);
+				actionFinal[0]="Move_to";
+				return actionFinal;
+			}
+			}
+		}
+		return actionFinal;
+	}
+	
 	public HashMap<Pos, Tuils> getMap() {
 		return map;
 	}

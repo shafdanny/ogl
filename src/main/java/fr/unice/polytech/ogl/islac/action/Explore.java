@@ -64,7 +64,7 @@ public class Explore extends Action {
 		      
 		      long pa=(long)obj.get("cost");
 		      
-		      if (a.getC().getCurrentTuil().isObj1()){
+		      if (a.getC().getCurrentTuil().isObj(1)){
 		    	  
 		    	  for (int k=0; k<array.size();k++){
 		    		  JSONObject obj3= (JSONObject)array.get(k);
@@ -83,7 +83,7 @@ public class Explore extends Action {
 		    	  }
 		      }
 		      //idem avec le deuxième objectif
-		      if (a.getC().getCurrentTuil().isObj2()){
+		      if (a.getC().getCurrentTuil().isObj(2)){
 		    	  
 		    	  for (int k=0; k<array.size();k++){
 		    		  JSONObject obj3= (JSONObject)array.get(k);
