@@ -8,8 +8,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import fr.unice.polytech.ogl.islac.Explorer;
 import fr.unice.polytech.ogl.islac.action.Transform;
 
 public class TransformTest {
@@ -22,44 +24,26 @@ public class TransformTest {
 		resourceList = new HashMap<>();
 	}
 	
-	@Test(expected=ClassCastException.class) public void actTransformExceptionTest(){
-		getDataFromJson("{", "parameters", "SUGAR_CANE");
-	}
-	
 	@Test public void actTransformTest() {				
-		
-		assertEquals("transform", getDataFromJson(transform.act(resourceList),"action"));
+		System.out.println(transform.act(resourceList));
+		assertEquals("transform", transform.getData(transform.act(resourceList),"action"));
 		resourceList.put("SUGAR_CANE", 100);
-		assertEquals((long)100, getDataFromJson(transform.act(resourceList), "parameters", "SUGAR_CANE"));
+		resourceList.put("FRUIT", 10);
+		assertEquals((long)100, transform.getData(transform.act(resourceList), "parameters", "SUGAR_CANE"));
+		System.out.println(transform.generateJSONString(resourceList));
 	}
 	
 	@Test public void readTransformTest(){
-		String response = "{\"status\": \"OK\",cost: 12,\"extras\": {\"kind\": \"RUM\", \"production\": 9}}";	
+		String response = "{\"status\": \"OK\",\"cost\": 12,\"extras\": {\"kind\": \"RUM\", \"production\": 9}}";	
+		transform.read(response, null);
 		
+		Explorer e = new Explorer();
+		e.initialize("{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"QUARTZ\"},{\"amount\": 500,\"resource\": \"FUR\"}]}");
+		String decision = e.takeDecision();
+		//System.out.println(decision);
+		e.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+			
 	}
-	
-	public Object getDataFromJson(String jsonString, String key){
-		JSONParser parser = new JSONParser();
-		Object result = new Object();
-		try {
-			Object obj = parser.parse(jsonString);
-			JSONObject json = (JSONObject)obj;
-			//System.out.println(json.toString());
-			result = json.get(key);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	
-		return result;
-	}
-	
-public Object getDataFromJson(String jsonString, String key1, String key2){
-		JSONObject jsonObj = (JSONObject)getDataFromJson(jsonString, key1);
-		
-		Object result = new Object();
-		//System.out.println(jsonObj.toString());
-		result = jsonObj.get(key2);
-		return result;
-	}
+
 
 }
