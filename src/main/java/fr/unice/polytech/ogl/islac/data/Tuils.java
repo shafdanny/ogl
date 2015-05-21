@@ -157,10 +157,17 @@ public static String oppose(String d)
 }
 
 
-
-
-public boolean isObj1() {
-	if(this!=null) return isObj1;
+public boolean isObj(int i) {
+	if(this!=null) 
+		if(i==1) {
+			return isObj1;
+		}
+		if(i==2) {
+			return isObj2;
+		}
+		if(i==3) {
+			return isObj3;
+		}
 	else return false;
 }
 
@@ -169,10 +176,6 @@ public void setObj1(boolean isObj1) {
 	this.isObj1 = isObj1;
 }
 
-public boolean isObj2() {
-	if(this==null) return false;
-	return isObj2;
-}
 
 public void setObj2(boolean isObj2) {
 	this.isObj2 = isObj2;
@@ -212,10 +215,6 @@ public Pos getPos() {
 
 public void setPos(Pos pos2) {
 	this.pos = pos2;
-}
-
-public boolean isObj3() {
-	return isObj3;
 }
 
 public void setObj3(boolean isObj3) {
