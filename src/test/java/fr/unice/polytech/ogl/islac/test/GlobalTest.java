@@ -23,6 +23,18 @@ import fr.unice.polytech.ogl.islac.Simulator;
  * 
  * Global test to see the interaction between explorer and the game engine.
  * Multiple scenarios can be given to see what is the response of the robot.
+ * The robot intelligence can be represented by an automata with different states and transitions
+ * The states is the action that it takes and the transition is the decision making. 
+ * 
+ * 0 INIT
+ * 1 LAND
+ * 2 SCOUT
+ * 3 GLIMPSE
+ * 4 MOVE_TO
+ * 5 EXPLORE
+ * 6 EXPLOIT
+ * 7 TRANSFORM
+ * 8 STOP
  * 
  * @author Shafiq
  *
@@ -35,7 +47,7 @@ public class GlobalTest {
 	String decision;
 	
 	/**
-	 * This correspond to the step INIT (saving the data needed in the robot)
+	 * This correspond to the step 0 INIT (saving the data needed in the robot)
 	 */
 	@Before public void initRobot(){
 		r = new Explorer();
@@ -44,7 +56,7 @@ public class GlobalTest {
 	}
 	
 	/**
-	 * This correspond to the step LAND (landing the robot on a creek given)
+	 * This correspond to the step 1 LAND (landing the robot on a creek given)
 	 */
 	@Test public void land(){
 		decision = r.takeDecision();
@@ -182,14 +194,15 @@ public class GlobalTest {
 	 * The scouted tile have resources that is needed in the objective.
 	 * The robot should move to this tile. 
 	 */
-	@Test public void scoutedResourceTile(){
+	@Ignore public void scoutedResourceTile(){
 		land();
 		
 		decision = r.takeDecision();
+		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 		
 		decision = r.takeDecision();
-		//System.out.println("after scout with resource : " + decision);
+		System.out.println("after scout with resource : " + decision);
 		String dir = "";
 		
 		try {
@@ -244,7 +257,7 @@ public class GlobalTest {
 	 * we should Explore before Exploit?
 	 * For now exploit it immediately!
 	 */
-	@Test public void inTileWithResource(){
+	@Ignore public void inTileWithResource(){
 		scoutedResourceTile();
 		decision = r.takeDecision();
 		//System.out.println(decision);
@@ -258,7 +271,7 @@ public class GlobalTest {
 	 * When the amount exploited is little, do a scout. 
 	 *  
 	 */	
-	@Test public void inTileWithMultipleResources(){
+	@Ignore public void inTileWithMultipleResources(){
 		Explorer expl = new Explorer();
 		String objective = "{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"QUARTZ\"},{\"amount\": 500,\"resource\": \"FUR\"}]}";
 		expl.initialize(objective);
