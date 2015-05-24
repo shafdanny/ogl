@@ -4,6 +4,13 @@ import java.util.*;
 
 import fr.unice.polytech.ogl.islac.character.Character1;
 
+/**
+ * Arena represents the island that is explored by the robot.
+ * The robot registers each tiles as a HashMap of Position and the Tiles.
+ * 
+ * @author user
+ *
+ */
 public class Arena{
 	
 	private List<String> listCreek;
@@ -11,15 +18,14 @@ public class Arena{
 	private String obj1;
 	private String obj2;
 	private String obj3;
+	private ArrayList<String> objectives;
+	
 	
 	public Arena()
 	
 	{
 		listCreek=new ArrayList<String>();
-		map =new HashMap<Pos, Tuils>();
-		
-		
-		
+		map =new HashMap<Pos, Tuils>();		
 	}
 	public Arena(Character1 c)
 	
@@ -29,20 +35,35 @@ public class Arena{
 			
 	}
 	
+	/**
+	 * Get objectives from Character so that Arena can set if a tile contain some resources from objectives
+	 * Note that the tiles only need to know if a certain resource exist and not the exact amount.
+	 * The relative amount can also be implemented later.
+	 * 
+	 * @param c The character that have the objectives needed
+	 */
 	public void update(Character1 c)
 	{
-		if(c.getObj().size()>0)
-		{
-			this.obj1=c.getObj().get(0).getName();
+		objectives = new ArrayList<>();
+		if(c.getPrimaryObjectives().size()>0){
+		
+			for(Ressources res:c.getPrimaryObjectives()){
+				objectives.add(res.getName());
+			}
 		}
-		if(c.getObj().size()>1)
+		/*
+		if(c.getObjectives().size()>0)
 		{
-			this.obj2=c.getObj().get(1).getName();
+			this.obj1=c.getObjectives().get(0).getName();
 		}
-		if(c.getObj().size()>2)
+		if(c.getObjectives().size()>1)
 		{
-			this.obj3=c.getObj().get(2).getName();
+			this.obj2=c.getObjectives().get(1).getName();
 		}
+		if(c.getObjectives().size()>2)
+		{
+			this.obj3=c.getObjectives().get(2).getName();
+		}*/
 	}
 	
 	/**
@@ -123,15 +144,32 @@ public class Arena{
 	{
 		
 		Pos newPos=getNewPos(t,d);	
-				
-		if(map.get(newPos)==null)
-		{
 		
+		// Initialize the new scouted tile		 
+		if(map.get(newPos)==null)
+		{		
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAltitude((int) altitude,t);
-			
+			map.get(newPos).addAltitude((int) altitude,t);			
 		}
 		
+		/**
+		 * The action Scout gives a list of resources in the scouted tile.
+		 * This method check if the resources is in the objective.
+		 * If yes, then set the list of resources in the tile that we save in our map.
+		 */
+		if(ressources.size()>0 && objectives != null){
+			ArrayList<String> resourceNeeded = new ArrayList<>();
+			
+			for(String resource:ressources){
+				if(objectives.contains(resource))
+					resourceNeeded.add(resource);
+			}
+			
+			map.get(newPos).setObjectivesInTile(resourceNeeded);
+		}
+		
+		
+		/*
 		if (ressources.contains(obj1))
 		{
 			map.get(newPos).setObj1(true);
@@ -150,7 +188,7 @@ public class Arena{
 			map.get(newPos).setObj3(true);
 			map.get(newPos).setObj3(1);
 			
-		}
+		}*/
 		
 		if (ressources.contains("FLOWER"))
 		{
@@ -237,12 +275,13 @@ public class Arena{
 	
 	
 	/**
+	 * Determine the best course of action to be taken.
 	 * 
-	 * @param t
+	 * @param currentTile	The current tile 
 	 * @return
 	 */
 	
-	public String[] bestD(Tuils t)
+	public String[] bestD(Tuils currentTile)
 	{
 		String[] actionFinal=new String[2];
 		ArrayList<String> direction=new ArrayList<String>();
@@ -250,9 +289,25 @@ public class Arena{
 		direction.add("S");
 		direction.add("E");
 		direction.add("W"); 
+		
+				
+		for(String dir:direction){
+			Tuils tileToAnalyse = getD(currentTile,dir);
+			
+			if(tileToAnalyse != null)
+			{
+				if(tileToAnalyse.getObjectivesInTile().size()>0){
+					actionFinal[1] = dir;
+					actionFinal[0] = "Move_to";
+					return actionFinal;
+				}
+			}
+		}
+		
+		
 		//// obj1 
 		
-		actionFinal = objectiveChoice(t, direction, 1);
+		actionFinal = objectiveChoice(currentTile, direction, 1);
 		if(actionFinal[0] != null)
 			return actionFinal;
 		
@@ -274,7 +329,7 @@ public class Arena{
 		
 		//// obj2
 		
-		objectiveChoice(t, direction, 2);
+		objectiveChoice(currentTile, direction, 2);
 		if(actionFinal[0] != null)
 			return actionFinal;
 
@@ -294,7 +349,7 @@ public class Arena{
 		}	*/
 		// obj3
 		
-		objectiveChoice(t, direction, 3);
+		objectiveChoice(currentTile, direction, 3);
 		if(actionFinal[0] != null)
 			return actionFinal;
 
@@ -317,11 +372,11 @@ public class Arena{
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
 		
-		Tuils a=getD(t,direction.get(0));
+		Tuils a=getD(currentTile,direction.get(0));
 	
 		for (int i=0;i<direction.size();i++)
 		{
-			if(getD(t,direction.get(i))==null)
+			if(getD(currentTile,direction.get(i))==null)
 			{			
 				newDir.add(direction.get(i));
 			}
@@ -351,13 +406,13 @@ public class Arena{
 			
 		for (int i=0;i<direction.size();i++)
 		{
-			if(getD(t,direction.get(i))!=null)
+			if(getD(currentTile,direction.get(i))!=null)
 			{
 				
 				
-				if(! getD(t,direction.get(i)).isOnlyFish())
+				if(! getD(currentTile,direction.get(i)).isOnlyFish())
 				{
-					if(! getD(t,direction.get(i)).isExplored())
+					if(! getD(currentTile,direction.get(i)).isExplored())
 					{
 					newDir2.add(direction.get(i));
 					actionFinal[0]="Move_to";
@@ -382,11 +437,11 @@ public class Arena{
 		ArrayList<String> newDir3=new ArrayList();
 		for (int i=0;i<direction.size();i++)
 		{
-			if(getD(t,direction.get(i))!=null)
+			if(getD(currentTile,direction.get(i))!=null)
 			{
 				
 				
-				if(! getD(t,direction.get(i)).isOnlyFish())
+				if(! getD(currentTile,direction.get(i)).isOnlyFish())
 				{
 					
 					newDir3.add(direction.get(i));

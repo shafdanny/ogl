@@ -15,7 +15,7 @@ public class Contract {
 	
 	private ArrayList<Ressources> primaryRessources;
 	
-	
+	/*
 	public Contract(ArrayList<Ressources> c)
 	{
 		allContract=c;
@@ -100,6 +100,6 @@ public class Contract {
 
 	public void setPrimaryRessources(ArrayList<Ressources> primaryRessources) {
 		this.primaryRessources = primaryRessources;
-	}
+	}*/
 	
 }

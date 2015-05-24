@@ -1,5 +1,8 @@
 package fr.unice.polytech.ogl.islac;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import fr.unice.polytech.ogl.islac.*;
 import fr.unice.polytech.ogl.islac.action.Action;
 import fr.unice.polytech.ogl.islac.action.Exploit;
@@ -8,8 +11,10 @@ import fr.unice.polytech.ogl.islac.action.Land;
 import fr.unice.polytech.ogl.islac.action.Move_to;
 import fr.unice.polytech.ogl.islac.action.Scout;
 import fr.unice.polytech.ogl.islac.action.Stop;
+import fr.unice.polytech.ogl.islac.action.Transform;
 import fr.unice.polytech.ogl.islac.character.Character1;
 import fr.unice.polytech.ogl.islac.data.Pos;
+import fr.unice.polytech.ogl.islac.data.Ressources;
 import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class Simulator {
@@ -21,8 +26,11 @@ public class Simulator {
 
 	
 	/**
-	 * Initialisation methode. 
-	 * @param context
+	 * Initialization method.
+	 * This method is only called one time during the Explorer initialization.
+	 * The game engine will give the context of the game, and it is saved by the robot. 
+	 *  
+	 * @param context	The context given by the game engine
 	 */
 	public void init(String context)
 	{
@@ -37,25 +45,12 @@ public class Simulator {
 		nbTurn=0;
 		// Sauvegarde de toutes les parametres des objectives
 		act.read(context,act);
-		act.getC().getObj().size();
-		
-		
-		/*if(act.getC().getObj().size()>0)
-		{
-			act.getMap().setObj1(act.getC().getObj().get(0).getName());
-		}
-		
-		if(act.getC().getObj().size()>1)
-		{
-			act.getMap().setObj1(act.getC().getObj().get(1).getName());
-		}*/
-		
-		paMax=act.getC().getPa();
-	
-
-		
+				
+		paMax=act.getC().getPa();		
 	}
-	public String simul()
+	
+	
+	public String getNextDecision()
 	{
 		nbTurn++;
 		
@@ -91,13 +86,40 @@ public class Simulator {
 			return stop.act();
 			
 		}
+	
+		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
+			Ressources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
+			
+			ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.resourceNeededToTransform();
+			
+			boolean sufficientResourceNeeded = true;
+			
+			for(Ressources res:resourceNeededToTransform){
+				if(act.getC().getRessource(res.getName()).getAmountCollected() < res.getQuantityNeeded())
+					sufficientResourceNeeded = false;
+			}			
+			
+			if(sufficientResourceNeeded){
+				Transform transform=new Transform();
+				act.setLastAction(transform);
+				
+				HashMap<String, Integer> resource = new HashMap<>();
+				
+				for(Ressources res:resourceNeededToTransform){
+					resource.put(res.getName(), (int) res.getQuantityNeeded());
+					act.getC().getRessource(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
+				}			
+				
+				return transform.act(resource);
+			}
+		}
 		
-		if (act.getC().getCurrentTuil().getObj1()>0)
+		if (act.getC().getCurrentTuil().getObjectivesInTile()!=null && act.getC().getCurrentTuil().getObjectivesInTile().size()>0)
 		{
 			//System.out.println("salut");
 			//act.getC().getCurrentTuil().setObj1(0);
 			//act.getC().getCurrentTuil().setObj1(false);
-			Action a=new Exploit(act.getC().getObj().get(0).getName());
+			Action a=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
 			act.setLastAction(a);
 			return a.act();
 		}
@@ -107,7 +129,7 @@ public class Simulator {
 		//	act.getC().getCurrentTuil().setObj2(0);
 			//act.getC().getCurrentTuil().setObj2(false);
 	
-			Action a=new Exploit(act.getC().getObj().get(1).getName());
+			Action a=new Exploit(act.getC().getPrimaryObjectives().get(1).getName());
 			act.setLastAction(a);
 			return a.act();
 		}
@@ -118,7 +140,7 @@ public class Simulator {
 		//	act.getC().getCurrentTuil().setObj2(0);
 			//act.getC().getCurrentTuil().setObj2(false);
 	
-			Action a=new Exploit(act.getC().getObj().get(2).getName());
+			Action a=new Exploit(act.getC().getPrimaryObjectives().get(2).getName());
 			act.setLastAction(a);
 			return a.act();
 		}
@@ -131,7 +153,7 @@ public class Simulator {
 			act.setLastAction(stop);
 			return stop.act();
 		}
-		
+				
 		if (actionFinal[0].equals("Scout"))
 		{
 			Action scout=new Scout();
@@ -163,8 +185,9 @@ public class Simulator {
 		
 	
 	}
-	
-	public void simul2(String context){
+
+
+	public void analyzeResponse(String context){
 		act.getLastAction().read(context,act);
 
 	}

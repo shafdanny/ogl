@@ -301,12 +301,12 @@ public class GlobalTest {
 		decision = expl.takeDecision();
 		assertEquals(getStringValue(decision, "action"),"exploit");
 		//System.out.println(decision);
-		System.out.println(decision);
+		//System.out.println(decision);
 		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 1 } }");
 		decision = expl.takeDecision();
 		//System.out.println(decision);
 		assertEquals(getStringValue(decision, "action"),"exploit");
-		System.out.println(decision);
+		//System.out.println(decision);
 		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 5 } }");
 		decision = expl.takeDecision();
 		assertEquals(getStringValue(decision, "action"),"scout");
@@ -349,6 +349,23 @@ public class GlobalTest {
 		assertEquals("glimpse", getStringValue(decision, "action"));
 	}
 	
+	@Test public void collectedEnoughResources(){
+		land();
+		decision = r.takeDecision();
+		System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
+
+		decision = r.takeDecision();
+		System.out.println(decision);
+		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
+
+		decision = r.takeDecision();
+		System.out.println(decision);
+		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 601 } }");
+		
+		decision = r.takeDecision();
+		System.out.println(decision);
+	}
 	
 	
 	public static void main(String[] args){

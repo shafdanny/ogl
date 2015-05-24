@@ -104,7 +104,12 @@ public class Action {
 			    	  if(!(nom.equals("GLASS")) && !(nom.equals("PLANK")) && !nom .equals("INGOT") 
 			    			  && !nom.equals("LEATHER") && !nom.equals("RUM"))
 			    	  {
-			    		  a.getC().getObj().add(new Ressources(nom,quantity));
+			    		  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    	  }
+			    	  
+			    	  if(nom.equals("PLANK")){
+			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
 			    	  }
 			    	  	  
 			      }

@@ -12,7 +12,7 @@ import fr.unice.polytech.ogl.islac.Explorer;
 
 public class lessExploredTest {
 
-	
+	/*
 	@Ignore public void randomMoove()
 	{
 		JSONObject obj;
@@ -66,5 +66,5 @@ public class lessExploredTest {
 		assertEquals(deplacement1,correctDeplacement1);
 		
 	
-	}
+	}*/
 }

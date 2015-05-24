@@ -32,7 +32,7 @@ public class ArenaTest {
 	
 	@Test public void update() {
 
-		assertNotNull(c.getObj());
+		assertNotNull(c.getPrimaryObjectives());
 		ArrayList<Ressources> resources = new ArrayList<Ressources>();
 		resources.add(new Ressources("WOOD", 10));
 		resources.add(new Ressources("FUR", 50));
@@ -43,9 +43,9 @@ public class ArenaTest {
 		
 		a.update(c);
 		
-		assertEquals(c.getObj().get(0).getName(), "WOOD");
-		assertEquals(c.getObj().get(1).getName(), "FUR");
-		assertEquals(c.getObj().get(2).getName(), "FLOWER");
+		assertEquals(c.getPrimaryObjectives().get(0).getName(), "WOOD");
+		assertEquals(c.getPrimaryObjectives().get(1).getName(), "FUR");
+		assertEquals(c.getPrimaryObjectives().get(2).getName(), "FLOWER");
 	}
 
 	@Test public void addTuils()
@@ -109,9 +109,10 @@ public class ArenaTest {
 		assertTrue(a.getMap().containsKey(p));
 		assertEquals(a.getMap().get(p).getAltitude(), 40);
 		
+		/*
 		assertEquals(a.getMap().get(p).getObj1(), 1);
 		assertEquals(a.getMap().get(p).getObj2(), 1);
-		assertEquals(a.getMap().get(p).getObj3(), 1);
+		assertEquals(a.getMap().get(p).getObj3(), 1);*/
 
 		assertTrue(a.getMap().get(p).isWood());
 		assertTrue(a.getMap().get(p).isFlower());

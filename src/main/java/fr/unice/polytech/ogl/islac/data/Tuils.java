@@ -1,6 +1,8 @@
 package fr.unice.polytech.ogl.islac.data;
 import java.util.*;
 
+import fr.unice.polytech.ogl.islac.tool.PrimaryObjective;
+
 public class Tuils {
 	
 	
@@ -23,6 +25,8 @@ private int altitude;
 
 private boolean isExplored;
 
+private ArrayList<String> objectivesInTile;
+
 public void addAltitude(int a,Tuils t)
 {
 	this.setAltitude(a+t.getAltitude());
@@ -36,7 +40,7 @@ public Tuils()
 
 	pos=new Pos(0,0);
 	
-		
+	objectivesInTile = new ArrayList<>();
 }
 
 public Tuils(int x,int y)
@@ -229,6 +233,25 @@ public void setObj3(int obj3) {
 	Obj3 = obj3;
 }
 
+public ArrayList<String> getObjectivesInTile() {
+	return objectivesInTile;
+}
+
+public void setObjectivesInTile(ArrayList<String> objectivesInTile) {
+	this.objectivesInTile = objectivesInTile;
+}
+
+public String toString(){
+	String tileDetails = "";
+	
+	tileDetails += "OBJECTIVES CONTAINED IN TILE :\n";
+	
+	for(String objective:objectivesInTile){
+		tileDetails += objective + "\n";
+	}
+	
+	return tileDetails;
+}
 
 
 

@@ -66,6 +66,7 @@ public class Test1 {
 	 * A transformer en assert
 	 * @param args
 	 */
+	/*
 	public static void main(String [] args)
 	{
 		JSONObject obj=new JSONObject();
@@ -146,7 +147,7 @@ public class Test1 {
 		
 		System.out.println(a.takeDecision());
 		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"amount\": 21}}");
-	}
+	}*/
 	
 	
 }

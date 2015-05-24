@@ -30,6 +30,10 @@ public class Transform extends Action implements JSONTools{
 		//System.out.println(resourceTransformed);
 		long amountProduced = (long) getData(data, "extras", "production");
 		//System.out.println(amountProduced);
+		
+		a.getC().addPa(cost);
+		a.getC().getRessource(resourceTransformed).addAmountCollected((int) amountProduced);
+		
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class Explorer implements IExplorerRaid {
 
  @Override
 	public String takeDecision() {
-    	return sim1.simul();
+    	return sim1.getNextDecision();
     	
     	
 		
@@ -27,7 +27,7 @@ public class Explorer implements IExplorerRaid {
     @Override
 	public void acknowledgeResults(String results) {
 		
-    	sim1.simul2(results);
+    	sim1.analyzeResponse(results);
 	}
 
 }

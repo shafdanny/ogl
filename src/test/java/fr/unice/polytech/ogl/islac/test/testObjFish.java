@@ -53,7 +53,9 @@ public class testObjFish {
 		
 		//scout est
 		System.out.println(a.takeDecision());	
-		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
+		
+		
+		/*a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\"FISH\"],\"altitude\":-23}}");
 		
 		//scout ouest
 		System.out.println(a.takeDecision());	
@@ -63,7 +65,7 @@ public class testObjFish {
 		String decision =(a.takeDecision());	
 		System.out.println(a);
 		 
-		assertEquals("{ \"action\": \"move_to\", \"parameters\": {\"direction\": \"S\" } }",decision);
+		assertEquals("{ \"action\": \"move_to\", \"parameters\": {\"direction\": \"S\" } }",decision);*/
 	}
 
 

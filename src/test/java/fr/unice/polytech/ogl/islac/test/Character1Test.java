@@ -77,13 +77,13 @@ public class Character1Test {
 		Ressources r = new Ressources("WOOD", 50);
 		obj.add(r);
 		c.setObj(obj);
-		assertEquals(c.getObj().get(0).getName(), "WOOD");
-		assertEquals(c.getObj().get(0).getQuantity(), 50);
+		assertEquals(c.getPrimaryObjectives().get(0).getName(), "WOOD");
+		assertEquals(c.getPrimaryObjectives().get(0).getQuantityNeeded(), 50);
 
 	}
 	
 	@Test public void testRessources(){
-		assertNotNull(c.getObj());
+		assertNotNull(c.getPrimaryObjectives());
 		ArrayList<Ressources> resources = new ArrayList<Ressources>();
 		resources.add(new Ressources("WOOD", 10));
 		resources.add(new Ressources("FUR", 50));
@@ -96,7 +96,7 @@ public class Character1Test {
 		assertNull(c.getRessource("FISH"));
 		
 		assertEquals(c.getRessource("FLOWER").getName(), "FLOWER");
-		assertEquals(c.getRessource("FLOWER").getQuantity(), 150);
+		assertEquals(c.getRessource("FLOWER").getQuantityNeeded(), 150);
 		
 	}
 	

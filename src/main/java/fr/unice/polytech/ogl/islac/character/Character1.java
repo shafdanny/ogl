@@ -11,7 +11,8 @@ public class Character1 {
 	private Pos pos;
 	private Tuils CurrentTuil;
 	
-	private ArrayList<Ressources> obj=new ArrayList<Ressources>();
+	private ArrayList<Ressources> listPrimaryObjectives = new ArrayList<Ressources>();
+	private ArrayList<Ressources> listSecondaryObjectives = new ArrayList<Ressources>();
 	
 	
 	//public Character
@@ -70,21 +71,52 @@ public class Character1 {
 		return getNbTotal()-getNbLand();
 	}
 
-	public ArrayList<Ressources> getObj() {
-		return obj;
+	/**
+	 * Get the ArrayList of Ressources that corresponds to the objectives
+	 * @return
+	 */
+	public ArrayList<Ressources> getPrimaryObjectives() {
+		return listPrimaryObjectives;
 	}
 
 	public void setObj(ArrayList<Ressources> obj) {
-		this.obj = obj;
+		this.listPrimaryObjectives = obj;
 	}
 	
 	public Ressources getRessource(String ressourceName) {
-		for(int i=0; i<obj.size(); i++) {
-			if(obj.get(i).getName().equals(ressourceName)) {
-				return obj.get(i);
+		for(int i=0; i<listPrimaryObjectives.size(); i++) {
+			if(listPrimaryObjectives.get(i).getName().equals(ressourceName)) {
+				return listPrimaryObjectives.get(i);
 			}
 		}
+		
+		for(int i=0; i<listSecondaryObjectives.size(); i++) {
+			if(listSecondaryObjectives.get(i).getName().equals(ressourceName)) {
+				return listSecondaryObjectives.get(i);
+			}
+		}
+		
 		return null;	
+	}
+	
+	public ArrayList<Ressources> getSecondaryObjectives() {
+		return listSecondaryObjectives;
+	}
+
+	public String getObjectivesAsString() {
+		String objectives = "";
+		
+		objectives += "PRIMARY OBJECTIVES : \n";
+		for(Ressources res:listPrimaryObjectives){			
+			objectives += "\t" + res.getName() + " : " + "NEEDED-" + res.getQuantityNeeded() + " " +"COLLECTED-" + res.getAmountCollected() + "\n";
+		} 
+		
+		objectives += "\nSECONDARY OBJECTIVES : \n";
+		for(Ressources res:listSecondaryObjectives){
+			objectives += "\t" + res.getName() + " : " + "NEEDED-" + res.getQuantityNeeded() + " " +"COLLECTED-" + res.getAmountCollected() + "\n";
+		} 
+		
+		return objectives;
 	}
 	
 	
