@@ -296,7 +296,7 @@ public class Arena{
 			
 			if(tileToAnalyse != null)
 			{
-				if(tileToAnalyse.getObjectivesInTile().size()>0){
+				if(tileToAnalyse.getObjectivesInTile() != null && tileToAnalyse.getObjectivesInTile().size()>0){
 					actionFinal[1] = dir;
 					actionFinal[0] = "Move_to";
 					return actionFinal;
