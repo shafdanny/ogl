@@ -99,7 +99,7 @@ public class Simulator {
 					sufficientResourceNeeded = false;
 			}			
 			
-			if(sufficientResourceNeeded){
+			if(sufficientResourceNeeded && (secondaryObjective.getAmountCollected() < act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded())){
 				Transform transform=new Transform();
 				act.setLastAction(transform);
 				

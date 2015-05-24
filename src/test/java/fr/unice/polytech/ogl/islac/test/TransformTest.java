@@ -101,6 +101,47 @@ public class TransformTest {
 		decision = e.takeDecision();
 		System.out.println(decision);	
 	}
+	
+	@Test public void secondaryObjectiveComplete(){
+		Explorer e = new Explorer();
+		e.initialize("{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"PLANK\"},{\"amount\": 500,\"resource\": \"FUR\"}]}");
+		String decision = e.takeDecision();
+		System.out.println(decision);
+		System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		e.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+		
+		decision = e.takeDecision();
+		System.out.println(decision);
+		e.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
+
+		System.out.println(e.sim1.act.getMap().getD(e.sim1.act.getC().getCurrentTuil(), "N"));
+		
+		decision = e.takeDecision();
+		System.out.println(decision);
+		e.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
+		
+		decision = e.takeDecision();
+		System.out.println(decision);		
+		e.acknowledgeResults("{\"cost\": 7,\"extras\": {\"amount\": 5},\"status\": \"OK\"}");
+		
+		//System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		
+		decision = e.takeDecision();
+		System.out.println(decision);	
+		e.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 3,\"kind\": \"PLANK\"},\"status\": \"OK\"}");
+		
+		//System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		
+		decision = e.takeDecision();
+		System.out.println(decision);	
+		e.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 49,\"kind\": \"PLANK\"},\"status\": \"OK\"}");
+		
+		//System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		
+		decision = e.takeDecision();
+		System.out.println(decision);	
+		
+	}
 
 
 }
