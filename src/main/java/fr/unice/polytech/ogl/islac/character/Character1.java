@@ -11,11 +11,10 @@ public class Character1 {
 	private Pos pos;
 	private Tuils CurrentTuil;
 	
-	private ArrayList<Ressources> listPrimaryObjectives = new ArrayList<Ressources>();
-	private ArrayList<Ressources> listSecondaryObjectives = new ArrayList<Ressources>();
+	// Two distinct type of objectives. Secondary objectives can only be obtained by transforming the primary resources
+	private ArrayList<Ressources> listPrimaryObjectives = new ArrayList<>();
+	private ArrayList<SecondaryRessources> listSecondaryObjectives = new ArrayList<>();
 	
-	
-	//public Character
 	
 	public Character1()
 	{
@@ -99,7 +98,7 @@ public class Character1 {
 		return null;	
 	}
 	
-	public ArrayList<Ressources> getSecondaryObjectives() {
+	public ArrayList<SecondaryRessources> getSecondaryObjectives() {
 		return listSecondaryObjectives;
 	}
 

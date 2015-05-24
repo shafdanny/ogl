@@ -74,8 +74,8 @@ public class Arena{
 		
 		if(c.getSecondaryObjectives().size()>0){
 			
-			for(Ressources res:c.getSecondaryObjectives()){
-				ArrayList<Ressources> primaryResourcesNeeded = res.resourceNeededToTransform();
+			for(SecondaryRessources res:c.getSecondaryObjectives()){
+				ArrayList<Ressources> primaryResourcesNeeded = res.getResourceNeededToTransform();
 				resourceToBeTransformed = new ArrayList<>();
 				
 				for (Ressources primRes : primaryResourcesNeeded){

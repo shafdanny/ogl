@@ -1,12 +1,14 @@
 package fr.unice.polytech.ogl.islac.action;
 
 import java.util.ArrayList;
+
 import fr.unice.polytech.ogl.islac.data.*;
+
 import java.util.Map;
 
 import fr.unice.*;
-import java.util.List;
 
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -108,25 +110,34 @@ public class Action {
 			    	  }
 			    	  
 			    	  if(nom.equals("PLANK")){
-			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  SecondaryRessources plank = new SecondaryRessources(nom, quantity);			    		  
+			    		  a.getC().getSecondaryObjectives().add(plank);
+			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
 			    	  if(nom.equals("GLASS")){
-			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
+			    		  a.getC().getSecondaryObjectives().add(glass);
+			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("INGOT")){
-			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
+			    		  a.getC().getSecondaryObjectives().add(ingot);
+			    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("LEATHER")){
-			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  SecondaryRessources leather = new SecondaryRessources(nom, quantity);			    		  
+			    		  a.getC().getSecondaryObjectives().add(leather);
+			    		  a.getC().getPrimaryObjectives().addAll(leather.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("RUM")){
-			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
-			    	  }
-			    	  	  
+			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
+			    		  a.getC().getSecondaryObjectives().add(rum);
+			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
+			    	  }			    	  	  
 			      }			      
 			      
 			} catch (ParseException e) {

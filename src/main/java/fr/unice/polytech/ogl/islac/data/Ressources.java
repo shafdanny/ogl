@@ -10,29 +10,23 @@ import java.util.HashMap;
  *
  */
 public class Ressources {
-	
-
-	private long amountCollected;
+		
 	private String name;
 	private long quantityNeeded;
+	private long amountCollected;
 	
-	
-	public Ressources()
-	{
-		
-	}
 	
 	public Ressources(String name, long quantity)
 	{
-		setQuantity(quantity);
 		setName(name);
+		setQuantityNeeded(quantity);
 		setAmountCollected(0);
 	}
 	
-	public Ressources (String name, long quantity, long amount)
+	public Ressources(String name, long quantity, long amount)
 	{
-		setQuantity(quantity);
 		setName(name);
+		setQuantityNeeded(quantity);		
 		setAmountCollected(amount);
 	}
 	
@@ -61,7 +55,7 @@ public class Ressources {
 		return quantityNeeded;
 	}
 	
-	public void setQuantity(long quantity) {
+	public void setQuantityNeeded(long quantity) {
 		this.quantityNeeded = quantity;
 	}
 	
@@ -110,36 +104,7 @@ public class Ressources {
 		
 		return (int) (k*quantityNeeded+500);
 	}
-	
-	public ArrayList<Ressources> resourceNeededToTransform(){
-		ArrayList<Ressources> primaryResourceNeeded = new ArrayList<>();
-		
-		if(this.name.equals("GLASS")){
-			primaryResourceNeeded.add(new Ressources("QUARTZ", 10));
-			primaryResourceNeeded.add(new Ressources("WOOD", 5));
-		}
-		
-		if(this.name.equals("INGOT")){
-			primaryResourceNeeded.add(new Ressources("ORE", 5));
-			primaryResourceNeeded.add(new Ressources("WOOD", 5));
-		}
-		
-		if(this.name.equals("PLANK")){
-			primaryResourceNeeded.add(new Ressources("WOOD", 1));
-		}
-		
-		if(this.name.equals("LEATHER")){
-			primaryResourceNeeded.add(new Ressources("FUR", 3));
-		}
-		
-		if(this.name.equals("RUM")){
-			primaryResourceNeeded.add(new Ressources("SUGAR_CANE", 10));
-			primaryResourceNeeded.add(new Ressources("FRUITS", 1));
-		}
-		
-		return primaryResourceNeeded;
-	}
-	
+			
 	@Override
 	public String toString() {
 		return this.name;

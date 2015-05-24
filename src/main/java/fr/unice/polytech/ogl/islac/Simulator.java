@@ -15,6 +15,7 @@ import fr.unice.polytech.ogl.islac.action.Transform;
 import fr.unice.polytech.ogl.islac.character.Character1;
 import fr.unice.polytech.ogl.islac.data.Pos;
 import fr.unice.polytech.ogl.islac.data.Ressources;
+import fr.unice.polytech.ogl.islac.data.SecondaryRessources;
 import fr.unice.polytech.ogl.islac.data.Tuils;
 
 public class Simulator {
@@ -91,9 +92,9 @@ public class Simulator {
 		 * If we have secondary objectives...
 		 */
 		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
-			Ressources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
+			SecondaryRessources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
 			
-			ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.resourceNeededToTransform();
+			ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.getResourceNeededToTransform();
 			
 			boolean sufficientResourceNeeded = true;
 			
@@ -101,9 +102,9 @@ public class Simulator {
 			 * Check if we have sufficient primary resource to transform into the secondary objectives
 			 */
 			for(Ressources res:resourceNeededToTransform){
-				Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
+				Ressources collectedResource = act.getC().getRessource(res.getName());
 				
-				if(ressourceInMap!=null && ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected())
+				if(collectedResource!=null && collectedResource.getQuantityNeeded()>collectedResource.getAmountCollected())
 					sufficientResourceNeeded = false;
 			}			
 			
@@ -114,9 +115,9 @@ public class Simulator {
 				for(Ressources res:resourceNeededToTransform){
 					Tuils currentTile = act.getC().getCurrentTuil();
 					
-					Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
+					Ressources ressourceNeeded = act.getC().getRessource(res.getName());
 					
-					if(currentTile.getObjectivesInTile()!=null && ressourceInMap != null && currentTile.getObjectivesInTile().contains(ressourceInMap.getName()) &&  ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected()){
+					if(currentTile.getObjectivesInTile()!=null && ressourceNeeded != null && currentTile.getObjectivesInTile().contains(ressourceNeeded.getName()) &&  ressourceNeeded.getQuantityNeeded()>ressourceNeeded.getAmountCollected()){
 						Action a=new Exploit(res.getName());
 						act.setLastAction(a);
 						return a.act();
@@ -133,14 +134,22 @@ public class Simulator {
 				
 				for(Ressources res:resourceNeededToTransform){
 					resource.put(res.getName(), (int) res.getQuantityNeeded());
-					//act.getMap().getresourceToBeTransformed(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
+					act.getC().getRessource(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
 				}			
 				
 				return transform.act(resource);
 			}
 			
 			if(secondaryObjective.getAmountCollected() >= act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded()){
+				ArrayList<Ressources> listResource = secondaryObjective.getResourceNeededToTransform();
+				
+				for(Ressources res:listResource){
+					if(act.getC().getPrimaryObjectives().contains(res))
+						act.getC().getPrimaryObjectives().remove(res);
+				}
+				
 				act.getC().getSecondaryObjectives().remove(0);
+				
 			}
 		}
 		
