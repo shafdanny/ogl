@@ -112,6 +112,10 @@ public class Simulator {
 				
 				return transform.act(resource);
 			}
+			
+			if(secondaryObjective.getAmountCollected() >= act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded()){
+				act.getC().getSecondaryObjectives().remove(0);
+			}
 		}
 		
 		if (act.getC().getCurrentTuil().getObjectivesInTile()!=null && act.getC().getCurrentTuil().getObjectivesInTile().size()>0)
