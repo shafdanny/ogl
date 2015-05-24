@@ -67,7 +67,8 @@ public class ObjectifTest {
 		
 		//scout nord
 
-		String s1 = "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ destination+"\" " +"} }";
+		String s1 = "{\"action\":\"scout\",\"parameters\":{\"direction\":" +"\""+ destination+"\"" +"}}";
+		
 		assertEquals(a.takeDecision(), s1); 
 		
 		a.acknowledgeResults("{\"status\" : \"OK\", \"cost\":8,\"extras\":{\"resources\":[\""+ressource1+"\", \""+ressource2+"\", \""+ressource3+"\"],\"altitude\":-23}}");
@@ -102,7 +103,7 @@ public class ObjectifTest {
 	
 	// exploit pour l'objectif 1
 	
-	@Ignore public void testObjectif1() { 
+	@Test public void testObjectif1() { 
 		collectOneObjectif("WOOD","FUR","FLOWER","N","WOOD");
 	}
 	
