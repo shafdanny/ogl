@@ -102,6 +102,7 @@ public class Simulator {
 			 */
 			for(Ressources res:resourceNeededToTransform){
 				Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
+				
 				if(ressourceInMap!=null && ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected())
 					sufficientResourceNeeded = false;
 			}			
@@ -113,7 +114,9 @@ public class Simulator {
 				for(Ressources res:resourceNeededToTransform){
 					Tuils currentTile = act.getC().getCurrentTuil();
 					
-					if(currentTile.getObjectivesInTile()!=null && currentTile.getObjectivesInTile().contains(res.getName())){
+					Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
+					
+					if(currentTile.getObjectivesInTile()!=null && currentTile.getObjectivesInTile().contains(res.getName()) &&  ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected()){
 						Action a=new Exploit(res.getName());
 						act.setLastAction(a);
 						return a.act();
