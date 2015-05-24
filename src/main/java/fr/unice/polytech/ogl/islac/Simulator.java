@@ -130,7 +130,7 @@ public class Simulator {
 				
 				for(Ressources res:resourceNeededToTransform){
 					resource.put(res.getName(), (int) res.getQuantityNeeded());
-					act.getMap().getresourceToBeTransformed(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
+					//act.getMap().getresourceToBeTransformed(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
 				}			
 				
 				return transform.act(resource);
