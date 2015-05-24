@@ -252,7 +252,9 @@ public class Arena{
 		direction.add("W"); 
 		//// obj1 
 		
-		objectiveChoice(t, direction, 1);
+		actionFinal = objectiveChoice(t, direction, 1);
+		if(actionFinal[0] != null)
+			return actionFinal;
 		
 		/*for (int i=0;i<direction.size();i++)
 		{
@@ -273,6 +275,8 @@ public class Arena{
 		//// obj2
 		
 		objectiveChoice(t, direction, 2);
+		if(actionFinal[0] != null)
+			return actionFinal;
 
 		/*for (int i=0;i<direction.size();i++)
 		{
@@ -291,6 +295,8 @@ public class Arena{
 		// obj3
 		
 		objectiveChoice(t, direction, 3);
+		if(actionFinal[0] != null)
+			return actionFinal;
 
 		/*for (int i=0;i<direction.size();i++)
 		{

@@ -43,7 +43,8 @@ public class GlobalTest {
 	// A sample of initialisation message
 	String context = getContext(); //TODO an example of init
 	String creekId = "THIS34IS12A85CREEK87ID";
-	IExplorerRaid r;
+	//IExplorerRaid r;
+	Explorer r;
 	String decision;
 	
 	/**
@@ -186,7 +187,6 @@ public class GlobalTest {
 		assertEquals("scout",getStringValue(decision,"action"));
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");	
-		
 	}
 	
 	/**
@@ -194,7 +194,7 @@ public class GlobalTest {
 	 * The scouted tile have resources that is needed in the objective.
 	 * The robot should move to this tile. 
 	 */
-	@Ignore public void scoutedResourceTile(){
+	@Test public void scoutedResourceTile(){
 		land();
 		
 		decision = r.takeDecision();
@@ -202,8 +202,9 @@ public class GlobalTest {
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 		
 		decision = r.takeDecision();
-		System.out.println("after scout with resource : " + decision);
 		String dir = "";
+		
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 		
 		try {
 	    	  JSONParser parser=new JSONParser();		  
@@ -257,7 +258,7 @@ public class GlobalTest {
 	 * we should Explore before Exploit?
 	 * For now exploit it immediately!
 	 */
-	@Ignore public void inTileWithResource(){
+	@Test public void inTileWithResource(){
 		scoutedResourceTile();
 		decision = r.takeDecision();
 		//System.out.println(decision);
@@ -271,7 +272,7 @@ public class GlobalTest {
 	 * When the amount exploited is little, do a scout. 
 	 *  
 	 */	
-	@Ignore public void inTileWithMultipleResources(){
+	@Test public void inTileWithMultipleResources(){
 		Explorer expl = new Explorer();
 		String objective = "{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"QUARTZ\"},{\"amount\": 500,\"resource\": \"FUR\"}]}";
 		expl.initialize(objective);

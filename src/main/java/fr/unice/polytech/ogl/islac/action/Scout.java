@@ -4,13 +4,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.util.*;
 
 import fr.unice.polytech.ogl.islac.character.Character1;
 import fr.unice.polytech.ogl.islac.data.Arena;
 import fr.unice.polytech.ogl.islac.data.Tuils;
+import fr.unice.polytech.ogl.islac.tool.JSONTools;
 
-public class Scout extends Action {
+public class Scout extends Action implements JSONTools{
 	
 	
 	public Scout()
@@ -54,9 +56,25 @@ public class Scout extends Action {
 
 
 	public String act(String dir,Action a){
+		return generateJSONString(dir);
+	}
+	@Override
+	public Object getData(String json, String... key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String generateJSONString(Object... parameter) {
+		JSONObject action = new JSONObject();
+		JSONObject param = new JSONObject();
 		
-		//a.getMap().getD(a.getC().getCurrentTuil(), dir).setScooted(true);
-		return "{ \"action\": \"scout\", \"parameters\": {\"direction\": " +"\""+ dir+"\" " +"} }";
+		action.put("action", "scout");
+		
+		param.put("direction", parameter[0]);		
+		
+		action.put("parameters", param);		
+		
+		return action.toString();
 	}
 	
 	
