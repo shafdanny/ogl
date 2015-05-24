@@ -12,9 +12,9 @@ import java.util.HashMap;
 public class Ressources {
 	
 
-	private long amountCollected;
-	private String name;
-	private long quantityNeeded;
+	private long amountCollected=0;
+	private String name="";
+	private long quantityNeeded=0;
 	
 	
 	public Ressources()

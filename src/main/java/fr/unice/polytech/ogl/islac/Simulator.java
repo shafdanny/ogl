@@ -102,7 +102,7 @@ public class Simulator {
 			 */
 			for(Ressources res:resourceNeededToTransform){
 				Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
-				if(ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected())
+				if(ressourceInMap!=null && ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected())
 					sufficientResourceNeeded = false;
 			}			
 			

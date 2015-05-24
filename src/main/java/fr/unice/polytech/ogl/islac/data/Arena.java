@@ -37,7 +37,7 @@ public class Arena{
 	
 	public Ressources getresourceToBeTransformed(String resourceName){
 		for(Ressources res:resourceToBeTransformed){
-			if(resourceName == res.getName())
+			if(resourceName.equals(res.getName()))
 				return res;
 		}
 		
