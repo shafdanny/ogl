@@ -29,8 +29,5 @@ public class Explorer implements IExplorerRaid {
 		
     	sim1.simul2(results);
 	}
-    
-    public Simulator getSim(){
-    	return sim1;
-    }
+
 }

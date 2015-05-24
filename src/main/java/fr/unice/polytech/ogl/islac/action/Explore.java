@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 
 import fr.unice.polytech.ogl.islac.character.Character1;
 import fr.unice.polytech.ogl.islac.data.Arena;
+import fr.unice.polytech.ogl.islac.tool.JSONTools;
 
 public class Explore extends Action {
 
@@ -29,19 +30,7 @@ public class Explore extends Action {
 		return "{ \"action\": \"explore\" }";
 	}
 
-	@Override
-	public String act(String info) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public String act(String info, int number) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 	/**
 	 * Méthode read de la classe explore, récupère la quantité de ressource
 	 * collectée et la difficulté d'accès et le coût en pa.
@@ -50,7 +39,7 @@ public class Explore extends Action {
 	 * via le setObj().
 	 * @param data, act
 	 */
-	
+	/*
 	@Override
 	public void read(String data,Action a){
 	
@@ -102,10 +91,10 @@ public class Explore extends Action {
 		      
 		} catch (ParseException e) {
 			e.printStackTrace();
-	}
+		}
 	
-	}	
-	
+	}*/
+
 	
 	
 }

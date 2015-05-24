@@ -23,5 +23,7 @@ public class ExploreTest {
 		
 		act = new Explore();
 		assertEquals( "{ \"action\": \"explore\" }" ,act.act());
+		
+		
 	}
 }
