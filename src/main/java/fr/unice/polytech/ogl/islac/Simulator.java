@@ -116,7 +116,7 @@ public class Simulator {
 					
 					Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
 					
-					if(currentTile.getObjectivesInTile()!=null && currentTile.getObjectivesInTile().contains(res.getName()) &&  ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected()){
+					if(currentTile.getObjectivesInTile()!=null && ressourceInMap != null && currentTile.getObjectivesInTile().contains(ressourceInMap.getName()) &&  ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected()){
 						Action a=new Exploit(res.getName());
 						act.setLastAction(a);
 						return a.act();
