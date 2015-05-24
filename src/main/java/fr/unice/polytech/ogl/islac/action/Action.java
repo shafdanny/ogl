@@ -109,6 +109,26 @@ public class Action {
 			    	  
 			    	  if(nom.equals("PLANK")){
 			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  //a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
+			    	  }
+			    	  
+			    	  if(nom.equals("GLASS")){
+			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
+			    	  }
+			    	  
+			    	  if(nom.equals("INGOT")){
+			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
+			    	  }
+			    	  
+			    	  if(nom.equals("LEATHER")){
+			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
+			    		  a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
+			    	  }
+			    	  
+			    	  if(nom.equals("RUM")){
+			    		  a.getC().getSecondaryObjectives().add(new Ressources(nom,quantity));
 			    		  a.getC().getPrimaryObjectives().add(new Ressources("WOOD",quantity/2));
 			    	  }
 			    	  	  

@@ -87,6 +87,9 @@ public class Simulator {
 			
 		}
 	
+		/**
+		 * If we have secondary objectives...
+		 */
 		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
 			Ressources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
 			
@@ -94,10 +97,30 @@ public class Simulator {
 			
 			boolean sufficientResourceNeeded = true;
 			
+			/**
+			 * Check if we have sufficient primary resource to transform into the secondary objectives
+			 */
 			for(Ressources res:resourceNeededToTransform){
-				if(act.getC().getRessource(res.getName()).getAmountCollected() < res.getQuantityNeeded())
+				Ressources ressourceInMap = act.getMap().getresourceToBeTransformed(res.getName());
+				if(ressourceInMap.getQuantityNeeded()>ressourceInMap.getAmountCollected())
 					sufficientResourceNeeded = false;
 			}			
+			
+			/**
+			 * If it is not enough, check if current tile have the primary resource needed
+			 */
+			if(!sufficientResourceNeeded){
+				for(Ressources res:resourceNeededToTransform){
+					Tuils currentTile = act.getC().getCurrentTuil();
+					
+					if(currentTile.getObjectivesInTile()!=null && currentTile.getObjectivesInTile().contains(res.getName())){
+						Action a=new Exploit(res.getName());
+						act.setLastAction(a);
+						return a.act();
+					}
+					
+				}	
+			}
 			
 			if(sufficientResourceNeeded && (secondaryObjective.getAmountCollected() < act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded())){
 				Transform transform=new Transform();
@@ -107,7 +130,7 @@ public class Simulator {
 				
 				for(Ressources res:resourceNeededToTransform){
 					resource.put(res.getName(), (int) res.getQuantityNeeded());
-					act.getC().getRessource(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
+					act.getMap().getresourceToBeTransformed(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
 				}			
 				
 				return transform.act(resource);
@@ -120,12 +143,18 @@ public class Simulator {
 		
 		if (act.getC().getCurrentTuil().getObjectivesInTile()!=null && act.getC().getCurrentTuil().getObjectivesInTile().size()>0)
 		{
+			String objectives = act.getC().getCurrentTuil().getObjectivesInTile().get(0);
 			//System.out.println("salut");
 			//act.getC().getCurrentTuil().setObj1(0);
 			//act.getC().getCurrentTuil().setObj1(false);
-			Action a=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
-			act.setLastAction(a);
-			return a.act();
+			if(act.getC().getPrimaryObjectives().contains(act.getC().getRessource(objectives)))
+			{
+				if(act.getC().getRessource(objectives).getAmountCollected() < act.getC().getRessource(objectives).getQuantityNeeded()){
+					Action a=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
+					act.setLastAction(a);
+					return a.act();
+				}
+			}
 		}
 		
 		if (act.getC().getCurrentTuil().getObj2()>0 )

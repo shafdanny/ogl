@@ -26,6 +26,7 @@ public class Ressources {
 	{
 		setQuantity(quantity);
 		setName(name);
+		setAmountCollected(0);
 	}
 	
 	public Ressources (String name, long quantity, long amount)

@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import fr.unice.polytech.ogl.islac.Explorer;
 import fr.unice.polytech.ogl.islac.action.Transform;
+import fr.unice.polytech.ogl.islac.data.Ressources;
 
 public class TransformTest {
 
@@ -50,11 +51,14 @@ public class TransformTest {
 	 */
 	@Test public void explorerTransformTest(){
 		Explorer e = new Explorer();
-		e.initialize("{\"creek\": \"b92004d5-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"PLANK\"},{\"amount\": 500,\"resource\": \"FUR\"}]}");
+		e.initialize("{\"creek\": \"b920045-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"PLANK\"},{\"amount\": 500,\"resource\": \"FUR\"}]}");
 		String decision = e.takeDecision();
 		System.out.println(decision);
 		System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		System.out.println(e.sim1.act.getMap().objectivesAsString());
+		
 		e.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 12 }");
+		
 		
 		decision = e.takeDecision();
 		System.out.println(decision);
@@ -136,7 +140,21 @@ public class TransformTest {
 		System.out.println(decision);	
 		e.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 49,\"kind\": \"PLANK\"},\"status\": \"OK\"}");
 		
-		//System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		
+		decision = e.takeDecision();
+		System.out.println(decision);	
+		e.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
+		
+		System.out.println(e.sim1.act.getC().getObjectivesAsString());
+		
+		//Ressources toBeRemoved = new Ressources("WOOD", 25);
+		
+		//System.out.println(e.sim1.act.getC().getPrimaryObjectives().);
+		
+		decision = e.takeDecision();
+		System.out.println(decision);	
+		e.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
 		
 		decision = e.takeDecision();
 		System.out.println(decision);	

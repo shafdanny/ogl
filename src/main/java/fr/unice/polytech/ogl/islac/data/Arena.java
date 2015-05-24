@@ -19,7 +19,7 @@ public class Arena{
 	private String obj2;
 	private String obj3;
 	private ArrayList<String> objectives;
-	
+	private ArrayList<Ressources> resourceToBeTransformed;
 	
 	public Arena()
 	
@@ -35,6 +35,25 @@ public class Arena{
 			
 	}
 	
+	public Ressources getresourceToBeTransformed(String resourceName){
+		for(Ressources res:resourceToBeTransformed){
+			if(resourceName == res.getName())
+				return res;
+		}
+		
+		return null;
+		
+	}
+	
+	public String objectivesAsString(){
+		String objectivesConsideredByArena = "ARENA OBJECTIVES : ";
+		
+		for(String res:objectives)
+			objectivesConsideredByArena += res + " ";
+		
+		return objectivesConsideredByArena;
+	}
+	
 	/**
 	 * Get objectives from Character so that Arena can set if a tile contain some resources from objectives
 	 * Note that the tiles only need to know if a certain resource exist and not the exact amount.
@@ -45,12 +64,28 @@ public class Arena{
 	public void update(Character1 c)
 	{
 		objectives = new ArrayList<>();
+		
 		if(c.getPrimaryObjectives().size()>0){
 		
 			for(Ressources res:c.getPrimaryObjectives()){
 				objectives.add(res.getName());
 			}
 		}
+		
+		if(c.getSecondaryObjectives().size()>0){
+			
+			for(Ressources res:c.getSecondaryObjectives()){
+				ArrayList<Ressources> primaryResourcesNeeded = res.resourceNeededToTransform();
+				resourceToBeTransformed = new ArrayList<>();
+				
+				for (Ressources primRes : primaryResourcesNeeded){
+					resourceToBeTransformed.add(primRes);
+					objectives.add(primRes.getName());
+				}
+			}
+		}
+		
+		
 		/*
 		if(c.getObjectives().size()>0)
 		{
