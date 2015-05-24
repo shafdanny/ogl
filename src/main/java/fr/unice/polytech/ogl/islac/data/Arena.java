@@ -522,7 +522,7 @@ public class Arena{
 		{
 			
 			if(getD(t,direction.get(i))!=null){
-			if(getD(t,direction.get(i)).isObj(k) && !(getD(t,direction.get(i)).isOnlyFish()))
+			if(getD(t,direction.get(i)).isObj(k) && !(getD(t,direction.get(i)).isOnlyFish()) && !getD(t,direction.get(i)).isExplored())
 			{
 				
 				actionFinal[1]=direction.get(i);
