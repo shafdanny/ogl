@@ -14,6 +14,10 @@ public class Ressources {
 	private String name;
 	private long quantityNeeded;
 	private long amountCollected;
+	// indicates that this resource is to be used to create secondary resource
+	private boolean isForSecondary;
+	// when the amount collected exceeds the amount needed to transform, this is true
+	private boolean isTransformable;
 	
 	
 	public Ressources(String name, long quantity)
@@ -21,6 +25,8 @@ public class Ressources {
 		setName(name);
 		setQuantityNeeded(quantity);
 		setAmountCollected(0);
+		isForSecondary = false;
+		isTransformable = false;
 	}
 	
 	public Ressources(String name, long quantity, long amount)
@@ -107,7 +113,7 @@ public class Ressources {
 			
 	@Override
 	public String toString() {
-		return this.name;
+		return this.name + " " + quantityNeeded + " " + amountCollected + " secondary?" + isForSecondary + " " + "transformable?" + isTransformable;
 	}
 	
 	@Override
@@ -124,6 +130,22 @@ public class Ressources {
 			return true;
 		else
 			return false;
+	}
+
+	public boolean isForSecondary() {
+		return isForSecondary;
+	}
+
+	public void setForSecondary(boolean isForSecondary) {
+		this.isForSecondary = isForSecondary;
+	}
+
+	public boolean isTransformable() {
+		return isTransformable;
+	}
+
+	public void setTransformable(boolean isTransformable) {
+		this.isTransformable = isTransformable;
 	}
 
 

@@ -12,26 +12,42 @@ public class SecondaryRessources extends Ressources {
 		ArrayList<Ressources> primaryResourceNeeded = new ArrayList<>();
 		
 		if(this.getName().equals("GLASS")){
-			primaryResourceNeeded.add(new Ressources("QUARTZ", 10));
-			primaryResourceNeeded.add(new Ressources("WOOD", 5));
+			Ressources quartz = new Ressources("QUARTZ", 10);
+			quartz.setForSecondary(true);
+			Ressources wood = new Ressources("WOOD", 5);
+			wood.setForSecondary(true);
+			primaryResourceNeeded.add(wood);
+			primaryResourceNeeded.add(quartz);
 		}
 		
 		if(this.getName().equals("INGOT")){
-			primaryResourceNeeded.add(new Ressources("ORE", 5));
-			primaryResourceNeeded.add(new Ressources("WOOD", 5));
+			Ressources ore = new Ressources("ORE", 5);
+			ore.setForSecondary(true);
+			Ressources wood = new Ressources("WOOD", 5);
+			wood.setForSecondary(true);
+			primaryResourceNeeded.add(ore);
+			primaryResourceNeeded.add(wood);
 		}
 		
 		if(this.getName().equals("PLANK")){
-			primaryResourceNeeded.add(new Ressources("WOOD", 1));
+			Ressources wood = new Ressources("WOOD", 1);
+			wood.setForSecondary(true);
+			primaryResourceNeeded.add(wood);
 		}
 		
 		if(this.getName().equals("LEATHER")){
-			primaryResourceNeeded.add(new Ressources("FUR", 3));
+			Ressources fur = new Ressources("FUR", 3);
+			fur.setForSecondary(true);
+			primaryResourceNeeded.add(fur);
 		}
 		
 		if(this.getName().equals("RUM")){
-			primaryResourceNeeded.add(new Ressources("SUGAR_CANE", 10));
-			primaryResourceNeeded.add(new Ressources("FRUITS", 1));
+			Ressources sugar_cane = new Ressources("SUGAR_CANE", 10);
+			sugar_cane.setForSecondary(true);
+			Ressources fruits = new Ressources("FRUITS", 1);
+			fruits.setForSecondary(true);
+			primaryResourceNeeded.add(sugar_cane);
+			primaryResourceNeeded.add(fruits);
 		}
 		
 		return primaryResourceNeeded;

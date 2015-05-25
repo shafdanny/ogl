@@ -26,11 +26,7 @@ public class Action {
 	Character1 c;
 	private List<String> listCreek;
 	private String lastDirection;
-	
-	
-
-	
-	
+		
 	public Action()
 	{
 		map=new Arena();
@@ -250,6 +246,10 @@ public class Action {
 		// TODO Auto-generated method stub
 		return null;
 		
+	}
+	
+	public String toString(){
+		return name;
 	}
 
 }

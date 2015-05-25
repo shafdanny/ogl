@@ -244,12 +244,15 @@ public void setObjectivesInTile(ArrayList<String> objectivesInTile) {
 public String toString(){
 	String tileDetails = "";
 	
-	tileDetails += "OBJECTIVES CONTAINED IN TILE :\n";
+	tileDetails += "OBJECTIVES CONTAINED IN TILE : ";
 	
-	for(String objective:objectivesInTile){
-		tileDetails += objective + "\n";
+	if(objectivesInTile != null){
+		for(String objective:objectivesInTile){
+			tileDetails += objective + " ";
+		}
+		tileDetails += " SCOUTED : " + isScouted;
+		tileDetails += " EXPLORED : " + isExplored;
 	}
-	
 	return tileDetails;
 }
 

@@ -184,7 +184,8 @@ public class Arena{
 		if(map.get(newPos)==null)
 		{		
 			map.put(newPos,new Tuils(newPos));
-			map.get(newPos).addAltitude((int) altitude,t);			
+			map.get(newPos).addAltitude((int) altitude,t);	
+			map.get(newPos).setScouted(true);
 		}
 		
 		/**
@@ -324,10 +325,11 @@ public class Arena{
 		direction.add("S");
 		direction.add("E");
 		direction.add("W"); 
-		
 				
 		for(String dir:direction){
+			
 			Tuils tileToAnalyse = getD(currentTile,dir);
+			//System.out.println("CONSIDERING " + dir + " " + tileToAnalyse);
 			
 			if(tileToAnalyse != null)
 			{
@@ -464,8 +466,10 @@ public class Arena{
 			
 			Random rd=new Random();
 		
-			actionFinal[1]=newDir2.get(rd.nextInt(s));
-			return actionFinal;
+			if(! getD(currentTile,newDir2.get(rd.nextInt(s))).isExplored()){
+				actionFinal[1]=newDir2.get(rd.nextInt(s));
+				return actionFinal;
+			}
 		}
 		
 		// isOnlyFish
@@ -478,7 +482,7 @@ public class Arena{
 				
 				if(! getD(currentTile,direction.get(i)).isOnlyFish())
 				{
-					
+					System.out.println("isonlyfish");
 					newDir3.add(direction.get(i));
 					actionFinal[0]="Move_to";
 					

@@ -15,6 +15,10 @@ public class Glimpse extends Action {
 	String direction;
 	int range;
 	
+	public Glimpse(){
+		this.name = "Glimpse";
+	}
+	
 	@Override
 	public String act() {
 		return "{\"action\": \"glimpse\",\"parameters\": { \"direction\": \"N\", \"range\": 2 }}";

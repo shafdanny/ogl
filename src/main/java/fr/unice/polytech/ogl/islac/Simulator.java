@@ -48,18 +48,24 @@ public class Simulator {
 		act.read(context,act);
 				
 		paMax=act.getC().getPa();		
+	
 	}
 	
 	
 	public String getNextDecision()
 	{
-		nbTurn++;
 		
+		
+		nbTurn++;
+				
 		if (stop)
 		{
 			return new Stop().act();
 		}
 		
+		/**
+		 * First move by the robot, always LAND
+		 */
 		if (nbTurn==1)
 		{
 			act.getMap().update(act.getC());
@@ -74,134 +80,199 @@ public class Simulator {
 			else return l.act(act.getMap().getListCreek().get(0),(long) 1);
 				
 		}
-	/*		if (act.getC().getNbTotal() == 2){
-				return "1";
-			}
-			
-			else return "2";
-		} */
 		
+		//System.out.println(act.getLastAction().toString());
+		
+		/**
+		 * Update the status of secondary objectives.
+		 */
+		if(act.getC().getSecondaryObjectives()!=null){
+			ArrayList<SecondaryRessources> secondaryObjectives = act.getC().getSecondaryObjectives();
+			ArrayList<Ressources> primaryObjectives = act.getC().getPrimaryObjectives();
+			
+			/**
+			 * Iterate through all the secondary objectives
+			 */
+			for(int i=0;i<secondaryObjectives.size();i++){
+				
+				ArrayList<Ressources> getPrim = secondaryObjectives.get(i).getResourceNeededToTransform();
+				ArrayList<Ressources> resourceAssociated = new ArrayList<>();
+				
+				/**
+				 * Store the primary resources that exist in the objective and associated
+				 * with a secondary resources in a new ArrayList
+				 */
+				for(Ressources prim:getPrim){
+					for(Ressources obj:primaryObjectives){
+						if(prim.equals(obj))
+							resourceAssociated.add(obj);
+							//System.out.println(obj);
+					}
+				}
+				
+				/**
+				 * If a secondary objective is completed (amount collected >= quantity needed)
+				 * then delete it from our secondary objective list.
+				 * Also, delete the primary resource objective associated with it.
+				 */
+				if(secondaryObjectives.get(i).getAmountCollected()>=secondaryObjectives.get(i).getQuantityNeeded()){
+						act.getC().getSecondaryObjectives().remove(secondaryObjectives.get(i));
+						for(Ressources primObj:resourceAssociated){
+							primaryObjectives.remove(primObj);
+						}
+				}
+			}
+		}
+		
+		
+		/**
+		 * Update the status of primary objectives.
+		 */
+		if(act.getC().getPrimaryObjectives()!=null){
+			ArrayList<Ressources> primaryObjectives = act.getC().getPrimaryObjectives();
+			
+			for(int i=0;i<primaryObjectives.size();i++){
+				if(!primaryObjectives.get(i).isForSecondary()){
+					if(primaryObjectives.get(i).getAmountCollected()>=primaryObjectives.get(i).getQuantityNeeded())
+						act.getC().getPrimaryObjectives().remove(primaryObjectives.get(i));
+				}
+			}
+		}
+				
+		/**
+		 * If there is no more objective, stop
+		 */
+		if(act.getC().getPrimaryObjectives().size()==0 && act.getC().getSecondaryObjectives().size()==0){
+			return new Stop().act();
+		}
+		
+		/**
+		 * Highest priority : is the energy sufficient for more exploration
+		 * Set a minimum energy level so that if the energy falls below it, stop immediately		
+		 */
 		if(act.getC().getPa()<paMax/20 || act.getC().getPa()<250){
-			Action stop=new Stop();
+			Stop stop=new Stop();
 			act.setLastAction(stop);
 			return stop.act();
 			
 		}
-	
+		//System.out.println(act.getC().getObjectivesAsString());
 		/**
 		 * If we have secondary objectives...
 		 */
 		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
+			
+			// Get a secondary objective
 			SecondaryRessources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
-			
+			// Get the primary resources needed for this secondary objective
 			ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.getResourceNeededToTransform();
+			// Get all the primary objectives
+			ArrayList<Ressources> primaryObjectives = act.getC().getPrimaryObjectives();
 			
-			boolean sufficientResourceNeeded = true;
+			// Check the primary objectives that is used for secondary
+			for(Ressources primObj : primaryObjectives){
+				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded())
+					primObj.setTransformable(true);
+			}
 			
-			/**
-			 * Check if we have sufficient primary resource to transform into the secondary objectives
-			 */
-			for(Ressources res:resourceNeededToTransform){
-				Ressources collectedResource = act.getC().getRessource(res.getName());
-				
-				if(collectedResource!=null && collectedResource.getQuantityNeeded()>collectedResource.getAmountCollected())
-					sufficientResourceNeeded = false;
-			}			
+			boolean transformable = true;
+			ArrayList<Ressources> resPrimInObjAndNeeded = new ArrayList<>();
 			
-			/**
-			 * If it is not enough, check if current tile have the primary resource needed
-			 */
-			if(!sufficientResourceNeeded){
-				for(Ressources res:resourceNeededToTransform){
-					Tuils currentTile = act.getC().getCurrentTuil();
-					
-					Ressources ressourceNeeded = act.getC().getRessource(res.getName());
-					
-					if(currentTile.getObjectivesInTile()!=null && ressourceNeeded != null && currentTile.getObjectivesInTile().contains(ressourceNeeded.getName()) &&  ressourceNeeded.getQuantityNeeded()>ressourceNeeded.getAmountCollected()){
-						Action a=new Exploit(res.getName());
-						act.setLastAction(a);
-						return a.act();
+			for(Ressources primRes : resourceNeededToTransform){				
+				for(Ressources primObj:primaryObjectives){
+					if(primRes.equals(primObj)){
+						resPrimInObjAndNeeded.add(primObj);
+						if(!primObj.isTransformable())
+							transformable = false;
 					}
-					
-				}	
+				}
 			}
+						
+			//System.out.println(transformable);
 			
-			if(sufficientResourceNeeded && (secondaryObjective.getAmountCollected() < act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded())){
-				Transform transform=new Transform();
-				act.setLastAction(transform);
+			/**
+			 * After exhaustive checking, we are sure that we can transform the primary resources
+			 */
+			if(transformable){
+				HashMap<String, Integer> ressourceNeeded = new HashMap<>();
 				
-				HashMap<String, Integer> resource = new HashMap<>();
-				
-				for(Ressources res:resourceNeededToTransform){
-					resource.put(res.getName(), (int) res.getQuantityNeeded());
-					act.getC().getRessource(res.getName()).addAmountCollected(-(int) res.getQuantityNeeded());
-				}			
-				
-				return transform.act(resource);
-			}
-			
-			if(secondaryObjective.getAmountCollected() >= act.getC().getRessource(secondaryObjective.getName()).getQuantityNeeded()){
-				ArrayList<Ressources> listResource = secondaryObjective.getResourceNeededToTransform();
-				
-				for(Ressources res:listResource){
-					if(act.getC().getPrimaryObjectives().contains(res))
-						act.getC().getPrimaryObjectives().remove(res);
+				for(Ressources res:resPrimInObjAndNeeded){
+					ressourceNeeded.put(res.getName(), (int) res.getQuantityNeeded());
+					res.addAmountCollected(-(int)res.getQuantityNeeded());
+					System.out.println(res);
 				}
 				
-				act.getC().getSecondaryObjectives().remove(0);
-				
+				Transform transform = new Transform();
+				act.setLastAction(transform);
+				return transform.act(ressourceNeeded);
 			}
+			
+			
 		}
 		
 		if (act.getC().getCurrentTuil().getObjectivesInTile()!=null && act.getC().getCurrentTuil().getObjectivesInTile().size()>0)
 		{
 			String objectives = act.getC().getCurrentTuil().getObjectivesInTile().get(0);
-			//System.out.println("salut");
-			//act.getC().getCurrentTuil().setObj1(0);
-			//act.getC().getCurrentTuil().setObj1(false);
-			if(act.getC().getPrimaryObjectives().contains(act.getC().getRessource(objectives)))
+			
+			if(act.getC().getPrimaryObjectives()!=null && act.getC().getPrimaryObjectives().contains(act.getC().getRessource(objectives)))
 			{
 				if(act.getC().getRessource(objectives).getAmountCollected() < act.getC().getRessource(objectives).getQuantityNeeded()){
-					Action a=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
-					act.setLastAction(a);
-					return a.act();
+					Exploit exploit=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
+					act.setLastAction(exploit);
+					return exploit.act();
 				}
-			}
-		}
-		
-		if (act.getC().getCurrentTuil().getObj2()>0 )
-		{
-		//	act.getC().getCurrentTuil().setObj2(0);
-			//act.getC().getCurrentTuil().setObj2(false);
-	
-			Action a=new Exploit(act.getC().getPrimaryObjectives().get(1).getName());
-			act.setLastAction(a);
-			return a.act();
+				
+			}			
+			
 		}
 		
 		
-		if (act.getC().getCurrentTuil().getObj3()>0 )
-		{
-		//	act.getC().getCurrentTuil().setObj2(0);
-			//act.getC().getCurrentTuil().setObj2(false);
-	
-			Action a=new Exploit(act.getC().getPrimaryObjectives().get(2).getName());
-			act.setLastAction(a);
-			return a.act();
+		if(act.getLastAction().toString()!=null && act.getLastAction().toString().equals("Move_to")){
+			ArrayList<String> dir = new ArrayList<>();
+			dir.add("N");
+			dir.add("E");
+			dir.add("S");
+			dir.add("W");
+			
+			/**
+			 * Check surrounding for unscouted tiles
+			 */
+			for(String direction:dir){
+				if(act.getMap().getD(act.getC().getCurrentTuil(), direction)==null){
+					Scout scout=new Scout();
+					act.setLastAction(scout);
+					act.setLastDirection(direction);
+					return scout.act(direction,act);
+				}					
+			}		
+			
+			/**
+			 * Check surrounding for unexplored tiles
+			 */
+			for(String direction:dir){
+				if(!act.getMap().getD(act.getC().getCurrentTuil(), direction).isExplored()){
+					Move_to move_to=new Move_to();
+					act.setLastAction(move_to);
+					act.setLastDirection(direction);
+					return move_to.act(direction,act);
+				}					
+			}	
+			
 		}
+		
 		
 		String[] actionFinal= act.getMap().bestD(act.getC().getCurrentTuil());
 		
 		if (actionFinal[0].equals("Stop"))
 		{
-			Action stop=new Stop();
+			Stop stop=new Stop();
 			act.setLastAction(stop);
 			return stop.act();
 		}
 				
 		if (actionFinal[0].equals("Scout"))
 		{
-			Action scout=new Scout();
+			Scout scout=new Scout();
 			act.setLastAction(scout);
 			act.setLastDirection(actionFinal[1]);
 			return scout.act(actionFinal[1],act);
@@ -209,7 +280,7 @@ public class Simulator {
 		
 		if (actionFinal[0].equals("Move_to"))
 		{
-			Action move=new Move_to();
+			Move_to move=new Move_to();
 			act.setLastAction(move);
 			act.setLastDirection(actionFinal[1]);
 			return move.act(actionFinal[1],act);
@@ -217,13 +288,13 @@ public class Simulator {
 		
 		if(actionFinal[0].equals("Glimpse"))
 		{
-			Action glimpse = new Glimpse();
+			Glimpse glimpse = new Glimpse();
 			act.setLastAction(glimpse);
 			act.setLastDirection(actionFinal[1]);
 			return glimpse.act(actionFinal[1],act);
 		}
 		
-		Action stop=new Stop();
+		Stop stop=new Stop();
 		act.setLastAction(stop);
 		return stop.act(); 
 		

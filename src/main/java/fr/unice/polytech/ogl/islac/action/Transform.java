@@ -18,6 +18,10 @@ import fr.unice.polytech.ogl.islac.tool.JSONTools;
  */
 public class Transform extends Action implements JSONTools{
 	
+	public Transform(){
+		this.name = "Transform";
+	}
+	
 	public String act(HashMap<String,Integer> resource){
 		return generateJSONString(resource);
 	}
