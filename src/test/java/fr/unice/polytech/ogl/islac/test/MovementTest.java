@@ -63,7 +63,12 @@ public class MovementTest {
 		
 		decision = e.takeDecision();
 		System.out.println(decision);
-
+		/*e.acknowledgeResults("{\"cost\": 4,\"extras\": {},\"status\": \"OK\"}");
+		
+		decision = e.takeDecision();
+		System.out.println(decision);
+		*/
+		
 	}
 
 }

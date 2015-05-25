@@ -35,16 +35,6 @@ public class Arena{
 			
 	}
 	
-	public Ressources getresourceToBeTransformed(String resourceName){
-		for(Ressources res:resourceToBeTransformed){
-			if(resourceName.equals(res.getName()))
-				return res;
-		}
-		
-		return null;
-		
-	}
-	
 	public String objectivesAsString(){
 		String objectivesConsideredByArena = "ARENA OBJECTIVES : ";
 		
@@ -84,21 +74,6 @@ public class Arena{
 				}
 			}
 		}
-		
-		
-		/*
-		if(c.getObjectives().size()>0)
-		{
-			this.obj1=c.getObjectives().get(0).getName();
-		}
-		if(c.getObjectives().size()>1)
-		{
-			this.obj2=c.getObjectives().get(1).getName();
-		}
-		if(c.getObjectives().size()>2)
-		{
-			this.obj3=c.getObjectives().get(2).getName();
-		}*/
 	}
 	
 	/**
@@ -204,28 +179,6 @@ public class Arena{
 			map.get(newPos).setObjectivesInTile(resourceNeeded);
 		}
 		
-		
-		/*
-		if (ressources.contains(obj1))
-		{
-			map.get(newPos).setObj1(true);
-			map.get(newPos).setObj1(1);
-			
-		}
-		
-		if (ressources.contains(obj2))
-		{
-			map.get(newPos).setObj2(true);
-			map.get(newPos).setObj2(1);
-		}
-		
-		if (ressources.contains(obj3))
-		{
-			map.get(newPos).setObj3(true);
-			map.get(newPos).setObj3(1);
-			
-		}*/
-		
 		if (ressources.contains("FLOWER"))
 		{
 			map.get(newPos).setFlower(true);
@@ -287,28 +240,7 @@ public class Arena{
 
 	public void setListCreek(List<String> listCreek) {
 		this.listCreek = listCreek;
-	}
-
-
-	public String getObj1() {
-		return obj1;
-	}
-
-
-	public void setObj1(String obj1) {
-		this.obj1 = obj1;
-	}
-
-
-	public String getObj2() {
-		return obj2;
-	}
-
-
-	public void setObj2(String obj2) {
-		this.obj2 = obj2;
-	}
-	
+	}	
 	
 	/**
 	 * Determine the best course of action to be taken.
@@ -329,7 +261,6 @@ public class Arena{
 		for(String dir:direction){
 			
 			Tuils tileToAnalyse = getD(currentTile,dir);
-			//System.out.println("CONSIDERING " + dir + " " + tileToAnalyse);
 			
 			if(tileToAnalyse != null)
 			{
@@ -341,71 +272,6 @@ public class Arena{
 			}
 		}
 		
-		
-		//// obj1 
-		
-		actionFinal = objectiveChoice(currentTile, direction, 1);
-		if(actionFinal[0] != null)
-			return actionFinal;
-		
-		/*for (int i=0;i<direction.size();i++)
-		{
-			
-			if(getD(t,direction.get(i))!=null){
-			if(getD(t,direction.get(i)).isObj1() && !(getD(t,direction.get(i)).isOnlyFish()))
-			{
-				
-				actionFinal[1]=direction.get(i);
-				actionFinal[0]="Move_to";
-				return actionFinal;
-			}
-			}
-		}*/
-		
-	
-		
-		//// obj2
-		
-		objectiveChoice(currentTile, direction, 2);
-		if(actionFinal[0] != null)
-			return actionFinal;
-
-		/*for (int i=0;i<direction.size();i++)
-		{
-			if(getD(t,direction.get(i))!=null)
-			{
-			if(getD(t,direction.get(i)).isObj2() && !(getD(t,direction.get(i)).isOnlyFish()))
-			{
-				
-				actionFinal[1]=direction.get(i);
-				actionFinal[0]="Move_to";
-				return actionFinal;
-				
-			}
-			}
-		}	*/
-		// obj3
-		
-		objectiveChoice(currentTile, direction, 3);
-		if(actionFinal[0] != null)
-			return actionFinal;
-
-		/*for (int i=0;i<direction.size();i++)
-		{
-			if(getD(t,direction.get(i))!=null)
-			{
-			if(getD(t,direction.get(i)).isObj3() && !(getD(t,direction.get(i)).isOnlyFish()))
-			{
-				
-				actionFinal[1]=direction.get(i);
-				actionFinal[0]="Move_to";
-				return actionFinal;
-				
-			}
-			}
-		}	*/
-		
-	
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();
 		

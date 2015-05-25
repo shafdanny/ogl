@@ -226,7 +226,6 @@ public class Simulator {
 			
 		}
 		
-		
 		if(act.getLastAction().toString()!=null && act.getLastAction().toString().equals("Move_to")){
 			ArrayList<String> dir = new ArrayList<>();
 			dir.add("N");
