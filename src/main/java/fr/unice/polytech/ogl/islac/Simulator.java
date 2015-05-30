@@ -226,6 +226,7 @@ public class Simulator {
 			
 		}
 		
+		/*
 		if(act.getLastAction().toString()!=null && act.getLastAction().toString().equals("Move_to")){
 			ArrayList<String> dir = new ArrayList<>();
 			dir.add("N");
@@ -233,9 +234,8 @@ public class Simulator {
 			dir.add("S");
 			dir.add("W");
 			
-			/**
-			 * Check surrounding for unscouted tiles
-			 */
+		
+			//Check surrounding for unscouted tiles
 			for(String direction:dir){
 				if(act.getMap().getD(act.getC().getCurrentTuil(), direction)==null){
 					Scout scout=new Scout();
@@ -245,9 +245,9 @@ public class Simulator {
 				}					
 			}		
 			
-			/**
-			 * Check surrounding for unexplored tiles
-			 */
+			
+			//  Check surrounding for unexplored tiles
+			 
 			for(String direction:dir){
 				if(!act.getMap().getD(act.getC().getCurrentTuil(), direction).isExplored()){
 					Move_to move_to=new Move_to();
@@ -257,7 +257,7 @@ public class Simulator {
 				}					
 			}	
 			
-		}
+		}*/
 		
 		
 		String[] actionFinal= act.getMap().bestD(act.getC().getCurrentTuil());

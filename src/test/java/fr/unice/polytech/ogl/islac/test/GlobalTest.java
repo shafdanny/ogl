@@ -232,7 +232,7 @@ public class GlobalTest {
 		//System.out.println(decision);
 		assertEquals("land",getStringValue(decision,"action"));
 		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
-		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 550 }");
+		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 560 }");
 		decision = r.takeDecision();
 		//System.out.println("LOWPA : " + decision);
 		assertEquals("stop",getStringValue(decision,"action"));
