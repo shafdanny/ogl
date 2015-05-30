@@ -110,7 +110,7 @@ public class Simulator {
 				 * then delete it from our secondary objective list.
 				 * Also, delete the primary resource objective associated with it.
 				 */
-				if(secondaryObjectives.get(i).getAmountCollected()>=secondaryObjectives.get(i).getQuantityNeeded()/4){
+				if(secondaryObjectives.get(i).getAmountCollected()>=secondaryObjectives.get(i).getQuantityNeeded()){
 						act.getC().getSecondaryObjectives().remove(secondaryObjectives.get(i));
 						for(Ressources primObj:resourceAssociated){
 							primaryObjectives.remove(primObj);
@@ -166,7 +166,7 @@ public class Simulator {
 			
 			// Check the primary objectives that is used for secondary
 			for(Ressources primObj : primaryObjectives){
-				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded())
+				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded()/5)
 					primObj.setTransformable(true);
 			}
 			
