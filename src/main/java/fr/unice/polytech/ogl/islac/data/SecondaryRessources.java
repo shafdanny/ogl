@@ -30,7 +30,7 @@ public class SecondaryRessources extends Ressources {
 		}
 		
 		if(this.getName().equals("PLANK")){
-			Ressources wood = new Ressources("WOOD", 1);
+			Ressources wood = new Ressources("WOOD", 1*(this.getQuantityNeeded()/3)+1);
 			wood.setForSecondary(true);
 			primaryResourceNeeded.add(wood);
 		}

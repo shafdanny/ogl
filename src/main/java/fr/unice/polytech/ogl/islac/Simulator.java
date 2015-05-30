@@ -71,13 +71,8 @@ public class Simulator {
 			act.getMap().update(act.getC());
 			Land l=new Land();
 			act.setLastAction(l);
-			if(act.getC().getNbTotal()>2)
-			{
-				//return l.act(act.getMap().getListCreek().get(0),act.getC().getNbTotal()/4);	
-				return l.act(act.getMap().getListCreek().get(0),(long) 2);
-				
-			}
-			else return l.act(act.getMap().getListCreek().get(0),(long) 1);
+			
+			return l.act(act.getMap().getListCreek().get(0),(long) 1);
 				
 		}
 		
