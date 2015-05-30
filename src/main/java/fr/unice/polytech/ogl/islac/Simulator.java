@@ -166,7 +166,7 @@ public class Simulator {
 			
 			// Check the primary objectives that is used for secondary
 			for(Ressources primObj : primaryObjectives){
-				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded()/5)
+				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded())
 					primObj.setTransformable(true);
 			}
 			
