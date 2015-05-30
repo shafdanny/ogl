@@ -111,49 +111,29 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-<<<<<<< HEAD
-			    	  if(nom.equals("GLASS")){
-=======
-			    	  if(nom.equals("GLASS") && quantity*180<pa){
-			    		  pa=pa-quantity*115;
->>>>>>> parent of d5fff05... ISLAC-114
+			    	 /* if(nom.equals("GLASS")){
 			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(glass);
 			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
 			    	  }
 			    	  
-<<<<<<< HEAD
 			    	  if(nom.equals("INGOT")){
-=======
-			    	  if(nom.equals("INGOT") && quantity*55<pa){
-			    		  pa=pa-quantity*55;
->>>>>>> parent of d5fff05... ISLAC-114
 			    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(ingot);
 			    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
 			    	  }
 			    	  
-<<<<<<< HEAD
 			    	  if(nom.equals("LEATHER")){
-=======
-			    	  if(nom.equals("LEATHER") && quantity*30<pa){
-			    		  pa=pa-quantity*30;
->>>>>>> parent of d5fff05... ISLAC-114
 			    		  SecondaryRessources leather = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(leather);
 			    		  a.getC().getPrimaryObjectives().addAll(leather.getResourceNeededToTransform());
 			    	  }
 			    	  
-<<<<<<< HEAD
 			    	  if(nom.equals("RUM")){
-=======
-			    	  if(nom.equals("RUM") && quantity*60<pa){
-			    		  pa=pa-quantity*50;
->>>>>>> parent of d5fff05... ISLAC-114
 			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(rum);
 			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
-			    	  }			    	  	  
+			    	  }	*/		    	  	  
 			      }			      
 			      
 			} catch (ParseException e) {
