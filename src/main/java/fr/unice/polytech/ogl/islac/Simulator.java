@@ -150,7 +150,7 @@ public class Simulator {
 		 * Highest priority : is the energy sufficient for more exploration
 		 * Set a minimum energy level so that if the energy falls below it, stop immediately		
 		 */
-		if(act.getC().getPa()<paMax/20 || act.getC().getPa()<250){
+		if(act.getC().getPa() < 50){
 			Stop stop=new Stop();
 			act.setLastAction(stop);
 			return stop.act();
