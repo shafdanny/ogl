@@ -130,7 +130,7 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("QUARTZ"))
 			    		  {
-			    			  if(quantity*6<pa)
+			    			  if(quantity*8<pa)
 			    			  {
 			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
@@ -138,11 +138,10 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("FLOWER"))
 			    		  {
-			    			  if(quantity<pa/10)
-			    			  {
+			    			 
 			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
-			    			  }
+			    			  
 			    		  }
 			    		  if(nom.equals("ORE"))
 			    		  {
@@ -165,6 +164,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*8<pa)
 			    			  {
+			    				  
 			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
@@ -179,32 +179,32 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-			    	  if(nom.equals("GLASS") && quantity*115<pa){
-			    		  pa=pa-quantity*115;
-			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
-			    		  a.getC().getSecondaryObjectives().add(glass);
-			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
+			    	  if(nom.equals("GLASS") && quantity*180<pa){
+			    		//  pa=pa-quantity*115;
+			    		//  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
+			    		 // a.getC().getSecondaryObjectives().add(glass);
+			    		//  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("INGOT") && quantity*55<pa){
-			    		  pa=pa-quantity*55;
-			    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
-			    		  a.getC().getSecondaryObjectives().add(ingot);
-			    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
+			    		//  pa=pa-quantity*55;
+			    		 // SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
+			    		 // a.getC().getSecondaryObjectives().add(ingot);
+			    		 // a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("LEATHER") && quantity*30<pa){
-			    		  pa=pa-quantity*30;
-			    		  SecondaryRessources leather = new SecondaryRessources(nom, quantity);			    		  
-			    		  a.getC().getSecondaryObjectives().add(leather);
-			    		  a.getC().getPrimaryObjectives().addAll(leather.getResourceNeededToTransform());
+			    		 // pa=pa-quantity*30;
+			    		//  SecondaryRessources leather = new SecondaryRessources(nom, quantity);			    		  
+			    		 // a.getC().getSecondaryObjectives().add(leather);
+			    		 // a.getC().getPrimaryObjectives().addAll(leather.getResourceNeededToTransform());
 			    	  }
 			    	  
 			    	  if(nom.equals("RUM") && quantity*60<pa){
-			    		  pa=pa-quantity*50;
-			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
-			    		  a.getC().getSecondaryObjectives().add(rum);
-			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
+			    		//  pa=pa-quantity*50;
+			    		//  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
+			    		//  a.getC().getSecondaryObjectives().add(rum);
+			    		//  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
 			    	  }			    	  	  
 			      }			      
 			      
