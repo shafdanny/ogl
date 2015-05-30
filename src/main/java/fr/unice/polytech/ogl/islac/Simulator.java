@@ -141,6 +141,8 @@ public class Simulator {
 		 * If there is no more objective, stop
 		 */
 		if(act.getC().getPrimaryObjectives().size()==0 && act.getC().getSecondaryObjectives().size()==0){
+			Stop stop=new Stop();
+			act.setLastAction(stop);
 			return new Stop().act();
 		}
 		
