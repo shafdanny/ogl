@@ -130,7 +130,7 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("QUARTZ"))
 			    		  {
-			    			  if(quantity*6<pa)
+			    			  if(quantity*8<pa)
 			    			  {
 			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
@@ -138,11 +138,10 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("FLOWER"))
 			    		  {
-			    			  if(quantity<pa/10)
-			    			  {
+			    			 
 			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
-			    			  }
+			    			  
 			    		  }
 			    		  if(nom.equals("ORE"))
 			    		  {
@@ -165,6 +164,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*8<pa)
 			    			  {
+			    				  
 			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
@@ -179,7 +179,7 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-			    	  if(nom.equals("GLASS") && quantity*115<pa){
+			    	  if(nom.equals("GLASS") && quantity*180<pa){
 			    		  pa=pa-quantity*115;
 			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(glass);
