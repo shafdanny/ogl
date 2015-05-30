@@ -60,7 +60,7 @@ public class ObjectifTest {
 		//land
 		
 		
-		String s = "{ \"action\": \"land\", \n \"parameters\": {\"creek\":" + "\""+ "THIS34IS12A85CREEK87ID" + "\", \"people\":" +	2 + "} \n}";
+		String s = "{ \"action\": \"land\", \n \"parameters\": {\"creek\":" + "\""+ "THIS34IS12A85CREEK87ID" + "\", \"people\":" +	1 + "} \n}";
 		assertEquals(a.takeDecision(), s); 
 				
 		a.acknowledgeResults("{\"status\": \"OK\", \"cost\":12}");
