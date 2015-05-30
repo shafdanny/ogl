@@ -122,6 +122,8 @@ public class Simulator {
 						}
 				}
 			}
+			
+			act.getMap().update(act.getC());
 		}
 		
 		
@@ -137,6 +139,7 @@ public class Simulator {
 						act.getC().getPrimaryObjectives().remove(primaryObjectives.get(i));
 				}
 			}
+			act.getMap().update(act.getC());
 		}
 				
 		/**

@@ -1,7 +1,6 @@
 package fr.unice.polytech.ogl.islac.test;
 import static org.junit.Assert.*;
 
-
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -14,8 +13,8 @@ import org.junit.Test;
 
 import eu.ace_design.island.bot.IExplorerRaid;
 import fr.unice.polytech.ogl.islac.Explorer;
-
 import fr.unice.polytech.ogl.islac.Simulator;
+import fr.unice.polytech.ogl.islac.data.Ressources;
 
 
 
@@ -306,7 +305,7 @@ public class GlobalTest {
 		decision = expl.takeDecision();
 		//System.out.println(decision);
 		assertEquals(getStringValue(decision, "action"),"exploit");
-		System.out.println(decision);
+		//System.out.println(decision);
 		//expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 5 } }");
 		//decision = expl.takeDecision();
 		//assertEquals(getStringValue(decision, "action"),"scout");
@@ -352,23 +351,23 @@ public class GlobalTest {
 	@Test public void collectedEnoughResources(){
 		land();
 		
-		System.out.println(r.sim1.act.getC().getObjectivesAsString());
+		//System.out.println(r.sim1.act.getC().getObjectivesAsString());
 		
 		decision = r.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 
 		decision = r.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
 
 		decision = r.takeDecision();
-		System.out.println(decision);
+		//System.out.println(decision);
 		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 601 } }");
 		
 		decision = r.takeDecision();
-		System.out.println(r.sim1.act.getC().getObjectivesAsString());
-		System.out.println(decision);
+		//System.out.println(r.sim1.act.getC().getObjectivesAsString());
+		//System.out.println(decision);
 		
 	}
 	
@@ -390,9 +389,52 @@ public class GlobalTest {
 		
 	}
 	
-	public static void main(String[] args){
-		System.out.println("STARTING TEST");
-		IExplorerRaid r = new Explorer();
+	/**
+	 * Problem detected in week17. 
+	 * When an objective is completed, the robot should repeat the behaviour with another objective.
+	 */
+	@Test public void anObjectiveIsCompleted(){
+		// initialization
+		Explorer exp = new Explorer();
+		String objective = "{\"creek\": \"ebd87be3-4fce-4ee4-b03a-c935bde042f0\",\"men\": 30,\"budget\": 9000,\"objective\": [{\"amount\": 500,\"resource\": \"WOOD\"},{\"amount\": 50,\"resource\": \"FUR\"}]}";
+		exp.initialize(objective);
+		
+		// land
+		decision = exp.takeDecision();
+		System.out.println(decision);		
+		assertEquals("land", getStringValue(decision, "action"));
+		exp.acknowledgeResults("{\"cost\": 16,\"extras\": {},\"status\": \"OK\"}");
+		
+		decision = exp.takeDecision();
+		System.out.println(decision);
+		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		
+		decision = exp.takeDecision();
+		System.out.println(decision);
+		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
+
+		decision = exp.takeDecision();
+		System.out.println(decision);
+		exp.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
+		
+		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		assertTrue(exp.sim1.act.getC().getPrimaryObjectives().contains(new Ressources("WOOD", 500)));
+		
+		decision = exp.takeDecision();
+		System.out.println(decision);
+		exp.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 601 } }");
+
+		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		
+		decision = exp.takeDecision();
+		System.out.println(decision);
+		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
+		
+		assertFalse(exp.sim1.act.getC().getPrimaryObjectives().contains(new Ressources("WOOD", 500)));
+		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		
+		decision = exp.takeDecision();
+		System.out.println(decision);
 	}
 	
 }
