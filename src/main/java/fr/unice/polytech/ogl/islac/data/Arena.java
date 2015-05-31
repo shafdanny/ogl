@@ -278,6 +278,7 @@ public class Arena{
 			{
 				if(getD(currentTile,direction.get(i)).isOnlyFish() && !getD(currentTile,direction.get(i)).isGlimpsed())
 				{
+					getD(currentTile,direction.get(i)).setGlimpsed(true);
 					actionFinal[1]=direction.get(i);
 					actionFinal[0]="Glimpse";
 					return actionFinal;
