@@ -171,8 +171,11 @@ public class Simulator {
 			
 			// Check the primary objectives that is used for secondary
 			for(Ressources primObj : primaryObjectives){
-				if(primObj.isForSecondary() && primObj.getAmountCollected()>=primObj.getQuantityNeeded())
+				//System.out.println(primObj);
+				if(primObj.isForSecondary() && (primObj.getAmountCollected()>=primObj.getQuantityNeeded()))
 					primObj.setTransformable(true);
+				else
+					primObj.setTransformable(false);
 			}
 			
 			boolean transformable = true;
@@ -181,6 +184,7 @@ public class Simulator {
 			for(Ressources primRes : resourceNeededToTransform){				
 				for(Ressources primObj:primaryObjectives){
 					if(primRes.equals(primObj)){
+						//System.out.println(primObj);
 						resPrimInObjAndNeeded.add(primObj);
 						if(!primObj.isTransformable())
 							transformable = false;
@@ -197,9 +201,10 @@ public class Simulator {
 				HashMap<String, Integer> ressourceNeeded = new HashMap<>();
 				
 				for(Ressources res:resPrimInObjAndNeeded){
+					System.out.println(res);
 					ressourceNeeded.put(res.getName(), (int) res.getQuantityNeeded());
 					res.addAmountCollected(-(int)res.getQuantityNeeded());
-					System.out.println(res);
+					
 				}
 				
 				Transform transform = new Transform();

@@ -49,7 +49,7 @@ public class TransformTest {
 	/**
 	 * 
 	 */
-	@Ignore public void explorerTransformTest(){
+	@Test public void explorerTransformTest(){
 		Explorer e = new Explorer();
 		e.initialize("{\"creek\": \"b920045-505d-450a-a167-c57c7d4b02ff\",\"men\": 25,\"budget\": 9000,\"objective\": [{\"amount\": 50,\"resource\": \"PLANK\"},{\"amount\": 500,\"resource\": \"FUR\"}]}");
 		String decision = e.takeDecision();
@@ -102,7 +102,7 @@ public class TransformTest {
 		e.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 3,\"kind\": \"PLANK\"},\"status\": \"OK\"}");
 		
 		decision = e.takeDecision();
-		//System.out.println(decision);	
+		System.out.println(decision);	
 		//System.out.println(e.sim1.act.getC().getObjectivesAsString());
 	}
 	
