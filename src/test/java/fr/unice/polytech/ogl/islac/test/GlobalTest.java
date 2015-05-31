@@ -86,7 +86,7 @@ public class GlobalTest {
 		list.add(objective);
 				
 		obj.put("creek", "THIS34IS12A85CREEK87ID"); // cannot use creekId ???
-		obj.put("budget", new Integer(600));
+		obj.put("budget", new Integer(6000));
 		obj.put("men", new Integer(50));
 		obj.put("objective", list);
 		
@@ -171,8 +171,9 @@ public class GlobalTest {
 		land();
 		
 		decision = r.takeDecision();
+		System.out.println(r.sim1.act.getC().getObjectivesAsString());
 		assertEquals("scout",getStringValue(decision,"action"));
-		//System.out.println(decision);
+		System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
 		assertEquals("scout",getStringValue(decision,"action"));
@@ -196,10 +197,11 @@ public class GlobalTest {
 	@Test public void scoutedResourceTile(){
 		land();
 		
-		decision = r.takeDecision();
-		//System.out.println(decision);
-		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
+		System.out.println("SCOUTEDRESOURCETILE");
 		
+		decision = r.takeDecision();
+		System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
 		String dir = "";
 		
@@ -232,7 +234,7 @@ public class GlobalTest {
 		//System.out.println(decision);
 		assertEquals("land",getStringValue(decision,"action"));
 		assertEquals(creekId,getStringValue(decision,"parameters","creek"));
-		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 560 }");
+		r.acknowledgeResults("{ \"status\":\"OK\", \"cost\": 5960 }");
 		decision = r.takeDecision();
 		//System.out.println("LOWPA : " + decision);
 		assertEquals("stop",getStringValue(decision,"action"));
