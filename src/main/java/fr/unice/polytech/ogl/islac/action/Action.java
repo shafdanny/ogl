@@ -102,7 +102,7 @@ public class Action {
 			    	  if(!(nom.equals("GLASS")) && !(nom.equals("PLANK")) && !nom .equals("INGOT") 
 			    			  && !nom.equals("LEATHER") && !nom.equals("RUM"))
 			    	  {
-			    		  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    		 // a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    	  }
 			    	  
 			    	  if(nom.equals("PLANK")){
@@ -111,7 +111,7 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-			    	 if(nom.equals("GLASS")){
+			    	/* if(nom.equals("GLASS")){
 			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(glass);
 			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
@@ -133,7 +133,7 @@ public class Action {
 			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(rum);
 			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
-			    	  }		    	  	  
+			    	  }	*/	    	  	  
 			      }			      
 			      
 			} catch (ParseException e) {
