@@ -67,7 +67,7 @@ public class Week19Test {
 
 		decision = expl.takeDecision();
 		System.out.println(decision);
-		expl.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 3,\"kind\": \"GLASS\"},\"status\": \"OK\"}");
+	/*	expl.acknowledgeResults("{\"cost\": 5,\"extras\": {\"production\": 3,\"kind\": \"GLASS\"},\"status\": \"OK\"}");
 
 		decision = expl.takeDecision();
 		System.out.println(decision);
@@ -160,7 +160,7 @@ public class Week19Test {
 		//System.out.println(expl.sim1.act.getC().getObjectivesAsString());
 		
 		decision = expl.takeDecision();
-		//System.out.println(decision);
+		//System.out.println(decision);*/
 	}
 
 }

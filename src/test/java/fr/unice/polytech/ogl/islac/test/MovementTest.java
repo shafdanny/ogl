@@ -23,7 +23,7 @@ public class MovementTest {
 
 		decision = e.takeDecision();
 		System.out.println(decision);
-		e.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 1,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		/*e.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 1,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
 
 		decision = e.takeDecision();
 		System.out.println(decision);

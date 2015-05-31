@@ -174,7 +174,7 @@ public class TransformTest {
 		
 		decision = e.takeDecision();
 		//System.out.println(decision);
-		e.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
+		/*e.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
 		
 		decision = e.takeDecision();
 		//System.out.println(decision);		
