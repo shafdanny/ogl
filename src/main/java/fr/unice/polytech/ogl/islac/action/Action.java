@@ -121,7 +121,7 @@ public class Action {
 			    		  
 			    		  if(nom.equals("SUGAR_CANE"))
 			    		  {
-			    			  if(quantity*4<pa)
+			    			  if(quantity*2<pa)
 			    			  {
 			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
@@ -129,7 +129,7 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("QUARTZ"))
 			    		  {
-			    			  if(quantity*8<pa)
+			    			  if(quantity*4<pa)
 			    			  {
 			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
@@ -144,7 +144,7 @@ public class Action {
 			    		  }
 			    		  if(nom.equals("ORE"))
 			    		  {
-			    			  if(quantity*4<pa)
+			    			  if(quantity*3<pa)
 			    			  {
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
@@ -160,7 +160,7 @@ public class Action {
 			    		  
 			    		  if(nom.equals("FUR"))
 			    		  {
-			    			  if(quantity*8<pa)
+			    			  if(quantity*5<pa)
 			    			  {
 			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
