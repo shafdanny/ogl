@@ -106,7 +106,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*2<pa)
 			    			  {
-			    				  pa=pa-quantity*2;
+			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -114,24 +114,24 @@ public class Action {
 			    		  {
 			    			  if(quantity<pa)
 			    			  {
-			    				  pa=pa-quantity;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
 			    		  
 			    		  if(nom.equals("SUGAR_CANE"))
 			    		  {
-			    			  if(quantity*4<pa)
+			    			  if(quantity*2<pa)
 			    			  {
-			    				  pa=pa-quantity*4;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
 			    		  if(nom.equals("QUARTZ"))
 			    		  {
-			    			  if(quantity*8<pa)
+			    			  if(quantity*4<pa)
 			    			  {
-			    				  pa=pa-quantity*8;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -146,7 +146,6 @@ public class Action {
 			    		  {
 			    			  if(quantity*4<pa)
 			    			  {
-			    				  pa=pa-quantity*4;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -154,51 +153,66 @@ public class Action {
 			    		  {
 			    			  if(quantity*1<pa)
 			    			  {
-			    				  pa=pa-quantity;
+			    				
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
 			    		  
 			    		  if(nom.equals("FUR"))
 			    		  {
-			    			  if(quantity*8<pa)
+			    			  if(quantity*5<pa)
 			    			  {
 			    				  
-			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
 			    	  }
 			    	  
 			    	  if(nom.equals("PLANK")){
+			    			  
 			    		  SecondaryRessources plank = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(plank);
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
 			    	 if(nom.equals("GLASS")){
-			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
+			    		 
+			    		 if(quantity*80<pa)
+			    		 {
+			    			 SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
+			    		 
 			    		  a.getC().getSecondaryObjectives().add(glass);
 			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
-			    	  }
+			    		 }
+			    	 }
 			    	  
 			    	  if(nom.equals("INGOT")){
-			    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
-			    		  a.getC().getSecondaryObjectives().add(ingot);
-			    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
+			    		  if(quantity*55<pa)
+			    		  {
+				    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
+				    		  a.getC().getSecondaryObjectives().add(ingot);
+				    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
+			    	  
+			    		  }
 			    	  }
 			    	  
 			    	  if(nom.equals("LEATHER")){
+			    		  if(quantity*40<pa)
+			    		  {
 			    		  SecondaryRessources leather = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(leather);
 			    		  a.getC().getPrimaryObjectives().addAll(leather.getResourceNeededToTransform());
+			    		  }
 			    	  }
 			    	  
 			    	  if(nom.equals("RUM")){
+			    		  if(quantity*40<pa)
+			    		  {
 			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(rum);
 			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
-			    	  }		  	  	  
+			    		  }		
+			    	  }
 			      }			      
 			      
 			} catch (ParseException e) {
