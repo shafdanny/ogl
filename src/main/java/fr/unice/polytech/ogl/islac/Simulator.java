@@ -174,13 +174,13 @@ public class Simulator {
 					primObj.setTransformable(false);
 			}
 			
-			boolean transformable = true;
-						
 			// Check for each secondary objectives...
 			for(SecondaryRessources secRes:secondaryObjectives){
 				// Get the resources needed to transform
 				ArrayList<Ressources> resourceNeededToTransform = secRes.getResourceNeededToTransform();
 				ArrayList<Ressources> resPrimInObjAndNeeded = new ArrayList<>();
+				
+				boolean transformable = true;
 				
 				/**
 				 * for each of the primary resource associated to a secondary
