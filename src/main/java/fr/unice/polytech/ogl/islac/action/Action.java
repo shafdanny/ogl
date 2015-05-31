@@ -175,7 +175,7 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-			    	 if(nom.equals("GLASS")){
+			    	/* if(nom.equals("GLASS")){
 			    		 
 			    		 if(quantity*80<pa)
 			    		 {
@@ -185,8 +185,8 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
 			    		 }
 			    	 }
-			    	  
-			    	  if(nom.equals("INGOT")){
+			    	  */
+			    	 /* if(nom.equals("INGOT")){
 			    		  if(quantity*55<pa)
 			    		  {
 				    		  SecondaryRessources ingot = new SecondaryRessources(nom, quantity);			    		  
@@ -194,7 +194,7 @@ public class Action {
 				    		  a.getC().getPrimaryObjectives().addAll(ingot.getResourceNeededToTransform());
 			    	  
 			    		  }
-			    	  }
+			    	  }*/
 			    	  
 			    	  if(nom.equals("LEATHER")){
 			    		  if(quantity*40<pa)
@@ -205,14 +205,14 @@ public class Action {
 			    		  }
 			    	  }
 			    	  
-			    	  if(nom.equals("RUM")){
+			    	/*  if(nom.equals("RUM")){
 			    		  if(quantity*40<pa)
 			    		  {
 			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(rum);
 			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
 			    		  }		
-			    	  }
+			    	  }*/
 			      }			      
 			      
 			} catch (ParseException e) {
