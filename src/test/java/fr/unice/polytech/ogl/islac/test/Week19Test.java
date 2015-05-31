@@ -22,6 +22,48 @@ public class Week19Test {
 		
 		decision = expl.takeDecision();
 		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": []},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"QUARTZ\"]},\"status\": \"OK\"}");
+		
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 7 } }");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": []},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"QUARTZ\"]},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 7 } }");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"QUARTZ\"]},\"status\": \"OK\"}");
+
+		decision = expl.takeDecision();
+		System.out.println(decision);
+		expl.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
+
+		System.out.println(expl.sim1.act.getC().getObjectivesAsString());
+		
+		decision = expl.takeDecision();
+		System.out.println(decision);
 	}
 
 }
