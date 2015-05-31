@@ -101,7 +101,7 @@ public class Simulator {
 					for(Ressources obj:primaryObjectives){
 						if(prim.equals(obj))
 							resourceAssociated.add(obj);
-							//System.out.println(obj);
+							System.out.println(obj);
 					}
 				}
 				
