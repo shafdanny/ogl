@@ -106,7 +106,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*2<pa)
 			    			  {
-			    				  pa=pa-quantity*2;
+			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -114,7 +114,7 @@ public class Action {
 			    		  {
 			    			  if(quantity<pa)
 			    			  {
-			    				  pa=pa-quantity;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -123,7 +123,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*4<pa)
 			    			  {
-			    				  pa=pa-quantity*4;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -131,7 +131,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*8<pa)
 			    			  {
-			    				  pa=pa-quantity*8;
+			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -146,7 +146,6 @@ public class Action {
 			    		  {
 			    			  if(quantity*4<pa)
 			    			  {
-			    				  pa=pa-quantity*4;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -154,7 +153,7 @@ public class Action {
 			    		  {
 			    			  if(quantity*1<pa)
 			    			  {
-			    				  pa=pa-quantity;
+			    				
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
@@ -164,7 +163,6 @@ public class Action {
 			    			  if(quantity*8<pa)
 			    			  {
 			    				  
-			    				  pa=pa-quantity*8;
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
 			    			  }
 			    		  }
