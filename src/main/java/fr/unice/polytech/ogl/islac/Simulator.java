@@ -215,20 +215,25 @@ public class Simulator {
 			
 		}
 		
+		// check for primary objectives in current tile
 		if (act.getC().getCurrentTuil().getObjectivesInTile()!=null && act.getC().getCurrentTuil().getObjectivesInTile().size()>0)
 		{
-			String objectives = act.getC().getCurrentTuil().getObjectivesInTile().get(0);
-			
-			if(act.getC().getPrimaryObjectives()!=null && act.getC().getPrimaryObjectives().contains(act.getC().getRessource(objectives)))
-			{
-				if(act.getC().getRessource(objectives).getAmountCollected() < act.getC().getRessource(objectives).getQuantityNeeded()){
-					Exploit exploit=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
-					act.setLastAction(exploit);
-					return exploit.act();
-				}
+			for(String objective : act.getC().getCurrentTuil().getObjectivesInTile()){
+				System.out.println("objectiveInTIle: " + objective);
 				
-			}			
-			
+				ArrayList<Ressources> primaryObjectives = act.getC().getPrimaryObjectives();
+				
+				for(Ressources res:primaryObjectives){
+					if(res.getName().equals(objective) && res.getAmountCollected()<res.getQuantityNeeded())
+					{
+						System.out.println(res);
+						Exploit exploit=new Exploit(act.getC().getCurrentTuil().getObjectivesInTile().get(0));
+						act.setLastAction(exploit);
+						return exploit.act();
+					}
+				}
+			}
+					
 		}
 		
 		/*
