@@ -102,7 +102,72 @@ public class Action {
 			    	  if(!(nom.equals("GLASS")) && !(nom.equals("PLANK")) && !nom .equals("INGOT") 
 			    			  && !nom.equals("LEATHER") && !nom.equals("RUM"))
 			    	  {
-			    		 // a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    		  if(nom.equals("WOOD"))
+			    		  {
+			    			  if(quantity*2<pa)
+			    			  {
+			    				  pa=pa-quantity*2;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  if(nom.equals("FISH"))
+			    		  {
+			    			  if(quantity<pa)
+			    			  {
+			    				  pa=pa-quantity;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  
+			    		  if(nom.equals("SUGAR_CANE"))
+			    		  {
+			    			  if(quantity*4<pa)
+			    			  {
+			    				  pa=pa-quantity*4;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  if(nom.equals("QUARTZ"))
+			    		  {
+			    			  if(quantity*8<pa)
+			    			  {
+			    				  pa=pa-quantity*8;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  if(nom.equals("FLOWER"))
+			    		  {
+			    			 
+			    				  
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  
+			    		  }
+			    		  if(nom.equals("ORE"))
+			    		  {
+			    			  if(quantity*4<pa)
+			    			  {
+			    				  pa=pa-quantity*4;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  if(nom.equals("FRUITS"))
+			    		  {
+			    			  if(quantity*1<pa)
+			    			  {
+			    				  pa=pa-quantity;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
+			    		  
+			    		  if(nom.equals("FUR"))
+			    		  {
+			    			  if(quantity*8<pa)
+			    			  {
+			    				  
+			    				  pa=pa-quantity*8;
+			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
+			    			  }
+			    		  }
 			    	  }
 			    	  
 			    	  if(nom.equals("PLANK")){
@@ -111,7 +176,7 @@ public class Action {
 			    		  a.getC().getPrimaryObjectives().addAll(plank.getResourceNeededToTransform());			    		  
 			    	  }
 			    	  
-			    	/* if(nom.equals("GLASS")){
+			    	 if(nom.equals("GLASS")){
 			    		  SecondaryRessources glass = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(glass);
 			    		  a.getC().getPrimaryObjectives().addAll(glass.getResourceNeededToTransform());
@@ -133,7 +198,7 @@ public class Action {
 			    		  SecondaryRessources rum = new SecondaryRessources(nom, quantity);			    		  
 			    		  a.getC().getSecondaryObjectives().add(rum);
 			    		  a.getC().getPrimaryObjectives().addAll(rum.getResourceNeededToTransform());
-			    	  }	*/	    	  	  
+			    	  }		    	  	  
 			      }			      
 			      
 			} catch (ParseException e) {
