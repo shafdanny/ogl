@@ -271,6 +271,20 @@ public class Arena{
 				}
 			}
 		}
+		// is really watter
+		for(int i=0;i<direction.size();i++)
+		{
+			if(getD(currentTile,direction.get(i))!=null)
+			{
+				if(getD(currentTile,direction.get(i)).isOnlyFish() && !getD(currentTile,direction.get(i)).isGlimpsed())
+				{
+					getD(currentTile,direction.get(i)).setGlimpsed(true);
+					actionFinal[1]=direction.get(i);
+					actionFinal[0]="Glimpse";
+					return actionFinal;
+				}
+			}
+		}
 		
 		//// isScouted
 		ArrayList<String> newDir=new ArrayList<String>();

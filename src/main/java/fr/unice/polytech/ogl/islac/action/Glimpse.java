@@ -67,7 +67,7 @@ public class Glimpse extends Action {
 		    	  JSONArray terrain = (JSONArray)case2array.get(i);
 		    	  String typeOfTerrain = (String) terrain.get(0);
 		    	  //System.out.println(typeOfTerrain);
-		    	  if(!typeOfTerrain.equals("OCEAN")){
+		    	  if(!typeOfTerrain.equals("OCEAN")&& !typeOfTerrain.equals("LAKES")){
 		    		  a.getMap().getD(a.getC().getCurrentTuil(), a.getLastDirection()).setOnlyFish(false);
 		    	  }
 		      }

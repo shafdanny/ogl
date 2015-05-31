@@ -22,7 +22,7 @@ private Pos pos;
 
 private boolean isOnlyFish;
 private int altitude;
-
+private boolean isGlimpsed=false;
 private boolean isExplored;
 
 private ArrayList<String> objectivesInTile;
@@ -254,6 +254,14 @@ public String toString(){
 		tileDetails += " EXPLORED : " + isExplored;
 	}
 	return tileDetails;
+}
+
+public boolean isGlimpsed() {
+	return isGlimpsed;
+}
+
+public void setGlimpsed(boolean isGlimpsed) {
+	this.isGlimpsed = isGlimpsed;
 }
 
 
