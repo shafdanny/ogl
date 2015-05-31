@@ -161,14 +161,10 @@ public class Simulator {
 		 * If we have secondary objectives...
 		 */
 		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
-			
-			// Get a secondary objective
-			SecondaryRessources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
-			// Get the primary resources needed for this secondary objective
-			ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.getResourceNeededToTransform();
-			// Get all the primary objectives
+			ArrayList<SecondaryRessources> secondaryObjectives = act.getC().getSecondaryObjectives();
 			ArrayList<Ressources> primaryObjectives = act.getC().getPrimaryObjectives();
 			
+
 			// Check the primary objectives that is used for secondary
 			for(Ressources primObj : primaryObjectives){
 				//System.out.println(primObj);
@@ -179,40 +175,61 @@ public class Simulator {
 			}
 			
 			boolean transformable = true;
-			ArrayList<Ressources> resPrimInObjAndNeeded = new ArrayList<>();
-			
-			for(Ressources primRes : resourceNeededToTransform){				
-				for(Ressources primObj:primaryObjectives){
-					if(primRes.equals(primObj)){
-						//System.out.println(primObj);
-						resPrimInObjAndNeeded.add(primObj);
-						if(!primObj.isTransformable())
-							transformable = false;
+						
+			// Check for each secondary objectives...
+			for(SecondaryRessources secRes:secondaryObjectives){
+				// Get the resources needed to transform
+				ArrayList<Ressources> resourceNeededToTransform = secRes.getResourceNeededToTransform();
+				ArrayList<Ressources> resPrimInObjAndNeeded = new ArrayList<>();
+				
+				/**
+				 * for each of the primary resource associated to a secondary
+				 * search for the resource in primary objective.
+				 * If we have the minimum for all the primary resource needed,
+				 * we can proceed to transform
+				 */				
+				for(Ressources primRes : resourceNeededToTransform){				
+					for(Ressources primObj:primaryObjectives){
+						if(primRes.equals(primObj)){
+							//System.out.println(primObj);
+							resPrimInObjAndNeeded.add(primObj);
+							if(!primObj.isTransformable())
+								transformable = false;
+						}
 					}
 				}
+				
+				/**
+				 * After exhaustive checking, we are sure that we can transform the primary resources
+				 */
+				if(transformable){
+					HashMap<String, Integer> ressourceNeeded = new HashMap<>();
+					
+					for(Ressources res:resPrimInObjAndNeeded){
+						System.out.println(res);
+						ressourceNeeded.put(res.getName(), (int) res.getQuantityNeeded());
+						res.addAmountCollected(-(int)res.getQuantityNeeded());
+						
+					}
+					
+					Transform transform = new Transform();
+					act.setLastAction(transform);
+					return transform.act(ressourceNeeded);
+				}
+
 			}
+			
+			// Get a secondary objective
+			//SecondaryRessources secondaryObjective = act.getC().getSecondaryObjectives().get(0);			
+			// Get the primary resources needed for this secondary objective
+			//ArrayList<Ressources> resourceNeededToTransform = secondaryObjective.getResourceNeededToTransform();
+			// Get all the primary objectives
+			
+			
 						
 			//System.out.println(transformable);
 			
-			/**
-			 * After exhaustive checking, we are sure that we can transform the primary resources
-			 */
-			if(transformable){
-				HashMap<String, Integer> ressourceNeeded = new HashMap<>();
-				
-				for(Ressources res:resPrimInObjAndNeeded){
-					System.out.println(res);
-					ressourceNeeded.put(res.getName(), (int) res.getQuantityNeeded());
-					res.addAmountCollected(-(int)res.getQuantityNeeded());
-					
-				}
-				
-				Transform transform = new Transform();
-				act.setLastAction(transform);
-				return transform.act(ressourceNeeded);
-			}
-			
-			
+						
 		}
 		
 		// check for primary objectives in current tile
