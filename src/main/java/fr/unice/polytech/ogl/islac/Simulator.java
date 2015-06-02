@@ -93,7 +93,7 @@ public class Simulator {
 				ArrayList<Ressources> getPrim = secondaryObjectives.get(i).getResourceNeededToTransform();
 				ArrayList<Ressources> resourceAssociated = new ArrayList<>();
 				
-				/**
+				/*
 				 * Store the primary resources that exist in the objective and associated
 				 * with a secondary resources in a new ArrayList
 				 */
@@ -105,7 +105,7 @@ public class Simulator {
 					}
 				}
 				
-				/**
+				/*
 				 * If a secondary objective is completed (amount collected >= quantity needed)
 				 * then delete it from our secondary objective list.
 				 * Also, delete the primary resource objective associated with it.
@@ -122,7 +122,7 @@ public class Simulator {
 		}
 		
 		
-		/**
+		/*
 		 * Update the status of primary objectives.
 		 */
 		if(act.getC().getPrimaryObjectives()!=null){
@@ -137,7 +137,7 @@ public class Simulator {
 			act.getMap().update(act.getC());
 		}
 				
-		/**
+		/*
 		 * If there is no more objective, stop
 		 */
 		if(act.getC().getPrimaryObjectives().size()==0 && act.getC().getSecondaryObjectives().size()==0){
@@ -146,7 +146,7 @@ public class Simulator {
 			return new Stop().act();
 		}
 		
-		/**
+		/*
 		 * Highest priority : is the energy sufficient for more exploration
 		 * Set a minimum energy level so that if the energy falls below it, stop immediately		
 		 */
@@ -157,7 +157,7 @@ public class Simulator {
 			
 		}
 		//System.out.println(act.getC().getObjectivesAsString());
-		/**
+		/*
 		 * If we have secondary objectives...
 		 */
 		if(act.getC().getSecondaryObjectives() != null && act.getC().getSecondaryObjectives().size() > 0){
@@ -182,7 +182,7 @@ public class Simulator {
 				
 				boolean transformable = true;
 				
-				/**
+				/*
 				 * for each of the primary resource associated to a secondary
 				 * search for the resource in primary objective.
 				 * If we have the minimum for all the primary resource needed,
@@ -199,7 +199,7 @@ public class Simulator {
 					}
 				}
 				
-				/**
+				/*
 				 * After exhaustive checking, we are sure that we can transform the primary resources
 				 */
 				if(transformable){
