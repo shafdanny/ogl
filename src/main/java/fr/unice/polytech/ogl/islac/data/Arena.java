@@ -257,7 +257,8 @@ public class Arena{
 		direction.add("S");
 		direction.add("E");
 		direction.add("W"); 
-				
+		
+		// si un objectif est sur un case adjacente on s'y déplace
 		for(String dir:direction){
 			
 			Tuils tileToAnalyse = getD(currentTile,dir);
@@ -271,6 +272,7 @@ public class Arena{
 				}
 			}
 		}
+		/*
 		// is really watter
 		for(int i=0;i<direction.size();i++)
 		{
@@ -284,9 +286,9 @@ public class Arena{
 					return actionFinal;
 				}
 			}
-		}
+		}*/
 		
-		//// isScouted
+		//// isScouted on scout les éventuelles tiles adjacentes qui ne le sont pas
 		ArrayList<String> newDir=new ArrayList<String>();
 		
 		Tuils a=getD(currentTile,direction.get(0));
@@ -317,7 +319,9 @@ public class Arena{
 				return actionFinal;
 			}*/
 		
-		/// Choix de la destination ( évitement des cases d'eau / favorisation des cases non explorées 
+			
+		/// Choix de la destination une fois que les 4 cases autour de nous sont scouté
+		//( évitement des cases d'eau / favorisation des cases non explorées 
 			
 		ArrayList<String> newDir2=new ArrayList();
 			
@@ -352,7 +356,7 @@ public class Arena{
 			}
 		}
 		
-		// isOnlyFish
+		// si toutes les cases étaaient déjà exploré direction aléatoire sauf l'eau qu'on évite
 		ArrayList<String> newDir3=new ArrayList();
 		for (int i=0;i<direction.size();i++)
 		{
@@ -362,7 +366,7 @@ public class Arena{
 				
 				if(! getD(currentTile,direction.get(i)).isOnlyFish())
 				{
-					System.out.println("isonlyfish");
+					
 					newDir3.add(direction.get(i));
 					actionFinal[0]="Move_to";
 					
@@ -382,7 +386,7 @@ public class Arena{
 			return actionFinal;
 		}
 		
-		//glimps
+		//glimps si on est entouré de 4 cases "d'eau" ne peut arrivé que sur la case de départ si le glimps est désactivé par défault
 		
 		
 		
