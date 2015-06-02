@@ -104,7 +104,7 @@ public class Action {
 			    	  {
 			    		  if(nom.equals("WOOD"))
 			    		  {
-			    			  if(quantity*2<pa)
+			    			  if(quantity<pa)
 			    			  {
 			    				  
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
