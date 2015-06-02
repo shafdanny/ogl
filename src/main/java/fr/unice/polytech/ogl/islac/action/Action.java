@@ -121,7 +121,7 @@ public class Action {
 			    		  
 			    		  if(nom.equals("SUGAR_CANE"))
 			    		  {
-			    			  if(quantity*2<pa)
+			    			  if(quantity*1.5<pa)
 			    			  {
 			    				 
 			    				  a.getC().getPrimaryObjectives().add(new Ressources(nom,quantity));
