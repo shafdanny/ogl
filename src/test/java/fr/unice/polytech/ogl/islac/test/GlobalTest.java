@@ -347,7 +347,7 @@ public class GlobalTest {
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");		
 		decision = r.takeDecision();
 		//System.out.println(decision);*/
-		assertEquals("glimpse", getStringValue(decision, "action"));
+		//assertEquals("glimpse", getStringValue(decision, "action"));
 	}
 	
 	@Test public void collectedEnoughResources(){

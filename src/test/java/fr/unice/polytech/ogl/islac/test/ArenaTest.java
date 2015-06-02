@@ -109,10 +109,10 @@ public class ArenaTest {
 		assertTrue(a.getMap().containsKey(p));
 		assertEquals(a.getMap().get(p).getAltitude(), 40);
 		
-		/*
-		assertEquals(a.getMap().get(p).getObj1(), 1);
-		assertEquals(a.getMap().get(p).getObj2(), 1);
-		assertEquals(a.getMap().get(p).getObj3(), 1);*/
+		
+	//	assertEquals(a.getMap().get(p).getObj1(), 1);
+	//	assertEquals(a.getMap().get(p).getObj2(), 1);
+	//	assertEquals(a.getMap().get(p).getObj3(), 1);
 
 		assertTrue(a.getMap().get(p).isWood());
 		assertTrue(a.getMap().get(p).isFlower());
