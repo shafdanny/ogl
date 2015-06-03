@@ -337,8 +337,8 @@ public class GlobalTest {
 		
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
-		//System.out.println(decision);
-		/*r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
+		System.out.println(decision);
+		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
 		decision = r.takeDecision();
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
@@ -346,30 +346,30 @@ public class GlobalTest {
 		//System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");		
 		decision = r.takeDecision();
-		//System.out.println(decision);*/
-		//assertEquals("glimpse", getStringValue(decision, "action"));
+		System.out.println(decision);
+		assertEquals("glimpse", getStringValue(decision, "action"));
 	}
 	
 	@Test public void collectedEnoughResources(){
 		land();
 		
-		//System.out.println(r.sim1.act.getC().getObjectivesAsString());
+		System.out.println(r.sim1.act.getC().getObjectivesAsString());
 		
 		decision = r.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		r.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FUR\",\"WOOD\"]},\"status\": \"OK\"}");
 
 		decision = r.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 21}");
 
 		decision = r.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		r.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 601 } }");
 		
 		decision = r.takeDecision();
-		//System.out.println(r.sim1.act.getC().getObjectivesAsString());
-		//System.out.println(decision);
+		System.out.println(r.sim1.act.getC().getObjectivesAsString());
+		System.out.println(decision);
 		
 	}
 	
@@ -381,13 +381,13 @@ public class GlobalTest {
 		String objective = "{\"creek\": \"84886921-6aec-4fcc-89e0-17c7b2c6d48d\",\"men\": 15,\"budget\": 10000,\"objective\": [{\"amount\": 15,\"resource\": \"GLASS\"}{\"amount\": 400,\"resource\": \"QUARTZ\"},{\"amount\": 100,\"resource\": \"FUR\"},{\"amount\": 500,\"resource\": \"PLANK\"}]}";
 		
 		expl.initialize(objective);
-		//System.out.println(objective);
+		System.out.println(objective);
 		decision = expl.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		expl.acknowledgeResults("{\"cost\": 16,\"extras\": {},\"status\": \"OK\"}");
 		
 		decision = expl.takeDecision();
-		//System.out.println(decision);
+		System.out.println(decision);
 		
 	}
 	
@@ -406,37 +406,37 @@ public class GlobalTest {
 		System.out.println(decision);		
 		assertEquals("land", getStringValue(decision, "action"));
 		exp.acknowledgeResults("{\"cost\": 16,\"extras\": {},\"status\": \"OK\"}");
-		
+		exp.sim1.act.getListCreek();
 		decision = exp.takeDecision();
 		System.out.println(decision);
 		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"FISH\"]},\"status\": \"OK\"}");
 		
 		decision = exp.takeDecision();
 		System.out.println(decision);
-		/*exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
-*/
+		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
+
 		decision = exp.takeDecision();
 		assertEquals(decision,decision);
-		//exp.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
-		//assert(decision);
-		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());*/
-		//assertTrue(exp.sim1.act.getC().getPrimaryObjectives().contains(new Ressources("WOOD", 500)));
-		/*
+		exp.acknowledgeResults("{\"cost\": 3,\"extras\": {},\"status\": \"OK\"}");
+		
+		System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		assertTrue(exp.sim1.act.getC().getPrimaryObjectives().contains(new Ressources("WOOD", 500)));
+		
 		decision = exp.takeDecision();
 		System.out.println(decision);
 		exp.acknowledgeResults("{\"status\":\"OK\", \"cost\": 37, \"extras\": { \"amount\": 601 } }");
 
-		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		System.out.println(exp.sim1.act.getC().getObjectivesAsString());
 		
 		decision = exp.takeDecision();
 		System.out.println(decision);
 		exp.acknowledgeResults("{\"cost\": 6,\"extras\": {\"altitude\": 0,\"resources\": [\"WOOD\"]},\"status\": \"OK\"}");
 		
 		assertFalse(exp.sim1.act.getC().getPrimaryObjectives().contains(new Ressources("WOOD", 500)));
-		//System.out.println(exp.sim1.act.getC().getObjectivesAsString());
+		System.out.println(exp.sim1.act.getC().getObjectivesAsString());
 		
 		decision = exp.takeDecision();
-		System.out.println(decision);*/
+		System.out.println(decision);
 	}
 	
 }

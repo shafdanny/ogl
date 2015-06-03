@@ -150,7 +150,7 @@ public static String oppose(String d)
 	}
 	if (d=="W")
 	{
-		return "W";
+		return "E";
 	}
 	if (d=="E")
 	{

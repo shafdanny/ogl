@@ -290,7 +290,10 @@ public class Action {
 		this.c = c;
 	}
 
-
+public void setName(String name)
+{
+	this.name=name;
+}
 
 	public List<String> getListCreek() {
 		return listCreek;
