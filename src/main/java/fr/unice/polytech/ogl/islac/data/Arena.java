@@ -127,7 +127,7 @@ public class Arena{
 	 * Méthode getD, renvoie la tuille qui correspond à la destination  
 	 * en partant d'une tuille de réference à condition que celle ci soit
 	 * ajouter dans la hashmap à partir de addTuils ou de scout
-	 * @param t, d 
+	 * @param t, d
 	 *
 	 */
 	
@@ -273,7 +273,10 @@ public class Arena{
 			}
 		}
 		/*
-		// is really watter
+		// si on a une case avec que du poisson est près de nous
+		// et qu'on ne l'a jamais glimpsé on la glimps pour vérifier que 
+		// c'est bien de l'eau
+		
 		for(int i=0;i<direction.size();i++)
 		{
 			if(getD(currentTile,direction.get(i))!=null)
@@ -288,7 +291,7 @@ public class Arena{
 			}
 		}*/
 		
-		//// isScouted on scout les éventuelles tiles adjacentes qui ne le sont pas
+		//// isScouted on scout les éventuelles tiles adjacentes qui ne l'ont jamais été
 		ArrayList<String> newDir=new ArrayList<String>();
 		
 		Tuils a=getD(currentTile,direction.get(0));
@@ -309,7 +312,8 @@ public class Arena{
 			}
 				
 		
-		/// lessExplored
+		/// lessExplored servait à choisir la direction vers laquelle 
+		// on avait globalement le moins exploré
 			
 			/*String dir2=lessExplored(t);
 			if (! dir2.equals(""))
@@ -387,7 +391,9 @@ public class Arena{
 		}
 		
 		//glimps si on est entouré de 4 cases "d'eau" ne peut arrivé que sur la case de départ si le glimps est désactivé par défault
-		
+		// sert à se débloquer si on a 4 case avec que du poisson autour de nous
+		// sert uniquement si on a désactivé le glimps qui vérifie si les cases qu'on scout
+		// et qui ne contiennent que du poisson sont vrraiment de l'eau
 		
 		
 		s=direction.size();
@@ -434,8 +440,7 @@ public class Arena{
 	public void match(){
 		
 	}
-
-
+	
 	public String getObj3() {
 		return obj3;
 	}
