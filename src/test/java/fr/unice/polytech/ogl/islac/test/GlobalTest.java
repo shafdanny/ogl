@@ -148,18 +148,14 @@ public class GlobalTest {
 	 * The game engine give warning that the robot is going to the boundary of the map.
 	 * The robot should not proceed to the tile that is out of boundary. 
 	 */
-	@Ignore public void approachingBoundary(){
-		
-	}
+
 	
 	/**
 	 * Scenario #XX
 	 * The current tile is full of resources that is needed in the objective.
 	 * The robot should exploit this tile. 
 	 */
-	@Ignore public void inHighResourceTile(){
-		
-	}
+	
 	
 	/**
 	 * Test the behavior of the robot after a landing.

@@ -25,6 +25,8 @@ public class ScoutTest {
 			//Arena map = test.getMap();
 			test.setLastAction(new Scout());
 			test.setLastDirection("N");
+			
+			assertTrue(new Scout().getData(null, null)==null);
 
 			//System.out.println(test.getC().getPa());
 			new Scout().read(s,test);
