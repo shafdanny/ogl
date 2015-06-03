@@ -106,7 +106,7 @@ public class Simulator {
 				}
 				
 				/*
-				 * If a secondary objective is completed (amount collected >= quantity needed)
+				 * If a secondary objective is completed (amount collected >= quantity needed )
 				 * then delete it from our secondary objective list.
 				 * Also, delete the primary resource objective associated with it.
 				 */
